@@ -1,10 +1,18 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import Navigation from "./components/Navigation";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    font-family: "Lato", sans-serif;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      Start
+    <div>
+      <GlobalStyles />
+      <Navigation />
     </div>
   );
 }
