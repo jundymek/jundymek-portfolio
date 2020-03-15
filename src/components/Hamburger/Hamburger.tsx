@@ -7,7 +7,7 @@ interface NavProps {
 const HamburgerBtn = styled.button<NavProps>`
   display: block;
 
-  @media (min-width: 800px) {
+  @media (min-width: ${props => props.theme.desktop}) {
     display: none;
   }
 
@@ -48,7 +48,7 @@ const HamburgerBtn = styled.button<NavProps>`
 
       &::after {
         transform: rotate(90deg) translateX(5px);
-        border-color: red;
+        border-color: ${props => props.theme.primaryBlack};
       }
     `}
 `;

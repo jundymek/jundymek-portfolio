@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { colors, mediaBreakpoints } from "../../styles/variables";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
 
@@ -10,7 +9,7 @@ interface NavProps {
 
 const NavWrapper = styled.div`
   padding: 0 7%;
-  @media (min-width: mediaBreakpoints.desktop) {
+  @media (min-width: ${props => props.theme.desktop}) {
     padding: 0 17%;
   }
 `;
@@ -23,7 +22,7 @@ const Nav = styled.nav<NavProps>`
   align-items: center;
   height: 100vh;
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
-  @media (min-width: ${mediaBreakpoints.desktop}) {
+  @media (min-width: 800px) {
     transform: none;
     margin-top: 34px;
     display: block;
@@ -35,15 +34,14 @@ const Nav = styled.nav<NavProps>`
 const NavUl = styled.ul`
   list-style-type: none;
   padding: 0;
-  @media (min-width: ${mediaBreakpoints.desktop}) {
+  @media (min-width: 800px) {
     margin: 0;
     padding: 0;
-    list-style-type: none;
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding-bottom: 22px;
-    border-bottom: 1px solid ${colors.gray};
+    border-bottom: 1px solid ${props => props.theme.primaryGray};
   }
 `;
 
@@ -54,7 +52,7 @@ const NavLi = styled.li`
   &:not(:first-child) {
     margin-top: 60px;
   }
-  @media (min-width: ${mediaBreakpoints.desktop}) {
+  @media (min-width: ${props => props.theme.desktop}) {
     font-size: 18px;
     margin-top: 0;
     padding: 0;
@@ -66,9 +64,9 @@ const NavLi = styled.li`
 
 const NavLink = styled.a`
   text-decoration: none;
-  color: ${colors.gray};
+  color: ${props => props.theme.primaryGray};
   &:hover {
-    color: ${colors.codGray};
+    color: ${props => props.theme.primaryDark};
   }
 `;
 
@@ -86,7 +84,6 @@ function Navigation() {
   const width = useWindowSize().width;
   useEffect(() => {
     width && width > 800 && setisHamburgerOpen(false);
-    // width && width > 800 && dispatch({ type: "CLOSE_MOBILE_MENU" });
   }, [width]);
 
   return (

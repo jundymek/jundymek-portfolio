@@ -1,6 +1,8 @@
 import React from "react";
 import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -10,10 +12,12 @@ const GlobalStyles = createGlobalStyle`
 
 function App() {
   return (
-    <div>
-      <GlobalStyles />
-      <Navigation />
-    </div>
+    <ThemeProvider theme={theme} >
+      <div>
+        <GlobalStyles />
+        <Navigation />
+      </div>
+    </ThemeProvider>
   );
 }
 
