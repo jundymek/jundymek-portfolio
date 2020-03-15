@@ -30,7 +30,7 @@ const List = styled.ul`
   text-align: center;
   @media (min-width: ${props => props.theme.desktop}) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 126px;
+    column-gap: 10%;
   }
   
 `;

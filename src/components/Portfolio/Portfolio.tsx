@@ -6,16 +6,19 @@ import image2 from "../../images/project2-desktop.png";
 import image3 from "../../images/project3-desktop.png";
 
 const Wrapper = styled.div`
-  padding: 0 29px;
   max-width: 478px;
-  @media (min-width: ${props => props.theme.desktop}) {
-    max-width: 923px;
-  }
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (min-width: ${props => props.theme.desktop}) {
+    max-width: 923px;
+  }
+`;
+
+const Image = styled.img`
+  width: 95%;
 `;
 
 const Link = styled.a`
@@ -41,10 +44,10 @@ function Portfolio() {
       <Wrapper>
         <SectionTitle>Portfolio</SectionTitle>
         {projects.map((project, index) => (
-          <>
-            <img src={project.img} alt={project.alt} />
+          <div key={index}>
+            <Image src={project.img} alt={project.alt} />
             <Link href="#">{project.text}</Link>
-          </>
+          </div>
         ))}
       </Wrapper>
     </GreySection>
