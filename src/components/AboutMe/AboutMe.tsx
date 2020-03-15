@@ -17,7 +17,7 @@ const Paragraph = styled.p`
 
 function AboutMe() {
   return (
-    <GreySection>
+    <GreySection id="about">
       <Wrapper>
         <SectionTitle>About me</SectionTitle>
         <Paragraph>

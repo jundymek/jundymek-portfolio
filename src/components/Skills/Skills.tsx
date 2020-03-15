@@ -28,13 +28,19 @@ const List = styled.ul`
   grid-template-columns: 1fr;
   row-gap: 80px;
   text-align: center;
+  justify-items: center;
   @media (min-width: ${props => props.theme.desktop}) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 10%;
   }
-  
 `;
 
+const ListItem = styled.li`
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const SkillBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,17 +66,17 @@ const skills = [
 
 function Skills() {
   return (
-    <Section>
+    <Section id="skills">
       <SectionTitle>Skills</SectionTitle>
       <Paragraph>I work in such programs as</Paragraph>
       <List>
         {skills.map((skill, index) => (
-          <li key={index}>
+          <ListItem key={index}>
             <SkillBox>
               <img src={skill.img} alt={skill.alt} />
             <SkillSubtitle>{skill.text}</SkillSubtitle>
             </SkillBox>
-          </li>
+          </ListItem>
         ))}
       </List>
     </Section>

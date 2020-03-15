@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
 
@@ -8,7 +8,6 @@ interface NavProps {
 }
 
 const NavWrapper = styled.div`
-  padding: 0 7%;
   @media (min-width: ${props => props.theme.desktop}) {
     padding: 0 17%;
   }
@@ -20,9 +19,9 @@ const Nav = styled.nav<NavProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: ${props => (props.isVisible ? "100vh" : "0")};
+  height: ${props => (props.isVisible ? "105vh" : "0")};
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
-  @media (min-width: 800px) {
+  @media (min-width: ${props => props.theme.desktop}) {
     transform: none;
     margin-top: 34px;
     display: block;
@@ -34,7 +33,22 @@ const Nav = styled.nav<NavProps>`
 const NavUl = styled.ul`
   list-style-type: none;
   padding: 0;
-  @media (min-width: 800px) {
+  & li:nth-child(5n + 1) a:before {
+    background: #81ecec;
+  }
+  & li:nth-child(5n + 2) a:before {
+    background: #ff7675;
+  }
+  & li:nth-child(5n + 3) a:before {
+    background: #55efc4;
+  }
+  & li:nth-child(5n + 4) a:before {
+    background: #a29bfe;
+  }
+  & li:nth-child(5n + 5) a:before {
+    background: #fd79a8;
+  }
+  @media (min-width: ${props => props.theme.desktop}) {
     margin: 0;
     padding: 0;
     display: flex;
@@ -48,7 +62,10 @@ const NavUl = styled.ul`
 const NavLi = styled.li`
   font-weight: 700;
   font-size: 34px;
-  line-height: 41px;
+  line-height: 40px;
+  @media (orientation: landscape) {
+    line-height: 5px;
+  }
   &:not(:first-child) {
     margin-top: 60px;
   }
@@ -62,11 +79,55 @@ const NavLi = styled.li`
   }
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.a<NavProps>`
   text-decoration: none;
+  display: inline-flex;
+  font-weight: 700;
+  transition: 0.5s;
+  height: 100%;
   color: ${props => props.theme.primaryGray};
   &:hover {
+    background: rgba(255, 255, 255, 1);
     color: ${props => props.theme.primaryDark};
+    ${props =>
+      props.isVisible &&
+      css`
+        &:before {
+          content: attr(data-text);
+          opacity: 1;
+          left: 50%;
+          letter-spacing: 5px;
+          width: 100%;
+          height: 100%;
+          @media (orientation: landscape) {
+            letter-spacing: 50px;
+          }
+        }
+      `}
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vh;
+    color: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    opacity: 0;
+    font-weight: 900;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    text-transform: uppercase;
+    letter-spacing: 500px;
+    transition: letter-spacing 0.5s, top 0.5s, opacity 0.5s;
+    @media (orientation: landscape) {
+      text-orientation: unset;
+      writing-mode: horizontal-tb;
+    }
   }
 `;
 
@@ -88,8 +149,12 @@ function Navigation() {
     } else {
       document.body.style.overflow = "unset";
     }
-    width && width > 800 && setisHamburgerOpen(false);
+    width && width > 900 && setisHamburgerOpen(false);
   }, [width, isHamburgerOpen]);
+
+  const handleClick = () => {
+    setisHamburgerOpen(false);
+  };
 
   return (
     <NavWrapper>
@@ -98,7 +163,15 @@ function Navigation() {
         <NavUl>
           {links.map((link, index) => (
             <NavLi key={index}>
-              <NavLink href={link.url}>{link.title}</NavLink>
+              <NavLink
+                onClick={handleClick}
+                id={link.url}
+                isVisible={isHamburgerOpen}
+                data-text={link.title}
+                href={link.url}
+              >
+                {link.title}
+              </NavLink>
             </NavLi>
           ))}
         </NavUl>

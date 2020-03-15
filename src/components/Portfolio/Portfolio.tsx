@@ -40,7 +40,7 @@ const projects = [
 
 function Portfolio() {
   return (
-    <GreySection>
+    <GreySection id="portfolio">
       <Wrapper>
         <SectionTitle>Portfolio</SectionTitle>
         {projects.map((project, index) => (

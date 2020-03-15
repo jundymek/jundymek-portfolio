@@ -62,7 +62,7 @@ const icons = [
 
 function Contact() {
   return (
-    <Section>
+    <Section id="contact">
       <Wrapper>
         <SectionTitle>Contact</SectionTitle>
         <Paragraph>Want to know more or just chat? You are welcome!</Paragraph>
