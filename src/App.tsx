@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
+import Header from "./components/Header/Header";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -16,6 +17,7 @@ function App() {
       <div>
         <GlobalStyles />
         <Navigation />
+        <Header />
       </div>
     </ThemeProvider>
   );

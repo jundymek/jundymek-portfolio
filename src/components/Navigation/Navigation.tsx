@@ -20,7 +20,7 @@ const Nav = styled.nav<NavProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: ${props => (props.isVisible ? "100vh" : "0")};
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
   @media (min-width: 800px) {
     transform: none;
