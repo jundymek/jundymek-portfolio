@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import Header from "./components/Header/Header";
+import AboutMe from "./components/AboutMe/AboutMe";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -18,6 +19,7 @@ function App() {
         <GlobalStyles />
         <Navigation />
         <Header />
+        <AboutMe />
       </div>
     </ThemeProvider>
   );
