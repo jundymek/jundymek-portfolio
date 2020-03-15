@@ -6,6 +6,7 @@ import { theme } from "./styles/theme";
 import Header from "./components/Header/Header";
 import AboutMe from "./components/AboutMe/AboutMe";
 import Skills from "./components/Skills/Skills";
+import Portfolio from "./components/Portfolio/Portfolio";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -22,6 +23,7 @@ function App() {
         <Header />
         <AboutMe />
         <Skills />
+        <Portfolio />
       </>
     </ThemeProvider>
   );
