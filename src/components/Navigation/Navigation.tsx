@@ -83,8 +83,13 @@ function Navigation() {
 
   const width = useWindowSize().width;
   useEffect(() => {
+    if (isHamburgerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
     width && width > 800 && setisHamburgerOpen(false);
-  }, [width]);
+  }, [width, isHamburgerOpen]);
 
   return (
     <NavWrapper>
