@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SectionTitle = styled.h2`
   padding: 0;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 46px;
   margin-top: 4.5rem;
   text-align: center;
   line-height: 41px;
