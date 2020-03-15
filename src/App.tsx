@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`

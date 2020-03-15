@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { colors, mediaBreakpoints } from "../styles/variables";
+import { colors, mediaBreakpoints } from "../../styles/variables";
+import useWindowSize from "../../customHooks/useWindowSize";
+import Hamburger from "../Hamburger/Hamburger";
+
+interface NavProps {
+  readonly isVisible: boolean;
+}
 
 const NavWrapper = styled.div`
   padding: 0 7%;
@@ -9,12 +15,21 @@ const NavWrapper = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+const Nav = styled.nav<NavProps>`
   display: flex;
+  transform: ${props => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
   flex-direction: column;
-  margin-top: 34px;
-  position: relative;
-  transition: transform 0.2s ease-in;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
+  @media (min-width: ${mediaBreakpoints.desktop}) {
+    transform: none;
+    margin-top: 34px;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const NavUl = styled.ul`
@@ -58,6 +73,8 @@ const NavLink = styled.a`
 `;
 
 function Navigation() {
+  const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
+
   const links = [
     { url: "#", title: "Home" },
     { url: "#about", title: "About me" },
@@ -66,9 +83,16 @@ function Navigation() {
     { url: "#contact", title: "Contact" }
   ];
 
+  const width = useWindowSize().width;
+  useEffect(() => {
+    width && width > 800 && setisHamburgerOpen(false);
+    // width && width > 800 && dispatch({ type: "CLOSE_MOBILE_MENU" });
+  }, [width]);
+
   return (
     <NavWrapper>
-      <Nav>
+      <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
+      <Nav isVisible={isHamburgerOpen}>
         <NavUl>
           {links.map((link, index) => (
             <NavLi key={index}>
