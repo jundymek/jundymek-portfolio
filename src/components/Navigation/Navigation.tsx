@@ -121,6 +121,7 @@ const NavLink = styled.a<NavProps>`
     font-weight: 900;
     writing-mode: vertical-rl;
     text-orientation: upright;
+    -webkit-text-orientation: upright;
     text-transform: uppercase;
     letter-spacing: 500px;
     transition: letter-spacing 0.5s, top 0.5s, opacity 0.5s;
@@ -163,13 +164,7 @@ function Navigation() {
         <NavUl>
           {links.map((link, index) => (
             <NavLi key={index}>
-              <NavLink
-                onClick={handleClick}
-                id={link.url}
-                isVisible={isHamburgerOpen}
-                data-text={link.title}
-                href={link.url}
-              >
+              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text={link.title} href={link.url}>
                 {link.title}
               </NavLink>
             </NavLi>

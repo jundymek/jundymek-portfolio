@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Lato", sans-serif;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 `;
 
 function App() {
