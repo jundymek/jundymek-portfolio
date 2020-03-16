@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { SectionTitle } from "../../styles/styledComponents";
 import photoImage from "../../images/photoshop-icon-mobile.png";
 import aiImage from "../../images/ilustrator-icon-mobile.png";
 import adobeAeImage from "../../images/aftereffects-icon-mobile.png";
 import figmaImage from "../../images/figma-icon-mobile.png";
+import { useTrail, animated } from "react-spring";
+import useOnScreen from "../../customHooks/useOnScreen";
 
 const Section = styled.section`
   display: block;
@@ -35,12 +37,12 @@ const List = styled.ul`
   }
 `;
 
-const ListItem = styled.li`
+const ListItem = styled(animated.li)`
   width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 const SkillBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,29 +59,43 @@ const SkillSubtitle = styled.p`
   color: ${props => props.theme.primaryGray};
 `;
 
-const skills = [
+const items = [
   { img: `${photoImage}`, alt: "Photoshop", text: "Adobe Photoshop" },
   { img: `${aiImage}`, alt: "Adobe ilustrator", text: "Adobe ilustrator" },
   { img: `${adobeAeImage}`, alt: "Adobe after effects", text: "Adobe after effects" },
-  { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
+  { img: `${figmaImage}`, alt: "Figma", text: "Figma" }
 ];
 
 function Skills() {
+  const ref = useRef(null);
+  const onScreen = useOnScreen(ref, "10%");
+
+  const trail = useTrail(items.length, {
+    config: { duration: 1000 },
+    reset: true,
+    from: { marginLeft: -50, opacity: 0, transform: "translate3d(0,-90px,0)" },
+    to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" }
+  });
+
   return (
-    <Section id="skills">
-      <SectionTitle>Skills</SectionTitle>
-      <Paragraph>I work in such programs as</Paragraph>
-      <List>
-        {skills.map((skill, index) => (
-          <ListItem key={index}>
-            <SkillBox>
-              <img src={skill.img} alt={skill.alt} />
-            <SkillSubtitle>{skill.text}</SkillSubtitle>
-            </SkillBox>
-          </ListItem>
-        ))}
-      </List>
-    </Section>
+    <div ref={ref}>
+      {onScreen && (
+        <Section id="skills">
+          <SectionTitle>Skills</SectionTitle>
+          <Paragraph>I work in such programs as</Paragraph>
+          <List>
+            {trail.map((props, index) => (
+              <ListItem key={index} style={props}>
+                <SkillBox>
+                  <img src={items[index].img} alt={items[index].alt} />
+                  <SkillSubtitle>{items[index].text}</SkillSubtitle>
+                </SkillBox>
+              </ListItem>
+            ))}
+          </List>
+        </Section>
+      )}
+    </div>
   );
 }
 

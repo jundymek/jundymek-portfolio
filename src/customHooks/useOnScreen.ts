@@ -14,11 +14,12 @@ function useOnScreen(ref: any, rootMargin = '0px') {
         rootMargin
       }
     );
-    if (ref.current) {
-      observer.observe(ref.current);
+    const x = ref.current
+    if (x) {
+      observer.observe(x);
     }
     return () => {
-      observer.unobserve(ref.current);
+      observer.unobserve(x);
     };
   }, []); // Empty array ensures that effect is only run on mount and unmount
 
