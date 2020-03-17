@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
-import { LanguageContext } from "../../App";
+import LangButtonsMobile from "./LangButtonsMobile";
 
 interface NavProps {
   readonly isVisible: boolean;
 }
 
-interface Props {
+export interface Props {
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -140,38 +140,12 @@ const NavLink = styled.a<NavProps>`
   }
 `;
 
-const LangContainer = styled.div`
-  display: none;
-  @media (max-width: ${props => props.theme.desktop}) {
-    display: block;
-  }
-  position: absolute;
-  right: -30px;
-  bottom: 100px;
-  transform: rotate(90deg);
-  font-size: 34px;
-  font-weight: 800;
-`;
-
-interface Lang {
-  isActive?: boolean;
+interface ButtonsProps {
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const LangButton = styled.button<Lang>`
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  font-size: 34px;
-  font-weight: 400;
-  color: ${props => !props.isActive && props.theme.primaryGray};
-  text-decoration: none;
-  background: none;
-  border: none;
-`;
-
-function Navigation({ setLanguage }: Props) {
+function Navigation({ setLanguage }: ButtonsProps) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
-  const lang = useContext(LanguageContext);
 
   const links = [
     { url: "#", title: "Home" },
@@ -195,10 +169,6 @@ function Navigation({ setLanguage }: Props) {
     setisHamburgerOpen(false);
   };
 
-  const handleLangChange = (value: string) => {
-    setLanguage(value);
-  };
-
   return (
     <NavWrapper>
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
@@ -212,15 +182,7 @@ function Navigation({ setLanguage }: Props) {
             </NavLi>
           ))}
         </NavUl>
-        <LangContainer>
-          <LangButton isActive={lang.language === "EN"} onClick={() => handleLangChange("EN")}>
-            ENG
-          </LangButton>{" "}
-          |{" "}
-          <LangButton isActive={lang.language === "PL"} onClick={() => handleLangChange("PL")}>
-            PL
-          </LangButton>
-        </LangContainer>
+        <LangButtonsMobile setLanguage={setLanguage} />
       </Nav>
     </NavWrapper>
   );
