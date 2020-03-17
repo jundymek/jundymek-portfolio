@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import heroBig from "../../images/hero-image-big.jpg";
 import heroSmall from "../../images/hero-image-small.jpg";
+import { LanguageContext } from "../../App";
 
 const StyledHeader = styled.header`
   margin-top: 30px;
@@ -60,14 +61,18 @@ const LangContainer = styled.div`
   margin-right: -1rem;
 `;
 
-const LangButton = styled.button`
+interface Dupa {
+  isActive?: boolean;
+}
+
+const LangButton = styled.button<Dupa>`
   margin: 0;
   padding: 0;
   cursor: pointer;
   font-style: italic;
   font-size: 18px;
   font-weight: 400;
-  text-decoration: none;
+  text-decoration: ${props => (props.isActive ? "underline" : "none")};
   background: none;
   border: none;
 `;
@@ -76,7 +81,15 @@ const Image = styled.img`
   width: 100%;
 `;
 
-function Header() {
+interface Props {
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function Header({ setLanguage }: Props) {
+  const lang = useContext(LanguageContext);
+  const handleClick = (value: string) => {
+    setLanguage(value);
+  };
   return (
     <StyledHeader>
       <Wrapper>
@@ -86,7 +99,13 @@ function Header() {
           37 years old, Warsaw
         </Paragraph>
         <LangContainer>
-          <LangButton>EN</LangButton> | <LangButton>PL</LangButton>
+          <LangButton isActive={lang.language === "EN"} onClick={() => handleClick("EN")}>
+            EN
+          </LangButton>{" "}
+          |{" "}
+          <LangButton isActive={lang.language === "PL"} onClick={() => handleClick("PL")}>
+            PL
+          </LangButton>
         </LangContainer>
       </Wrapper>
       <picture>

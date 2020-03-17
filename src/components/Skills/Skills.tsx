@@ -78,9 +78,9 @@ function Skills() {
   });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} id="skills">
       {onScreen && (
-        <Section id="skills">
+        <Section>
           <SectionTitle>Skills</SectionTitle>
           <Paragraph>I work in such programs as</Paragraph>
           <List>

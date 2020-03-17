@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
 import { ThemeProvider } from "styled-components";
@@ -19,19 +19,28 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+interface LanguageContextProps {
+  language: string;
+}
+
+export const LanguageContext = React.createContext({} as LanguageContextProps);
+
 function App() {
+  const [language, setLanguage] = useState(navigator.language.slice(0, 2) === "en" ? "EN" : "PL");
+  useEffect(() => {}, [language]);
+
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <LanguageContext.Provider value={{ language }}>
         <GlobalStyles />
         <Navigation />
-        <Header />
+        <Header setLanguage={setLanguage} />
         <AboutMe />
         <Skills />
         <Portfolio />
         <Contact />
         <Footer />
-      </>
+      </LanguageContext.Provider>
     </ThemeProvider>
   );
 }

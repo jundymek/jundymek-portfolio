@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
-function useOnScreen(ref: any, rootMargin = '0px') {
+function useOnScreen(ref:any, rootMargin = '0px') {
   // State and setter for storing whether element is visible
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
+    const refCurrent = ref.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Update our state when observer callback fires
@@ -14,14 +15,13 @@ function useOnScreen(ref: any, rootMargin = '0px') {
         rootMargin
       }
     );
-    const x = ref.current
-    if (x) {
-      observer.observe(x);
+    if (ref.current) {
+      observer.observe(ref.current);
     }
     return () => {
-      observer.unobserve(x);
+      observer.unobserve(refCurrent);
     };
-  }, []); // Empty array ensures that effect is only run on mount and unmount
+  }, [rootMargin, ref]); // Empty array ensures that effect is only run on mount and unmount
 
   return isIntersecting;
 }

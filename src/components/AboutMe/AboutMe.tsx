@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection } from "../../styles/styledComponents";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { useSpring, animated } from "react-spring";
+import { LanguageContext } from "../../App";
 
 const Wrapper = styled(animated.div)`
   padding: 0 29px;
@@ -19,27 +20,30 @@ const Paragraph = styled.p`
 
 function AboutMe() {
   const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "0px");
-  
+  const onScreen = useOnScreen(ref, "-100px");
+
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
     from: { opacity: 0, filter: "blur(12px)" },
     config: { duration: 1000 },
     reset: true
   });
-  
+  const { language } = useContext(LanguageContext);
+
+  const texts = {
+    title: language === "PL" ? "O mnie" : "About Me"
+  };
+
   return (
-    <GreySection ref={ref} id="about">
-      {onScreen && (
-        <Wrapper style={props}>
-          <SectionTitle>About me</SectionTitle>
-          <Paragraph>
-            Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.
-          </Paragraph>
-          <Paragraph>I'm studying at courses "Web and mobile design interfaces" in IT-Academy.</Paragraph>
-          <Paragraph>Ready to implement excellent projects with wonderful people.</Paragraph>
-        </Wrapper>
-      )}
+    <GreySection id="about">
+      <Wrapper ref={ref} style={onScreen ? props : undefined}>
+        <SectionTitle>{texts.title}</SectionTitle>
+        <Paragraph>
+          Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.
+        </Paragraph>
+        <Paragraph>I'm studying at courses "Web and mobile design interfaces" in IT-Academy.</Paragraph>
+        <Paragraph>Ready to implement excellent projects with wonderful people.</Paragraph>
+      </Wrapper>
     </GreySection>
   );
 }
