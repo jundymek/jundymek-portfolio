@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled, { css } from "styled-components";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
+import { LanguageContext } from "../../App";
 
 interface NavProps {
   readonly isVisible: boolean;
+}
+
+interface Props {
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const NavWrapper = styled.div`
@@ -17,9 +22,10 @@ const Nav = styled.nav<NavProps>`
   display: flex;
   transform: ${props => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   height: ${props => (props.isVisible ? "105vh" : "0")};
+  width: 100%;
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
   @media (min-width: ${props => props.theme.desktop}) {
     transform: none;
@@ -32,6 +38,8 @@ const Nav = styled.nav<NavProps>`
 
 const NavUl = styled.ul`
   list-style-type: none;
+  margin-left: 10%;
+  margin-top: 10%;
   padding: 0;
   & li:nth-child(5n + 1) a:before {
     background: #81ecec;
@@ -132,8 +140,38 @@ const NavLink = styled.a<NavProps>`
   }
 `;
 
-function Navigation() {
+const LangContainer = styled.div`
+  display: none;
+  @media (max-width: ${props => props.theme.desktop}) {
+    display: block;
+  }
+  position: absolute;
+  right: -30px;
+  bottom: 100px;
+  transform: rotate(90deg);
+  font-size: 34px;
+  font-weight: 800;
+`;
+
+interface Lang {
+  isActive?: boolean;
+}
+
+const LangButton = styled.button<Lang>`
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 34px;
+  font-weight: 400;
+  color: ${props => !props.isActive && props.theme.primaryGray};
+  text-decoration: none;
+  background: none;
+  border: none;
+`;
+
+function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
+  const lang = useContext(LanguageContext);
 
   const links = [
     { url: "#", title: "Home" },
@@ -157,6 +195,10 @@ function Navigation() {
     setisHamburgerOpen(false);
   };
 
+  const handleLangChange = (value: string) => {
+    setLanguage(value);
+  };
+
   return (
     <NavWrapper>
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
@@ -170,6 +212,15 @@ function Navigation() {
             </NavLi>
           ))}
         </NavUl>
+        <LangContainer>
+          <LangButton isActive={lang.language === "EN"} onClick={() => handleLangChange("EN")}>
+            ENG
+          </LangButton>{" "}
+          |{" "}
+          <LangButton isActive={lang.language === "PL"} onClick={() => handleLangChange("PL")}>
+            PL
+          </LangButton>
+        </LangContainer>
       </Nav>
     </NavWrapper>
   );

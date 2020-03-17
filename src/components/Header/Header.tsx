@@ -61,11 +61,11 @@ const LangContainer = styled.div`
   margin-right: -1rem;
 `;
 
-interface Dupa {
+interface Lang {
   isActive?: boolean;
 }
 
-const LangButton = styled.button<Dupa>`
+const LangButton = styled.button<Lang>`
   margin: 0;
   padding: 0;
   cursor: pointer;
