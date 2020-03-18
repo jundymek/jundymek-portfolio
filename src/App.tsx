@@ -35,7 +35,7 @@ function App() {
 
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
-    from: { opacity: 0, filter: "blur(12px)" },
+    from: { opacity: 0, filter: "blur(5px)" },
     config: { duration: 1000 },
     reset: true
   });
