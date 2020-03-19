@@ -36,16 +36,16 @@ const Link = styled.a`
 `;
 
 const projects = [
-  { img: `${image1}`, alt: "Project", title: "", text: "Online fashion store - Homepage" },
-  { img: `${image2}`, alt: "Project", title: "", text: "Reebok Store - Concept" },
-  { img: `${image3}`, alt: "Project", title: "", text: "Braun Landing Page - Concept" },
+  // { img: `${image1}`, alt: "Project", title: "", text: "Online fashion store - Homepage" },
+  // { img: `${image2}`, alt: "Project", title: "", text: "Reebok Store - Concept" },
+  // { img: `${image3}`, alt: "Project", title: "", text: "Braun Landing Page - Concept" },
   {
     img: `${image4}`,
     alt: "Project",
     title: "Netkat - katalog stron",
     text:
       "Skrypt katalogu stron internetowych napisany w Pythonie/Django. Jest to mój pierwszy większy projekt, który pisałem ucząc się wymienionych technologii.",
-    tech: ["Python", "Django"]
+    tech: ["Python", "Django", "Django rest framework"]
   }
 ];
 
@@ -97,22 +97,35 @@ const ImageContainer = styled.div`
 const Title = styled.h2`
   opacity: 0;
   transition: 0.5s;
-  transform: translateY(20px);
+  transform: translateY(-20px);
 `;
 
 const Paragraph = styled.p`
   opacity: 0;
   transition: 0.5s;
-  transform: translateY(20px);
+  transform: translateY(-20px);
+  font-size: 18px;
   width: 100%;
   text-align: justify;
   margin: 0 auto;
+  margin-bottom: 10px;
 `;
 
 const List = styled.ul`
   list-style-type: none;
+  transform: translateY(-20px);
   opacity: 0;
-  width: 20%;
+  font-size: 18px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  justify-self: flex-end;
+  margin-top: 20px;
+  opacity: 0;
+  bottom: 0;
+  transform: translateY(-20px);
 `;
 
 const Box = styled.div`
@@ -144,6 +157,11 @@ const Box = styled.div`
     transform: translateY(0);
     transition-delay: 1.5s;
   }
+  &:hover ${ButtonWrapper} {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 2s;
+  }
 `;
 
 const ProjectImage = styled.img`
@@ -157,8 +175,10 @@ const ProjectImage = styled.img`
 const Content = styled.div`
   position: absolute;
   right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 60%;
-  margin-top: 120px;
   height: 100%;
   box-sizing: border-box;
   text-align: center;
@@ -167,6 +187,44 @@ const Content = styled.div`
 const ListItem = styled.li`
   margin: 0;
   padding: 2px;
+  position: relative;
+  display: table;
+  &:before {
+    position: absolute;
+    content: "✓";
+    left: -15px;
+    top: 2px;
+  }
+  &:after {
+    position: absolute;
+    display: block;
+    content: "";
+    bottom: 0;
+    width: 0;
+    max-width: 0;
+    height: 1px;
+    background: ${props => props.theme.primaryDark};
+    transition: 1s ease;
+  }
+  &:hover::after {
+    width: 100%;
+    max-width: 100%;
+  }
+`;
+
+const Button = styled.button`
+  background-color: ${props => props.theme.primaryDark};
+  border-radius: 50px;
+  width: 100%;
+  height: 42px;
+  color: #fff;
+  margin-bottom: 48px;
+  font-size: 18px;
+  margin: 20px;
+  cursor: pointer;
+  @media (min-width: ${props => props.theme.desktop}) {
+    width: 178px;
+  }
 `;
 
 function Project({ project, index }: ProjectProps) {
@@ -179,7 +237,7 @@ function Project({ project, index }: ProjectProps) {
         <Title>{project.title}</Title>
         <Paragraph>{project.text}</Paragraph>
         <Paragraph>
-          Użyte technologie
+          Użyte technologie{" "}               
           <span role="img" aria-label="technologie">
             🚀
           </span>
@@ -187,6 +245,10 @@ function Project({ project, index }: ProjectProps) {
         <List>
           {project.tech && project.tech.map((technology, index) => <ListItem key={index}>{technology}</ListItem>)}
         </List>
+        <ButtonWrapper>
+          <Button>Github</Button>
+          <Button>Live</Button>
+        </ButtonWrapper>
       </Content>
     </Box>
   );
