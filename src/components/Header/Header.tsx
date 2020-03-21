@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import heroBig from "../../images/hero-image-big.jpg";
-import heroSmall from "../../images/hero-image-small.jpg";
 import { LanguageContext } from "../../App";
+import HeroImage from "./HeroImage";
 
 const StyledHeader = styled.header`
   margin-top: 30px;
@@ -71,15 +70,11 @@ const LangButton = styled.button<Lang>`
   cursor: pointer;
   font-style: italic;
   font-size: 18px;
-  color: ${props => (!props.isActive && props.theme.primaryGray)};
+  color: ${props => !props.isActive && props.theme.primaryGray};
   font-weight: 500;
   text-decoration: ${props => (props.isActive ? "underline" : "none")};
   background: none;
   border: none;
-`;
-
-const Image = styled.img`
-  width: 100%;
 `;
 
 interface Props {
@@ -91,6 +86,7 @@ function Header({ setLanguage }: Props) {
   const handleClick = (value: string) => {
     setLanguage(value);
   };
+
   return (
     <StyledHeader>
       <Wrapper>
@@ -109,10 +105,7 @@ function Header({ setLanguage }: Props) {
           </LangButton>
         </LangContainer>
       </Wrapper>
-      <picture>
-        <source media="(min-width: 600px)" srcSet={heroBig} />
-        <Image src={heroSmall} alt="Łukasz Dymek" />
-      </picture>
+      <HeroImage />
     </StyledHeader>
   );
 }

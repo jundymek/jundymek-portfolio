@@ -28,7 +28,7 @@ const List = styled.ul`
   padding: 0;
   list-style-type: none;
   grid-template-columns: 1fr;
-  row-gap: 80px;
+  row-gap: 40px;
   text-align: center;
   justify-items: center;
   @media (min-width: ${props => props.theme.desktop}) {
@@ -68,12 +68,12 @@ const items = [
 
 function Skills() {
   const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "10%");
+  const onScreen = useOnScreen(ref, "0%");
 
   const trail = useTrail(items.length, {
     config: { duration: 1000 },
     reset: true,
-    from: { marginLeft: -50, opacity: 0, transform: "translate3d(0,-90px,0)" },
+    from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
     to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" }
   });
 

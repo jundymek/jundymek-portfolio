@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection } from "../../styles/styledComponents";
-import image1 from "../../images/project1-desktop.png";
+import image1 from "../../images/free_proxy.gif";
 import image2 from "../../images/project2-desktop.png";
 import image3 from "../../images/project3-desktop.png";
 import image4 from "../../images/netkat-project.png";
 import useWindowSize from "../../customHooks/useWindowSize";
+import ProjectMobile from "./ProjectMobile";
 
 const Wrapper = styled.div`
   max-width: 478px;
@@ -20,23 +21,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const Image = styled.img`
-  width: 95%;
-`;
-
-const Link = styled.a`
-  display: block;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  text-decoration-line: underline;
-  text-align: center;
-  margin: 32px 0 76px 0;
-  color: ${props => props.theme.primaryDark};
-`;
-
 const projects = [
-  // { img: `${image1}`, alt: "Project", title: "", text: "Online fashion store - Homepage" },
+  {
+    img: `${image1}`,
+    alt: "Free proxy",
+    title: "Free proxy",
+    text: "Prosty scraper darmowych proxy. Skrypt pobiera listę proxy ze strony xxxx",
+    tech: ["Python"]
+  },
   // { img: `${image2}`, alt: "Project", title: "", text: "Reebok Store - Concept" },
   // { img: `${image3}`, alt: "Project", title: "", text: "Braun Landing Page - Concept" },
   {
@@ -51,19 +43,14 @@ const projects = [
 
 function Portfolio() {
   const windowWidth = useWindowSize().width;
-  const mobile = windowWidth && windowWidth < 800;
+  const mobile = windowWidth && windowWidth < 900;
   return (
     <GreySection id="portfolio">
       <Wrapper>
         <SectionTitle>Portfolio</SectionTitle>
         {!mobile
-          ? projects.map((project, index) => <Project project={project} index={index} />)
-          : projects.map((project, index) => (
-              <div key={index}>
-                <Image src={project.img} alt={project.alt} />
-                <Link href="#">{project.text}</Link>
-              </div>
-            ))}
+          ? projects.map((project, index) => <Project key={index} project={project} />)
+          : projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
       </Wrapper>
     </GreySection>
   );
@@ -78,9 +65,8 @@ interface Project {
   text: string;
   tech?: string[];
 }
-interface ProjectProps {
+export interface ProjectProps {
   project: Project;
-  index: number;
 }
 
 const ImageContainer = styled.div`
@@ -96,13 +82,12 @@ const ImageContainer = styled.div`
 
 const Title = styled.h2`
   opacity: 0;
-  transition: 0.5s;
   transform: translateY(-20px);
+  margin-bottom: 30px;
 `;
 
 const Paragraph = styled.p`
   opacity: 0;
-  transition: 0.5s;
   transform: translateY(-20px);
   font-size: 18px;
   width: 100%;
@@ -144,21 +129,25 @@ const Box = styled.div`
   }
   &:hover ${Title} {
     opacity: 1;
+    transition: 0.5s;
     transform: translateY(0);
     transition-delay: 0.5s;
   }
   &:hover ${Paragraph} {
     opacity: 1;
+    transition: 0.5s;
     transform: translateY(0);
     transition-delay: 1s;
   }
   &:hover ${List} {
     opacity: 1;
+    transition: 0.5s;
     transform: translateY(0);
     transition-delay: 1.5s;
   }
   &:hover ${ButtonWrapper} {
     opacity: 1;
+    transition: 0.5s;
     transform: translateY(0);
     transition-delay: 2s;
   }
@@ -227,7 +216,7 @@ const Button = styled.button`
   }
 `;
 
-function Project({ project, index }: ProjectProps) {
+function Project({ project }: ProjectProps) {
   return (
     <Box>
       <ImageContainer>
@@ -237,7 +226,7 @@ function Project({ project, index }: ProjectProps) {
         <Title>{project.title}</Title>
         <Paragraph>{project.text}</Paragraph>
         <Paragraph>
-          Użyte technologie{" "}               
+          Użyte technologie{" "}
           <span role="img" aria-label="technologie">
             🚀
           </span>
