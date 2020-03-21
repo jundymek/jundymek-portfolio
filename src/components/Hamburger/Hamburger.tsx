@@ -14,7 +14,7 @@ const HamburgerBtn = styled.button<NavProps>`
   position: absolute;
   width: 1.83rem;
   height: 20px;
-  right: 7%;
+  right: 20px;
   top: 3.61rem;
   background: transparent;
   border: 0;

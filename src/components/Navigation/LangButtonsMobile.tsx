@@ -10,9 +10,11 @@ const LangContainer = styled.div`
   }
   position: absolute;
   right: -30px;
+  bottom: 0;
   bottom: 100px;
   transform: rotate(90deg);
   font-size: 34px;
+  line-height: 2;
   font-weight: 800;
 `;
 

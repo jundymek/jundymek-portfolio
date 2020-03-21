@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import styled from "styled-components";
 import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
 import { ThemeProvider } from "styled-components";
@@ -13,6 +14,7 @@ import { useSpring, animated } from "react-spring";
 import usePrevious from "./customHooks/usePrevious";
 
 const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Notable');
   body {
     font-family: "Lato", sans-serif;
   }
@@ -24,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
 interface LanguageContextProps {
   language: string;
 }
+
+const AppWrapper = styled.div`
+  margin: 0 auto;
+`
 
 export const LanguageContext = React.createContext({} as LanguageContextProps);
 
@@ -45,13 +51,15 @@ function App() {
       <LanguageContext.Provider value={{ language }}>
         <GlobalStyles />
         <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
-          <Navigation setLanguage={setLanguage} />
-          <Header setLanguage={setLanguage} />
-          <AboutMe />
-          <Skills />
-          <Portfolio />
-          <Contact />
-          <Footer />
+          <AppWrapper>
+            <Navigation setLanguage={setLanguage} />
+            <Header setLanguage={setLanguage} />
+            <AboutMe />
+            <Skills />
+            <Portfolio />
+            <Contact />
+            <Footer />
+          </AppWrapper>
         </animated.div>
       </LanguageContext.Provider>
     </ThemeProvider>

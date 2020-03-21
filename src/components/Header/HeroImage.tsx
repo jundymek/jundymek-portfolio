@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import useWindowSize from "../../customHooks/useWindowSize";
-import heroBig from "../../images/me.png";
+import heroBig from "../../images/me1.png";
 import heroSmall from "../../images/me-small.png";
 
 export const Image = styled.img`
@@ -17,6 +17,9 @@ export const ImageWrapper = styled.div<Img>`
   background: url(${props => props.image});
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0 auto;
+  /* max-width: 900px; */
+  align-items: center;
   &:hover:before {
     animation: animate 0.2s linear;
   }

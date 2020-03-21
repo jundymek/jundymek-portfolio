@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
 import LangButtonsMobile from "./LangButtonsMobile";
+import { WhiteDiv } from "../../styles/styledComponents";
 
 interface NavProps {
   readonly isVisible: boolean;
@@ -12,12 +13,6 @@ export interface Props {
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const NavWrapper = styled.div`
-  @media (min-width: ${props => props.theme.desktop}) {
-    padding: 0 17%;
-  }
-`;
-
 const Nav = styled.nav<NavProps>`
   display: flex;
   transform: ${props => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
@@ -26,6 +21,7 @@ const Nav = styled.nav<NavProps>`
   align-items: flex-start;
   height: ${props => (props.isVisible ? "105vh" : "0")};
   width: 100%;
+  max-width: 1440px;
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
   @media (min-width: ${props => props.theme.desktop}) {
     transform: none;
@@ -170,7 +166,7 @@ function Navigation({ setLanguage }: ButtonsProps) {
   };
 
   return (
-    <NavWrapper>
+    <WhiteDiv>
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
       <Nav isVisible={isHamburgerOpen}>
         <NavUl>
@@ -184,7 +180,7 @@ function Navigation({ setLanguage }: ButtonsProps) {
         </NavUl>
         <LangButtonsMobile setLanguage={setLanguage} />
       </Nav>
-    </NavWrapper>
+    </WhiteDiv>
   );
 }
 

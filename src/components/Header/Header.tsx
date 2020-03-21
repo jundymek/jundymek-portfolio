@@ -2,12 +2,11 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { LanguageContext } from "../../App";
 import HeroImage from "./HeroImage";
+import { WhiteDiv } from "../../styles/styledComponents";
 
 const StyledHeader = styled.header`
   margin-top: 30px;
-  padding: 0 7%;
   @media (min-width: ${props => props.theme.desktop}) {
-    padding: 0 17%;
   }
 `;
 
@@ -88,25 +87,27 @@ function Header({ setLanguage }: Props) {
   };
 
   return (
-    <StyledHeader>
-      <Wrapper>
-        <Title>Łukasz Dymek</Title>
-        <Paragraph>
-          UX|UI designer <br />
-          37 years old, Warsaw
-        </Paragraph>
-        <LangContainer>
-          <LangButton isActive={lang.language === "EN"} onClick={() => handleClick("EN")}>
-            EN
-          </LangButton>{" "}
-          |{" "}
-          <LangButton isActive={lang.language === "PL"} onClick={() => handleClick("PL")}>
-            PL
-          </LangButton>
-        </LangContainer>
-      </Wrapper>
-      <HeroImage />
-    </StyledHeader>
+    <WhiteDiv>
+      <StyledHeader>
+        <Wrapper>
+          <Title>Łukasz Dymek</Title>
+          <Paragraph>
+            UX|UI designer <br />
+            37 years old, Warsaw
+          </Paragraph>
+          <LangContainer>
+            <LangButton isActive={lang.language === "EN"} onClick={() => handleClick("EN")}>
+              EN
+            </LangButton>{" "}
+            |{" "}
+            <LangButton isActive={lang.language === "PL"} onClick={() => handleClick("PL")}>
+              PL
+            </LangButton>
+          </LangContainer>
+        </Wrapper>
+        <HeroImage />
+      </StyledHeader>
+    </WhiteDiv>
   );
 }
 

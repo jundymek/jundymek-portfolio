@@ -16,6 +16,7 @@ const Paragraph = styled.p`
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
+  font-family: 'Notable', sans-serif;
 `;
 
 function AboutMe() {

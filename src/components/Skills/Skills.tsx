@@ -11,9 +11,7 @@ import useOnScreen from "../../customHooks/useOnScreen";
 const Section = styled.section`
   display: block;
   margin: 0 auto;
-  @media (min-width: ${props => props.theme.desktop}) {
-    width: 50%;
-  }
+  max-width: 1440px;
 `;
 
 const Paragraph = styled.p`
@@ -72,7 +70,7 @@ function Skills() {
 
   const trail = useTrail(items.length, {
     config: { duration: 1000 },
-    reset: true,
+    reset: false,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
     to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" }
   });
