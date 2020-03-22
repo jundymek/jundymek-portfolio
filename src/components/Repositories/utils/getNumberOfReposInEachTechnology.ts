@@ -1,11 +1,10 @@
-import { RootObject } from "../Repositories";
+import { RootObject } from "../../../helpers/types";
 import { getTechnologiesToSort } from "./getTechnologiesToSort";
 import { sortRepositoriesByTechnology } from "./sortRepositoriesByTechnology";
 import { countTechnologies } from "./countTechnologies";
+import { TechnologyObject } from "../../../helpers/types"
 
-export interface TechnologyObject {
-  [key: string]: number
-}
+
 
 export function getNumberOfReposInEachTechnology(data: RootObject[]) {
   const technologies = getTechnologiesToSort(data)

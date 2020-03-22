@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 interface NavProps {
   isOpen: boolean;
 }
+
 const HamburgerBtn = styled.button<NavProps>`
   display: block;
 

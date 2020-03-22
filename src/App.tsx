@@ -29,7 +29,7 @@ const AppWrapper = styled.div`
 `;
 
 const lang = navigator.language.slice(0, 2) === "en" ? "EN" : "PL";
-export const LanguageContext = React.createContext({language: lang, texts: translation[lang]});
+export const LanguageContext = React.createContext({ language: lang, texts: translation[lang] });
 
 function App() {
   const [language, setLanguage] = useState<"PL" | "EN">(lang);
@@ -51,7 +51,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <LanguageContext.Provider value={{ language, texts }}>
         <GlobalStyles />
-        <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
+        <animated.div ref={ref} style={prevLang && language === prevLang ? props : undefined}>
           <AppWrapper>
             <Navigation setLanguage={setLanguage} />
             <Header setLanguage={setLanguage} />

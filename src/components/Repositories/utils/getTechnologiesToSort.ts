@@ -1,4 +1,4 @@
-import { RootObject } from "../Repositories";
+import { RootObject } from "../../../helpers/types";
 
 export function getTechnologiesToSort(data: RootObject[]) {
   const technologies: Array<string> = data.map((item) => {

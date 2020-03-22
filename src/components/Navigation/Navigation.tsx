@@ -6,7 +6,7 @@ import LangButtonsMobile from "./LangButtonsMobile";
 import { WhiteDiv } from "../../styles/styledComponents";
 
 interface NavProps {
-  readonly isVisible: boolean;
+  isVisible: boolean;
 }
 
 export interface Props {
