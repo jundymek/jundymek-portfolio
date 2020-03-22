@@ -36,7 +36,7 @@ const LangButton = styled.button<Lang>`
 
 function LangButtonsMobile({ setLanguage }: Props) {
   const lang = useContext(LanguageContext);
-  const handleLangChange = (value: string) => {
+  const handleLangChange = (value: "EN" | "PL") => {
     setLanguage(value);
   };
   return (

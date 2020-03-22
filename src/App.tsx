@@ -12,6 +12,7 @@ import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import { useSpring, animated } from "react-spring";
 import usePrevious from "./customHooks/usePrevious";
+import { translation } from "./helpers/translation";
 
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Notable');
@@ -23,21 +24,25 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-interface LanguageContextProps {
-  language: string;
-}
-
 const AppWrapper = styled.div`
   margin: 0 auto;
-`
+`;
 
-export const LanguageContext = React.createContext({} as LanguageContextProps);
+interface ContextProps {
+  language: "PL" | "EN";
+  texts: any;
+}
+
+export const LanguageContext = React.createContext({} as ContextProps);
 
 function App() {
-  const [language, setLanguage] = useState(navigator.language.slice(0, 2) === "en" ? "EN" : "PL");
+  const [language, setLanguage] = useState<"PL" | "EN">(navigator.language.slice(0, 2) === "en" ? "EN" : "PL");
+  const [texts, setTexts] = useState(translation[language]);
   const ref = useRef(null);
   const prevLang = usePrevious(language);
-  useEffect(() => {}, [language]);
+  useEffect(() => {
+    setTexts(translation[language]);
+  }, [language]);
 
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
@@ -48,7 +53,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <LanguageContext.Provider value={{ language }}>
+      <LanguageContext.Provider value={{ language, texts }}>
         <GlobalStyles />
         <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
           <AppWrapper>

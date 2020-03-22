@@ -10,7 +10,7 @@ interface NavProps {
 }
 
 export interface Props {
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
 const Nav = styled.nav<NavProps>`
@@ -136,11 +136,7 @@ const NavLink = styled.a<NavProps>`
   }
 `;
 
-interface ButtonsProps {
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
-}
-
-function Navigation({ setLanguage }: ButtonsProps) {
+function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
 
   const links = [

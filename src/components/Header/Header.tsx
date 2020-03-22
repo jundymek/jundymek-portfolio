@@ -34,17 +34,22 @@ const Title = styled.h1`
   }
 `;
 
+const ParagraphWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  margin-right: 36px;
+`;
+
 const Paragraph = styled.p`
   padding: 0;
   margin: 0;
   font-size: $default-font-size;
   line-height: 1.22rem;
   font-weight: 400;
-  width: 175px;
-  margin-bottom: 2.11rem;
+  /* width: 175px; */
   @media (min-width: ${props => props.theme.desktop}) {
-    margin-bottom: 2.11rem;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
   }
 `;
 
@@ -77,12 +82,15 @@ const LangButton = styled.button<Lang>`
 `;
 
 interface Props {
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
 function Header({ setLanguage }: Props) {
   const lang = useContext(LanguageContext);
-  const handleClick = (value: string) => {
+  const {
+    texts: { header }
+  } = useContext(LanguageContext);
+  const handleClick = (value: "PL" | "EN") => {
     setLanguage(value);
   };
 
@@ -90,11 +98,12 @@ function Header({ setLanguage }: Props) {
     <WhiteDiv>
       <StyledHeader>
         <Wrapper>
-          <Title>Łukasz Dymek</Title>
-          <Paragraph>
-            UX|UI designer <br />
-            37 years old, Warsaw
-          </Paragraph>
+          <Title>{header.title}</Title>
+          <ParagraphWrapper>
+            {header.paragraphs.map((paragraph:any) => (
+              <Paragraph>{paragraph}</Paragraph>
+            ))}
+          </ParagraphWrapper>
           <LangContainer>
             <LangButton isActive={lang.language === "EN"} onClick={() => handleClick("EN")}>
               EN

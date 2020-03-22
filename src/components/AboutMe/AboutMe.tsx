@@ -16,7 +16,7 @@ const Paragraph = styled.p`
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
-  font-family: 'Notable', sans-serif;
+  font-family: "Notable", sans-serif;
 `;
 
 function AboutMe() {
@@ -29,21 +29,19 @@ function AboutMe() {
     config: { duration: 1000 },
     reset: true
   });
-  const { language } = useContext(LanguageContext);
+  const {
+    texts: { aboutMe }
+  } = useContext(LanguageContext);
 
-  const texts = {
-    title: language === "PL" ? "O mnie" : "About Me"
-  };
+  console.log(useContext(LanguageContext))
 
   return (
     <GreySection id="about">
       <Wrapper ref={ref} style={onScreen ? props : undefined}>
-        <SectionTitle>{texts.title}</SectionTitle>
-        <Paragraph>
-          Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.
-        </Paragraph>
-        <Paragraph>I'm studying at courses "Web and mobile design interfaces" in IT-Academy.</Paragraph>
-        <Paragraph>Ready to implement excellent projects with wonderful people.</Paragraph>
+        <SectionTitle>{aboutMe.title}</SectionTitle>
+        {aboutMe.paragraphs.map((paragraph:any) => (
+          <Paragraph>{paragraph}</Paragraph>
+        ))}
       </Wrapper>
     </GreySection>
   );
