@@ -17,6 +17,11 @@ export const translation = {
         "Ready to implement excellent projects with wonderful people.",
       ]
 
+    },
+    repositories: 
+    {
+      title: "Projekty na github",
+      subtitle: "Posortowane według technologii (skategoryzowane przez githuba)"
     }
   },
   EN: {
@@ -34,6 +39,11 @@ export const translation = {
         "I'm studying at courses 'Web and mobile design interfaces' in IT-Academy.",
         "Ready to implement excellent projects with wonderful people.",
       ]
+    },
+    repositories: 
+    {
+      title: "Projekty na github",
+      subtitle: "Posortowane według technologii (skategoryzowane przez githuba)"
     }
   }
 }
