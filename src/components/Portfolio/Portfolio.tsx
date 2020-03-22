@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection } from "../../styles/styledComponents";
 import image1 from "../../images/free_proxy.gif";
-import image2 from "../../images/project2-desktop.png";
-import image3 from "../../images/project3-desktop.png";
 import image4 from "../../images/netkat-project.png";
 import useWindowSize from "../../customHooks/useWindowSize";
 import ProjectMobile from "./ProjectMobile";
+import Repositories from "../Repositories/Repositories";
 
 const Wrapper = styled.div`
   max-width: 478px;
@@ -29,8 +28,6 @@ const projects = [
     text: "Prosty scraper darmowych proxy. Skrypt pobiera listę proxy ze strony xxxx",
     tech: ["Python"]
   },
-  // { img: `${image2}`, alt: "Project", title: "", text: "Reebok Store - Concept" },
-  // { img: `${image3}`, alt: "Project", title: "", text: "Braun Landing Page - Concept" },
   {
     img: `${image4}`,
     alt: "Project",
@@ -52,6 +49,7 @@ function Portfolio() {
           ? projects.map((project, index) => <Project key={index} project={project} />)
           : projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
       </Wrapper>
+      <Repositories />
     </GreySection>
   );
 }

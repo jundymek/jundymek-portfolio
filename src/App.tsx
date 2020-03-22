@@ -28,15 +28,11 @@ const AppWrapper = styled.div`
   margin: 0 auto;
 `;
 
-interface ContextProps {
-  language: "PL" | "EN";
-  texts: any;
-}
-
-export const LanguageContext = React.createContext({} as ContextProps);
+const lang = navigator.language.slice(0, 2) === "en" ? "EN" : "PL";
+export const LanguageContext = React.createContext({language: lang, texts: translation[lang]});
 
 function App() {
-  const [language, setLanguage] = useState<"PL" | "EN">(navigator.language.slice(0, 2) === "en" ? "EN" : "PL");
+  const [language, setLanguage] = useState<"PL" | "EN">(lang);
   const [texts, setTexts] = useState(translation[language]);
   const ref = useRef(null);
   const prevLang = usePrevious(language);

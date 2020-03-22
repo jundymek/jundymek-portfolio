@@ -20,16 +20,6 @@ const Text = styled.p`
   color: ${props => props.theme.primaryDark};
 `
 
-const Link = styled.a`
-  display: block;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  text-decoration-line: underline;
-  text-align: center;
-  margin: 32px 0 76px 0;
-  color: ${props => props.theme.primaryDark};
-`;
 const Title1 = styled.h2``;
 
 const Wrapper = styled.div`

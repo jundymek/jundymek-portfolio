@@ -100,8 +100,8 @@ function Header({ setLanguage }: Props) {
         <Wrapper>
           <Title>{header.title}</Title>
           <ParagraphWrapper>
-            {header.paragraphs.map((paragraph:any) => (
-              <Paragraph>{paragraph}</Paragraph>
+            {header.paragraphs.map((paragraph:string, index) => (
+              <Paragraph key={index}>{paragraph}</Paragraph>
             ))}
           </ParagraphWrapper>
           <LangContainer>

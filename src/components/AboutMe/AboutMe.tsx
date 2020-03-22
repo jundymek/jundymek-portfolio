@@ -33,14 +33,12 @@ function AboutMe() {
     texts: { aboutMe }
   } = useContext(LanguageContext);
 
-  console.log(useContext(LanguageContext))
-
   return (
     <GreySection id="about">
       <Wrapper ref={ref} style={onScreen ? props : undefined}>
         <SectionTitle>{aboutMe.title}</SectionTitle>
-        {aboutMe.paragraphs.map((paragraph:any) => (
-          <Paragraph>{paragraph}</Paragraph>
+        {aboutMe.paragraphs.map((paragraph, index) => (
+          <Paragraph key={index}>{paragraph}</Paragraph>
         ))}
       </Wrapper>
     </GreySection>
