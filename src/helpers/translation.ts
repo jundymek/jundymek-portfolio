@@ -1,7 +1,13 @@
-import photoImage from "../images/photoshop-icon-mobile.png";
-import aiImage from "../images/ilustrator-icon-mobile.png";
-import adobeAeImage from "../images/aftereffects-icon-mobile.png";
 import figmaImage from "../images/figma-icon-mobile.png";
+import djangoImage from "../images/skills-icons/django-icon.svg";
+import reactImage from "../images/skills-icons/react-icon.svg";
+import cssImage from "../images/skills-icons/css3-icon.svg";
+import gitImage from "../images/skills-icons/git-icon.svg";
+import githubImage from "../images/skills-icons/github-icon.svg";
+import javascriptImage from "../images/skills-icons/javascript-icon.svg";
+import pythonImage from "../images/skills-icons/python-icon.svg";
+import sassImage from "../images/skills-icons/sass-icon.svg";
+import typescriptImage from "../images/skills-icons/typescript-icon.svg";
 
 export const translation = {
   PL: {
@@ -31,10 +37,15 @@ export const translation = {
       title: "Skills",
       paragraph: "I work in such programs as",
       skills: [
-        { img: `${photoImage}`, alt: "Photoshop", text: "Adobe Photoshop" },
-        { img: `${aiImage}`, alt: "Adobe ilustrator", text: "Adobe ilustrator" },
-        { img: `${adobeAeImage}`, alt: "Adobe after effects", text: "Adobe after effects" },
-        { img: `${figmaImage}`, alt: "Figma", text: "Figma" }
+        { img: `${pythonImage}`, alt: "Python", text: "Python" },
+        { img: `${djangoImage}`, alt: "Django", text: "Django" },
+        { img: `${cssImage}`, alt: "Css3", text: "Css3" },
+        { img: `${gitImage}`, alt: "Git", text: "Git" },
+        { img: `${githubImage}`, alt: "GitHub", text: "Github" },
+        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
+        { img: `${sassImage}`, alt: "Sass", text: "Sass" },
+        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
+        { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
     }
   },
@@ -64,10 +75,15 @@ export const translation = {
       title: "Skills",
       paragraph: "I work in such programs as",
       skills: [
-        { img: `${photoImage}`, alt: "Photoshop", text: "Adobe Photoshop" },
-        { img: `${aiImage}`, alt: "Adobe ilustrator", text: "Adobe ilustrator" },
-        { img: `${adobeAeImage}`, alt: "Adobe after effects", text: "Adobe after effects" },
-        { img: `${figmaImage}`, alt: "Figma", text: "Figma" }
+        { img: `${pythonImage}`, alt: "Python", text: "Python" },
+        { img: `${djangoImage}`, alt: "Django", text: "Django" },
+        { img: `${cssImage}`, alt: "Css3", text: "Css3" },
+        { img: `${gitImage}`, alt: "Git", text: "Git" },
+        { img: `${githubImage}`, alt: "GitHub", text: "Github" },
+        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
+        { img: `${sassImage}`, alt: "Sass", text: "Sass" },
+        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
+        { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
     }
   }

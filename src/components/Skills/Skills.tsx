@@ -45,6 +45,11 @@ const SkillBox = styled.div`
   align-items: center;
 `;
 
+const Image = styled.img`
+  width: 90px;
+  height: 90px;
+`
+
 const SkillSubtitle = styled.p`
   font-size: 0.77rem;
   font-style: italic;
@@ -63,7 +68,7 @@ function Skills() {
 
   const trail = useTrail(texts.skills.length, {
     config: { duration: 1000 },
-    reset: false,
+    reset: true,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
     to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" }
   });
@@ -78,7 +83,7 @@ function Skills() {
             {trail.map((props, index) => (
               <ListItem key={index} style={props}>
                 <SkillBox>
-                  <img src={texts.skills[index].img} alt={texts.skills[index].alt} />
+                  <Image src={texts.skills[index].img} alt={texts.skills[index].alt} />
                   <SkillSubtitle>{texts.skills[index].text}</SkillSubtitle>
                 </SkillBox>
               </ListItem>
