@@ -1,4 +1,7 @@
-
+import photoImage from "../images/photoshop-icon-mobile.png";
+import aiImage from "../images/ilustrator-icon-mobile.png";
+import adobeAeImage from "../images/aftereffects-icon-mobile.png";
+import figmaImage from "../images/figma-icon-mobile.png";
 
 export const translation = {
   PL: {
@@ -6,7 +9,7 @@ export const translation = {
     {
       title: "jundymek",
       paragraphs: ["UX|UI designer",
-      "Too old, Warsawsss"]
+        "Too old, Warsawsss"]
     },
     aboutMe:
     {
@@ -18,10 +21,21 @@ export const translation = {
       ]
 
     },
-    repositories: 
+    repositories:
     {
       title: "Projekty na github",
       subtitle: "Posortowane według technologii (skategoryzowane przez githuba)"
+    },
+    skills:
+    {
+      title: "Skills",
+      paragraph: "I work in such programs as",
+      skills: [
+        { img: `${photoImage}`, alt: "Photoshop", text: "Adobe Photoshop" },
+        { img: `${aiImage}`, alt: "Adobe ilustrator", text: "Adobe ilustrator" },
+        { img: `${adobeAeImage}`, alt: "Adobe after effects", text: "Adobe after effects" },
+        { img: `${figmaImage}`, alt: "Figma", text: "Figma" }
+      ]
     }
   },
   EN: {
@@ -29,7 +43,7 @@ export const translation = {
     {
       title: "jundymek",
       paragraphs: ["UX|UI designer",
-      "Too old, Warsaw"]
+        "Too old, Warsaw"]
     },
     aboutMe:
     {
@@ -40,10 +54,21 @@ export const translation = {
         "Ready to implement excellent projects with wonderful people.",
       ]
     },
-    repositories: 
+    repositories:
     {
       title: "Projekty na github",
       subtitle: "Posortowane według technologii (skategoryzowane przez githuba)"
+    },
+    skills:
+    {
+      title: "Skills",
+      paragraph: "I work in such programs as",
+      skills: [
+        { img: `${photoImage}`, alt: "Photoshop", text: "Adobe Photoshop" },
+        { img: `${aiImage}`, alt: "Adobe ilustrator", text: "Adobe ilustrator" },
+        { img: `${adobeAeImage}`, alt: "Adobe after effects", text: "Adobe after effects" },
+        { img: `${figmaImage}`, alt: "Figma", text: "Figma" }
+      ]
     }
   }
 }

@@ -1,12 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle } from "../../styles/styledComponents";
-import photoImage from "../../images/photoshop-icon-mobile.png";
-import aiImage from "../../images/ilustrator-icon-mobile.png";
-import adobeAeImage from "../../images/aftereffects-icon-mobile.png";
-import figmaImage from "../../images/figma-icon-mobile.png";
 import { useTrail, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
+import { LanguageContext } from "../../App";
 
 const Section = styled.section`
   display: block;
@@ -57,18 +54,14 @@ const SkillSubtitle = styled.p`
   color: ${props => props.theme.primaryGray};
 `;
 
-const items = [
-  { img: `${photoImage}`, alt: "Photoshop", text: "Adobe Photoshop" },
-  { img: `${aiImage}`, alt: "Adobe ilustrator", text: "Adobe ilustrator" },
-  { img: `${adobeAeImage}`, alt: "Adobe after effects", text: "Adobe after effects" },
-  { img: `${figmaImage}`, alt: "Figma", text: "Figma" }
-];
-
 function Skills() {
   const ref = useRef(null);
   const onScreen = useOnScreen(ref, "0%");
+  const {
+    texts: { skills: texts }
+  } = useContext(LanguageContext);
 
-  const trail = useTrail(items.length, {
+  const trail = useTrail(texts.skills.length, {
     config: { duration: 1000 },
     reset: false,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
@@ -79,14 +72,14 @@ function Skills() {
     <div ref={ref} id="skills">
       {onScreen && (
         <Section>
-          <SectionTitle>Skills</SectionTitle>
-          <Paragraph>I work in such programs as</Paragraph>
+          <SectionTitle>{texts.title}</SectionTitle>
+          <Paragraph>{texts.paragraph}</Paragraph>
           <List>
             {trail.map((props, index) => (
               <ListItem key={index} style={props}>
                 <SkillBox>
-                  <img src={items[index].img} alt={items[index].alt} />
-                  <SkillSubtitle>{items[index].text}</SkillSubtitle>
+                  <img src={texts.skills[index].img} alt={texts.skills[index].alt} />
+                  <SkillSubtitle>{texts.skills[index].text}</SkillSubtitle>
                 </SkillBox>
               </ListItem>
             ))}
