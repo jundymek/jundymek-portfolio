@@ -15,7 +15,7 @@ import usePrevious from "./customHooks/usePrevious";
 import { translation } from "./helpers/translation";
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Notable');
+
   body {
     font-family: "Lato", sans-serif;
   }

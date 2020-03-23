@@ -43,6 +43,7 @@ export const translation = {
         { img: `${gitImage}`, alt: "Git", text: "Git" },
         { img: `${githubImage}`, alt: "GitHub", text: "Github" },
         { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
+        { img: `${reactImage}`, alt: "React", text: "React" },
         { img: `${sassImage}`, alt: "Sass", text: "Sass" },
         { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },

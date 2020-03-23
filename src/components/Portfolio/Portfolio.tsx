@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection } from "../../styles/styledComponents";
 import image1 from "../../images/free_proxy.gif";
@@ -6,6 +6,7 @@ import image4 from "../../images/netkat-project.png";
 import useWindowSize from "../../customHooks/useWindowSize";
 import ProjectMobile from "./ProjectMobile";
 import Repositories from "../Repositories/Repositories";
+import useOnScreen from "../../customHooks/useOnScreen";
 
 const Wrapper = styled.div`
   max-width: 478px;
@@ -25,7 +26,7 @@ const projects = [
     img: `${image1}`,
     alt: "Free proxy",
     title: "Free proxy",
-    text: "Prosty scraper darmowych proxy. Skrypt pobiera listę proxy ze strony xxxx",
+    text: "Prosty scraper darmowych proxy. Skrypt pobiera listę proxy ze strony https://www.sslproxies.org/",
     tech: ["Python"]
   },
   {
@@ -41,14 +42,20 @@ const projects = [
 function Portfolio() {
   const windowWidth = useWindowSize().width;
   const mobile = windowWidth && windowWidth < 900;
+  const ref = useRef(null);
+  const onScreen = useOnScreen(ref, "0px");
+  console.log(ref);
+  console.log(onScreen);
   return (
-    <GreySection id="portfolio">
-      <Wrapper>
-        <SectionTitle>Portfolio</SectionTitle>
-        {!mobile
-          ? projects.map((project, index) => <Project key={index} project={project} />)
-          : projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
-      </Wrapper>
+    <GreySection ref={ref} id="portfolio">
+      {onScreen && (
+        <Wrapper>
+          <SectionTitle>Portfolio</SectionTitle>
+          {!mobile
+            ? projects.map((project, index) => <Project key={index} project={project} />)
+            : projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
+        </Wrapper>
+      )}
       <Repositories />
     </GreySection>
   );
@@ -89,6 +96,7 @@ const Paragraph = styled.p`
   transform: translateY(-20px);
   font-size: 18px;
   width: 100%;
+  font-family: "VT323", monospace;
   text-align: justify;
   margin: 0 auto;
   margin-bottom: 10px;

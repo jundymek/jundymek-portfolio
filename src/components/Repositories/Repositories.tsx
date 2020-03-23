@@ -11,7 +11,7 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* padding: 10px; */
+  max-width: 900px;
   @media (min-width: ${props => props.theme.desktop}) {
     width: 80%;
   }
