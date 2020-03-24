@@ -10,11 +10,17 @@ export const SectionTitle = styled.h2`
   line-height: 41px;
 `;
 
+export const SectionSubtitle = styled.p`
+  font-size: 18px;
+  margin-bottom: 70px;
+  text-align: center;
+`;
+
 export const WhiteDiv = styled.div`
   padding: 0 20px;
   margin: 0 auto;
   max-width: 1440px;
-`
+`;
 
 export const GreySection = styled.section`
   width: 100%;
@@ -25,4 +31,4 @@ export const GreySection = styled.section`
   align-items: center;
   margin-top: 83px;
   padding-bottom: 28px;
-`
+`;

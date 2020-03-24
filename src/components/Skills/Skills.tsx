@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from "react";
 import styled from "styled-components";
-import { SectionTitle } from "../../styles/styledComponents";
+import { SectionTitle, SectionSubtitle } from "../../styles/styledComponents";
 import { useTrail, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
@@ -10,12 +10,6 @@ const Section = styled.section`
   display: block;
   margin: 0 auto;
   max-width: 1440px;
-`;
-
-const Paragraph = styled.p`
-  font-size: 18px;
-  margin-bottom: 70px;
-  text-align: center;
 `;
 
 const List = styled.ul`
@@ -94,7 +88,7 @@ function Skills() {
   return (
     <Section ref={ref} id="skills">
       <SectionTitle>{texts.title}</SectionTitle>
-      <Paragraph>{texts.paragraph}</Paragraph>
+      <SectionSubtitle>{texts.paragraph}</SectionSubtitle>
       <List>
         {trail.map((props, index) => (
           <ListItem key={index} style={props}>

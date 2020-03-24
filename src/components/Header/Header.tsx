@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { LanguageContext } from "../../App";
 import HeroImage from "./HeroImage";
 import { WhiteDiv } from "../../styles/styledComponents";
+import { Scrambler } from "react-text-scrambler";
 
 const StyledHeader = styled.header`
   margin-top: 30px;
@@ -30,7 +31,7 @@ const Title = styled.h1`
   @media (min-width: ${props => props.theme.desktop}) {
     font-size: $title-font-size;
     line-height: 3.18rem;
-    color: #070707;
+    /* color: #070707; */
   }
 `;
 
@@ -74,7 +75,7 @@ const LangButton = styled.button<Lang>`
   cursor: pointer;
   font-style: italic;
   font-size: 18px;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   color: ${props => !props.isActive && props.theme.primaryGray};
   font-weight: 500;
   text-decoration: ${props => (props.isActive ? "underline" : "none")};
@@ -99,9 +100,11 @@ function Header({ setLanguage }: Props) {
     <WhiteDiv>
       <StyledHeader>
         <Wrapper>
-          <Title>{header.title}</Title>
+          <Title>
+            <Scrambler text={`< ${header.title} />`}  changeFrom="print('Hello world')" renderIn={1} characters="!@#$%^&*()"/>
+          </Title>
           <ParagraphWrapper>
-            {header.paragraphs.map((paragraph:string, index) => (
+            {header.paragraphs.map((paragraph: string, index) => (
               <Paragraph key={index}>{paragraph}</Paragraph>
             ))}
           </ParagraphWrapper>

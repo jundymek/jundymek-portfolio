@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef,useContext } from "react";
 import styled from "styled-components";
-import { SectionTitle, GreySection } from "../../styles/styledComponents";
-import image1 from "../../images/free_proxy.gif";
-import image4 from "../../images/netkat-project.png";
+import { SectionTitle, GreySection, SectionSubtitle } from "../../styles/styledComponents";
+import { LanguageContext } from "../../App";
 import useWindowSize from "../../customHooks/useWindowSize";
 import ProjectMobile from "./ProjectMobile";
 import Repositories from "../Repositories/Repositories";
@@ -21,39 +20,23 @@ const Wrapper = styled.div`
   }
 `;
 
-const projects = [
-  {
-    img: `${image1}`,
-    alt: "Free proxy",
-    title: "Free proxy",
-    text: "Prosty scraper darmowych proxy. Skrypt pobiera listę proxy ze strony https://www.sslproxies.org/",
-    tech: ["Python"]
-  },
-  {
-    img: `${image4}`,
-    alt: "Project",
-    title: "Netkat - katalog stron",
-    text:
-      "Skrypt katalogu stron internetowych napisany w Pythonie/Django. Jest to mój pierwszy większy projekt, który pisałem ucząc się wymienionych technologii.",
-    tech: ["Python", "Django", "Django rest framework"]
-  }
-];
-
 function Portfolio() {
   const windowWidth = useWindowSize().width;
   const mobile = windowWidth && windowWidth < 900;
   const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "0px");
+  useOnScreen(ref, "0px");
+  const {
+    texts: { projects }
+  } = useContext(LanguageContext);
   return (
     <GreySection ref={ref} id="portfolio">
-      {onScreen && (
         <Wrapper>
-          <SectionTitle>Portfolio</SectionTitle>
+          <SectionTitle>{projects.title}</SectionTitle>
+          <SectionSubtitle>{projects.subtitle}</SectionSubtitle>
           {!mobile
-            ? projects.map((project, index) => <Project key={index} project={project} />)
-            : projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
+            ? projects.projects.map((project, index) => <Project key={index} project={project} />)
+            : projects.projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
         </Wrapper>
-      )}
       <Repositories />
     </GreySection>
   );
@@ -99,8 +82,13 @@ const Paragraph = styled.p`
 
 const List = styled.ul`
   list-style-type: none;
-  transform: translateY(-20px);
+  /* transform: translateY(-20px); */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  padding: 0;
   opacity: 0;
+  text-align: left;
   font-size: 18px;
 `;
 
@@ -121,13 +109,14 @@ const Box = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 400px;
+  height: 100%;
   margin: 20px 0;
   padding: 10px;
   border: 1px solid ${props => props.theme.primaryGray};
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
+  height:inherit;
   &:hover ${ImageContainer} {
     clip-path: polygon(0% 0%, 0 0, 35% 51%, 0 100%, 0% 100%);
   }
@@ -173,7 +162,7 @@ const Content = styled.div`
   justify-content: center;
   width: 60%;
   padding-right: 20px;
-  height: 100%;
+  height: inherit;
   box-sizing: border-box;
   text-align: center;
 `;
@@ -182,13 +171,17 @@ const ListItem = styled.li`
   margin: 0;
   padding: 2px;
   position: relative;
-  display: table;
   &:before {
     position: absolute;
     content: "✓";
     left: -15px;
     top: 2px;
   }
+`;
+
+const TechItem = styled.span`
+  width: auto;
+  position: relative;
   &:after {
     position: absolute;
     display: block;
@@ -204,7 +197,7 @@ const ListItem = styled.li`
     width: 100%;
     max-width: 100%;
   }
-`;
+`
 
 const Button = styled.button`
   background-color: ${props => props.theme.primaryDark};
@@ -222,6 +215,9 @@ const Button = styled.button`
 `;
 
 function Project({ project }: ProjectProps) {
+  const {
+    texts: { projects }
+  } = useContext(LanguageContext);
   return (
     <Box>
       <ImageContainer>
@@ -231,13 +227,13 @@ function Project({ project }: ProjectProps) {
         <Title>{project.title}</Title>
         <Paragraph>{project.text}</Paragraph>
         <Paragraph>
-          Użyte technologie{" "}
+          {projects.paragraph} {" "}
           <span role="img" aria-label="technologie">
             🚀
           </span>
         </Paragraph>
         <List>
-          {project.tech && project.tech.map((technology, index) => <ListItem key={index}>{technology}</ListItem>)}
+          {project.tech && project.tech.map((technology, index) => <ListItem key={index}><TechItem>{technology}</TechItem></ListItem>)}
         </List>
         <ButtonWrapper>
           <Button>Github</Button>
