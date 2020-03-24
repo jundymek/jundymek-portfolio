@@ -82,6 +82,10 @@ export const translation = {
         { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
+    },
+    contact: 
+    {
+      buttonLabel: "Send a message"
     }
   },
   EN: {
@@ -150,6 +154,10 @@ export const translation = {
         { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
+    },
+    contact: 
+    {
+      buttonLabel: "Send a message"
     }
   }
 }

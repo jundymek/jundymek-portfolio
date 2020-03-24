@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ProjectProps } from "./Portfolio";
+import Button from "../Button/Button";
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ const Text = styled.p`
   line-height: 22px;
   text-align: justify;
   color: ${props => props.theme.primaryDark};
-`
+`;
 
 const Title1 = styled.h2``;
 
@@ -29,7 +30,14 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 5px;
   border: 1px solid ${props => props.theme.primaryDark};
-`
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+`;
 
 function ProjectMobile({ project }: ProjectProps) {
   return (
@@ -38,6 +46,10 @@ function ProjectMobile({ project }: ProjectProps) {
       <Wrapper>
         <Image src={project.img} alt={project.alt} />
         <Text>{project.text}</Text>
+        <ButtonWrapper>
+          <Button label="Github" />
+          <Button label="Live" />
+        </ButtonWrapper>
       </Wrapper>
     </Container>
   );

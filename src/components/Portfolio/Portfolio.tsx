@@ -6,6 +6,7 @@ import useWindowSize from "../../customHooks/useWindowSize";
 import ProjectMobile from "./ProjectMobile";
 import Repositories from "../Repositories/Repositories";
 import useOnScreen from "../../customHooks/useOnScreen";
+import Button from "../Button/Button";
 
 const Wrapper = styled.div`
   max-width: 478px;
@@ -197,58 +198,7 @@ const TechItem = styled.span`
     width: 100%;
     max-width: 100%;
   }
-`;
-
-const Button = styled.button`
-  background-color: ${props => props.theme.primaryDark};
-  border-radius: 50px;
-  width: 100%;
-  height: 42px;
-  color: #fff;
-  font-size: 18px;
-  margin: 20px;
-  border: 2px solid black;
-  text-transform: uppercase;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: ${props => props.theme.primaryDark};
-    border-radius: 50px;
-    border: 2px solid black;
-    z-index: -2;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    min-width: 0;
-    height: 100%;
-    color: ${props => props.theme.primaryDark};
-    background-color: white;
-    border-radius: 50px;
-    border: 2px solid black;
-    transition: all 0.3s;
-    z-index: -1;
-  }
-  &:hover {
-    color: ${props => props.theme.primaryDark};
-    &::before {
-      min-width: 100%;
-    }
-  }
-  @media (min-width: ${props => props.theme.desktop}) {
-    width: 178px;
-  }
-`;
+`
 
 function Project({ project }: ProjectProps) {
   const {
@@ -277,8 +227,8 @@ function Project({ project }: ProjectProps) {
             ))}
         </List>
         <ButtonWrapper>
-          <Button>Github</Button>
-          <Button>Live</Button>
+          <Button label="Github" />
+          <Button label="Live" />
         </ButtonWrapper>
       </Content>
     </Box>

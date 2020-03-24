@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
+import { LanguageContext } from "../../App";
 import { SectionTitle } from "../../styles/styledComponents";
 import linkedin from "../../images/linkedin-icon.png";
 import instagram from "../../images/instagram-icon.png";
 import behance from "../../images/behance-icon.png";
 import dribble from "../../images/dribble-icon.png";
+import Button from "../Button/Button";
 
 const Section = styled.section`
   display: block;
@@ -22,30 +24,15 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Button = styled.button`
-  background-color: ${props => props.theme.primaryDark};
-  border-radius: 50px;
-  width: 100%;
-  height: 42px;
-  color: #fff;
-  margin-bottom: 48px;
-  font-size: 18px;
-  cursor: pointer;
-  @media (min-width: ${props => props.theme.desktop}) {
-    width: 178px;
-  }
-`;
-
 const Paragraph = styled.p`
   text-align: center;
-  margin-bottom: 44px;
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 400;
   line-height: 22px;
 `;
 
 const List = styled.ul`
-  margin: 0;
+  margin-top: 30px;
   padding: 0;
   width: 100%;
   list-style-type: none;
@@ -61,12 +48,15 @@ const icons = [
 ];
 
 function Contact() {
+  const {
+    texts: { contact }
+  } = useContext(LanguageContext);
   return (
     <Section id="contact">
       <Wrapper>
         <SectionTitle>Contact</SectionTitle>
         <Paragraph>Want to know more or just chat? You are welcome!</Paragraph>
-        <Button>Send message</Button>
+        <Button label={contact.buttonLabel} />
         <List>
           {icons.map((icon, index) => (
             <li key={index}>
