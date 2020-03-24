@@ -21,7 +21,7 @@ const Paragraph = styled.p`
 
 function AboutMe() {
   const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "-100px");
+  useOnScreen(ref, "-100px");
 
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
@@ -35,7 +35,7 @@ function AboutMe() {
 
   return (
     <GreySection id="about">
-      <Wrapper ref={ref} style={onScreen ? props : undefined}>
+      <Wrapper ref={ref} style={props}>
         <SectionTitle>{aboutMe.title}</SectionTitle>
         {aboutMe.paragraphs.map((paragraph, index) => (
           <Paragraph key={index}>{paragraph}</Paragraph>

@@ -10,7 +10,7 @@ import useOnScreen from "../../customHooks/useOnScreen";
 
 const Wrapper = styled.div`
   max-width: 478px;
-  width: 100%;
+  width: 150%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -44,8 +44,6 @@ function Portfolio() {
   const mobile = windowWidth && windowWidth < 900;
   const ref = useRef(null);
   const onScreen = useOnScreen(ref, "0px");
-  console.log(ref);
-  console.log(onScreen);
   return (
     <GreySection ref={ref} id="portfolio">
       {onScreen && (
@@ -129,7 +127,6 @@ const Box = styled.div`
   height: 600px;
   margin: 20px 0;
   box-sizing: content-box;
-  overflow: hidden;
   &:hover ${ImageContainer} {
     clip-path: polygon(0% 0%, 0 0, 35% 51%, 0 100%, 0% 100%);
   }

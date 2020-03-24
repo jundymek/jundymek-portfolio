@@ -36,7 +36,6 @@ function App() {
   const [texts, setTexts] = useState(translation[language]);
   const ref = useRef(null);
   const prevLang = usePrevious(language);
-  console.log(prevLang)
   useEffect(() => {
     setTexts(translation[language]);
   }, [language]);

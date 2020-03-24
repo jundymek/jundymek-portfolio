@@ -4,6 +4,7 @@ import { SectionTitle } from "../../styles/styledComponents";
 import { useTrail, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
+import ReactTooltip from "react-tooltip";
 
 const Section = styled.section`
   display: block;
@@ -29,6 +30,7 @@ const List = styled.ul`
   @media (min-width: ${props => props.theme.desktop}) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 10%;
+    padding: 0 100px;
   }
 `;
 
@@ -48,7 +50,12 @@ const SkillBox = styled.div`
 const Image = styled.img`
   width: 90px;
   height: 90px;
-`
+  filter: grayscale(100%);
+  transition: filter 1s linear;
+  &:hover {
+    filter: none;
+  }
+`;
 
 const SkillSubtitle = styled.p`
   font-size: 0.77rem;
@@ -59,9 +66,20 @@ const SkillSubtitle = styled.p`
   color: ${props => props.theme.primaryGray};
 `;
 
+const MyTooltip = styled(ReactTooltip)`
+  top: 0;
+  left: 0;
+  min-width: 300px;
+  max-width: 80vw;
+  font-size: 18px;
+  @media (min-width: ${props => props.theme.desktop}) {
+    min-width: 200px;
+  }
+`;
+
 function Skills() {
   const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "0%");
+  useOnScreen(ref, "10%");
   const {
     texts: { skills: texts }
   } = useContext(LanguageContext);
@@ -74,24 +92,42 @@ function Skills() {
   });
 
   return (
-    <div ref={ref} id="skills">
-      {onScreen && (
-        <Section>
-          <SectionTitle>{texts.title}</SectionTitle>
-          <Paragraph>{texts.paragraph}</Paragraph>
-          <List>
-            {trail.map((props, index) => (
-              <ListItem key={index} style={props}>
-                <SkillBox>
-                  <Image src={texts.skills[index].img} alt={texts.skills[index].alt} />
-                  <SkillSubtitle>{texts.skills[index].text}</SkillSubtitle>
-                </SkillBox>
-              </ListItem>
-            ))}
-          </List>
-        </Section>
-      )}
-    </div>
+    <Section ref={ref} id="skills">
+      <SectionTitle>{texts.title}</SectionTitle>
+      <Paragraph>{texts.paragraph}</Paragraph>
+      <List>
+        {trail.map((props, index) => (
+          <ListItem key={index} style={props}>
+            <SkillBox>
+              <Image
+                src={texts.skills[index].img}
+                alt={texts.skills[index].alt}
+                data-tip
+                data-for={index}
+                data-place="top"
+                data-effect="solid"
+              />
+              <SkillSubtitle>{texts.skills[index].text}</SkillSubtitle>
+              <MyTooltip id={`${index}`} effect="solid">
+                <h2>Show sad face</h2>
+                <p>{texts.skills[index].tooltipText && texts.skills[index].tooltipText}</p>
+                <p>
+                  Właśnie napisałem <code style={{ color: "red" }}>print "Hello World"</code>
+                </p>
+                <ul>
+                  <li>
+                    <a href="http://www.onet.pl">Netkat</a>
+                  </li>
+                  <li>Pan Kanapka</li>
+                  <li>Site down checker</li>
+                  <li>Dupa blada</li>
+                </ul>
+              </MyTooltip>
+            </SkillBox>
+          </ListItem>
+        ))}
+      </List>
+    </Section>
   );
 }
 
