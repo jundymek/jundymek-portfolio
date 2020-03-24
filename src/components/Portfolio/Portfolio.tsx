@@ -1,4 +1,4 @@
-import React, { useRef,useContext } from "react";
+import React, { useRef, useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection, SectionSubtitle } from "../../styles/styledComponents";
 import { LanguageContext } from "../../App";
@@ -30,13 +30,13 @@ function Portfolio() {
   } = useContext(LanguageContext);
   return (
     <GreySection ref={ref} id="portfolio">
-        <Wrapper>
-          <SectionTitle>{projects.title}</SectionTitle>
-          <SectionSubtitle>{projects.subtitle}</SectionSubtitle>
-          {!mobile
-            ? projects.projects.map((project, index) => <Project key={index} project={project} />)
-            : projects.projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
-        </Wrapper>
+      <Wrapper>
+        <SectionTitle>{projects.title}</SectionTitle>
+        <SectionSubtitle>{projects.subtitle}</SectionSubtitle>
+        {!mobile
+          ? projects.projects.map((project, index) => <Project key={index} project={project} />)
+          : projects.projects.map((project, index) => <ProjectMobile key={index} project={project} />)}
+      </Wrapper>
       <Repositories />
     </GreySection>
   );
@@ -116,7 +116,7 @@ const Box = styled.div`
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
-  height:inherit;
+  height: inherit;
   &:hover ${ImageContainer} {
     clip-path: polygon(0% 0%, 0 0, 35% 51%, 0 100%, 0% 100%);
   }
@@ -197,7 +197,7 @@ const TechItem = styled.span`
     width: 100%;
     max-width: 100%;
   }
-`
+`;
 
 const Button = styled.button`
   background-color: ${props => props.theme.primaryDark};
@@ -205,10 +205,46 @@ const Button = styled.button`
   width: 100%;
   height: 42px;
   color: #fff;
-  margin-bottom: 48px;
   font-size: 18px;
   margin: 20px;
+  border: 2px solid black;
+  text-transform: uppercase;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: ${props => props.theme.primaryDark};
+    border-radius: 50px;
+    border: 2px solid black;
+    z-index: -2;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 0;
+    height: 100%;
+    color: ${props => props.theme.primaryDark};
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid black;
+    transition: all 0.3s;
+    z-index: -1;
+  }
+  &:hover {
+    color: ${props => props.theme.primaryDark};
+    &::before {
+      min-width: 100%;
+    }
+  }
   @media (min-width: ${props => props.theme.desktop}) {
     width: 178px;
   }
@@ -227,13 +263,18 @@ function Project({ project }: ProjectProps) {
         <Title>{project.title}</Title>
         <Paragraph>{project.text}</Paragraph>
         <Paragraph>
-          {projects.paragraph} {" "}
+          {projects.paragraph}{" "}
           <span role="img" aria-label="technologie">
             🚀
           </span>
         </Paragraph>
         <List>
-          {project.tech && project.tech.map((technology, index) => <ListItem key={index}><TechItem>{technology}</TechItem></ListItem>)}
+          {project.tech &&
+            project.tech.map((technology, index) => (
+              <ListItem key={index}>
+                <TechItem>{technology}</TechItem>
+              </ListItem>
+            ))}
         </List>
         <ButtonWrapper>
           <Button>Github</Button>
