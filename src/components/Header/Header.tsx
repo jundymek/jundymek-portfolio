@@ -74,6 +74,7 @@ const LangButton = styled.button<Lang>`
   cursor: pointer;
   font-style: italic;
   font-size: 18px;
+  font-family: 'VT323', monospace;
   color: ${props => !props.isActive && props.theme.primaryGray};
   font-weight: 500;
   text-decoration: ${props => (props.isActive ? "underline" : "none")};

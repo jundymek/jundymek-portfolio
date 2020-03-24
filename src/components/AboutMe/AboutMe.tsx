@@ -13,10 +13,11 @@ const Wrapper = styled(animated.div)`
 const Paragraph = styled.p`
   text-align: center;
   margin-bottom: 38px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 20px;
   font-family: "Notable", sans-serif;
+  font-family: 'VT323', monospace;
 `;
 
 function AboutMe() {

@@ -74,7 +74,7 @@ const NavLi = styled.li`
     margin-top: 60px;
   }
   @media (min-width: ${props => props.theme.desktop}) {
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 0;
     padding: 0;
     &:not(:first-child) {

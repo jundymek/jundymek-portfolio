@@ -10,14 +10,14 @@ import useOnScreen from "../../customHooks/useOnScreen";
 
 const Wrapper = styled.div`
   max-width: 478px;
-  width: 150%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @media (min-width: ${props => props.theme.desktop}) {
-    max-width: 923px;
+    max-width: 880px;
   }
 `;
 
@@ -73,9 +73,6 @@ export interface ProjectProps {
 }
 
 const ImageContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: inherit;
@@ -123,10 +120,14 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 95%;
-  height: 600px;
+  width: 100%;
+  height: 400px;
   margin: 20px 0;
-  box-sizing: content-box;
+  padding: 10px;
+  border: 1px solid ${props => props.theme.primaryGray};
+  -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
+  box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   &:hover ${ImageContainer} {
     clip-path: polygon(0% 0%, 0 0, 35% 51%, 0 100%, 0% 100%);
   }
@@ -171,6 +172,7 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 60%;
+  padding-right: 20px;
   height: 100%;
   box-sizing: border-box;
   text-align: center;

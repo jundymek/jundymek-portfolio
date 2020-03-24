@@ -13,7 +13,7 @@ export const translation = {
   PL: {
     header:
     {
-      title: "jundymek",
+      title: "Łukasz Dymek",
       paragraphs: ["Python/Django/React",
         "Po prostu programista"]
     },
@@ -34,8 +34,8 @@ export const translation = {
     },
     skills:
     {
-      title: "Skills",
-      paragraph: "I work in such programs as",
+      title: "Umiejętności",
+      paragraph: "Technologie i programy, których używam",
       skills: [
         { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania."   },
         { img: `${djangoImage}`, alt: "Django", text: "Django" },
@@ -53,7 +53,7 @@ export const translation = {
   EN: {
     header:
     {
-      title: "jundymek",
+      title: "Łukasz Dymek",
       paragraphs: ["Python/Django/React",
         "Simpy developer"]
     },
@@ -74,7 +74,7 @@ export const translation = {
     skills:
     {
       title: "Skills",
-      paragraph: "I work in such programs as",
+      paragraph: "Technologies and tools I use",
       skills: [
         { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania."   },
         { img: `${djangoImage}`, alt: "Django", text: "Django" },
