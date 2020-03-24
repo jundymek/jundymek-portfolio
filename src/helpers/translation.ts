@@ -14,16 +14,16 @@ export const translation = {
     header:
     {
       title: "jundymek",
-      paragraphs: ["UX|UI designer",
-        "Too old, Warsawsss"]
+      paragraphs: ["Python/Django/React",
+        "Po prostu programista"]
     },
     aboutMe:
     {
       title: "O mnie",
       paragraphs: [
-        "Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.",
-        "I'm studying at courses 'Web and mobile design interfaces' in IT-Academy.",
-        "Ready to implement excellent projects with wonderful people.",
+        "Cześć - jestem Łukasz. Obecnie Policjant 👮🏻‍♂️, w przyszłości... developer. Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Zaczynałem od Pythona, aktualnie zgłębiam tajniki frontendu. Obecnie próbuję opanować Reacta.",
+        "Nie deklaruję się po którejkolwiek stronie. Front i back podobają mi się jednakowo - najważniejsze jest frajda z pisania kodu. Chciałbym robić to w pełnym wymiarze czasu.",
+        "Czy jest taka szansa? Czy nie jest za późno? NIEEEEE. Już tyle osób powiedziało mi, że nigdy nie jest za późno na kodowanie…",
       ]
 
     },
@@ -37,7 +37,7 @@ export const translation = {
       title: "Skills",
       paragraph: "I work in such programs as",
       skills: [
-        { img: `${pythonImage}`, alt: "Python", text: "Python" },
+        { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania."   },
         { img: `${djangoImage}`, alt: "Django", text: "Django" },
         { img: `${cssImage}`, alt: "Css3", text: "Css3" },
         { img: `${gitImage}`, alt: "Git", text: "Git" },
@@ -54,16 +54,16 @@ export const translation = {
     header:
     {
       title: "jundymek",
-      paragraphs: ["UX|UI designer",
-        "Too old, Warsaw"]
+      paragraphs: ["Python/Django/React",
+        "Simpy developer"]
     },
     aboutMe:
     {
       title: "About me",
       paragraphs: [
-        "Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.",
-        "I'm studying at courses 'Web and mobile design interfaces' in IT-Academy.",
-        "Ready to implement excellent projects with wonderful people.",
+        "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in future… developer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote print “Hello World” in Python (yes - 2.0). Currently, I dove into the frontend. Nowadays I spend time mostly writing React code.",
+        "I am not declaring myself on any side. I like frontend and backend the same. Most important is real fun when writing code. I dream about work as a programmer full time.",
+        "Is it possible? Isn’t it too late for that? NOOOO. So many people told mi that for coding never is too late..."
       ]
     },
     repositories:
@@ -76,12 +76,13 @@ export const translation = {
       title: "Skills",
       paragraph: "I work in such programs as",
       skills: [
-        { img: `${pythonImage}`, alt: "Python", text: "Python" },
+        { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania."   },
         { img: `${djangoImage}`, alt: "Django", text: "Django" },
         { img: `${cssImage}`, alt: "Css3", text: "Css3" },
         { img: `${gitImage}`, alt: "Git", text: "Git" },
         { img: `${githubImage}`, alt: "GitHub", text: "Github" },
         { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
+        { img: `${reactImage}`, alt: "React", text: "React" },
         { img: `${sassImage}`, alt: "Sass", text: "Sass" },
         { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
