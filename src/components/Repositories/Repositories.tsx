@@ -4,6 +4,12 @@ import fetchRepositiories from "./utils/fetchRepositiories";
 import { TechnologyObject } from "../../helpers/types";
 import styled, { keyframes } from "styled-components";
 import { LanguageContext } from "../../App";
+import javascriptImage from "../../images/skills-icons/javascript-icon.svg";
+import pythonImage from "../../images/skills-icons/python-icon.svg";
+import cssImage from "../../images/skills-icons/css3-icon.svg";
+import typescriptImage from "../../images/skills-icons/typescript-icon.svg";
+import htmlImage from "../../images/skills-icons/html5-icon.svg";
+import otherImage from "../../images/skills-icons/other-icon.svg"
 
 const Wrapper = styled.section`
   display: flex;
@@ -55,6 +61,23 @@ const ListItem = styled.li`
     width: 100%;
     font-size: 18px;
   }
+`;
+
+const TechImage = styled.img`
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  filter: grayscale(80%);
+  transition: filter 1s ease;
+  :hover {
+    filter: none;
+  }
+`;
+
+const BarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const progress = keyframes`
@@ -146,6 +169,19 @@ function Repositories() {
     });
   }, []);
 
+  interface Images {
+    [key: string]: string;
+  }
+
+  const techImages: Images = {
+    javascript: `${javascriptImage}`,
+    python: `${pythonImage}`,
+    css: `${cssImage}`,
+    typescript: `${typescriptImage}`,
+    html: `${htmlImage}`,
+    other: `${otherImage}`
+  };
+
   const maxLength = numberRepos && Object.entries(numberRepos[0])[0][1];
   return (
     <Wrapper>
@@ -157,7 +193,10 @@ function Repositories() {
             return Object.keys(item).map((key, index) => (
               <ListItem key={index}>
                 <Technology width={maxLength && (item[key] * 100) / maxLength}>
-                  {key} - {item[key]}
+                  <BarWrapper>
+                    {key} -
+                    <TechImage src={`${techImages[key.toLowerCase()]}`} alt="" /> - {item[key]}
+                  </BarWrapper>
                 </Technology>
               </ListItem>
             ));

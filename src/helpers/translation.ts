@@ -8,6 +8,7 @@ import javascriptImage from "../images/skills-icons/javascript-icon.svg";
 import pythonImage from "../images/skills-icons/python-icon.svg";
 import sassImage from "../images/skills-icons/sass-icon.svg";
 import typescriptImage from "../images/skills-icons/typescript-icon.svg";
+import htmlImage from "../images/skills-icons/html5-icon.svg";
 import project1Image from "../images/free_proxy.gif";
 import project2Image from "../images/netkat-project.png";
 import project3Image from "../images/pan-kanapka-project.png";
@@ -74,6 +75,7 @@ export const translation = {
         { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania." },
         { img: `${djangoImage}`, alt: "Django", text: "Django" },
         { img: `${cssImage}`, alt: "Css3", text: "Css3" },
+        { img: `${htmlImage}`, alt: "Html", text: "HTML5" },
         { img: `${gitImage}`, alt: "Git", text: "Git" },
         { img: `${githubImage}`, alt: "GitHub", text: "Github" },
         { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
@@ -146,6 +148,7 @@ export const translation = {
         { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania." },
         { img: `${djangoImage}`, alt: "Django", text: "Django" },
         { img: `${cssImage}`, alt: "Css3", text: "Css3" },
+        { img: `${htmlImage}`, alt: "Html", text: "HTML5" },
         { img: `${gitImage}`, alt: "Git", text: "Git" },
         { img: `${githubImage}`, alt: "GitHub", text: "Github" },
         { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
