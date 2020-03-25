@@ -13,6 +13,9 @@ export interface Props {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
+const Container = styled(WhiteDiv)<NavProps>`
+  padding: ${props => props.isVisible && "0"};
+`;
 const Nav = styled.nav<NavProps>`
   display: flex;
   transform: ${props => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
@@ -162,7 +165,7 @@ function Navigation({ setLanguage }: Props) {
   };
 
   return (
-    <WhiteDiv>
+    <Container isVisible={isHamburgerOpen}>
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
       <Nav isVisible={isHamburgerOpen}>
         <NavUl>
@@ -176,7 +179,7 @@ function Navigation({ setLanguage }: Props) {
         </NavUl>
         <LangButtonsMobile setLanguage={setLanguage} />
       </Nav>
-    </WhiteDiv>
+    </Container>
   );
 }
 
