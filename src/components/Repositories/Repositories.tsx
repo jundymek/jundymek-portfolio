@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { getNumberOfReposInEachTechnology } from "./utils/getNumberOfReposInEachTechnology";
 import fetchRepositiories from "./utils/fetchRepositiories";
 import { TechnologyObject } from "../../helpers/types";
@@ -10,6 +10,7 @@ import cssImage from "../../images/skills-icons/css3-icon.svg";
 import typescriptImage from "../../images/skills-icons/typescript-icon.svg";
 import htmlImage from "../../images/skills-icons/html5-icon.svg";
 import otherImage from "../../images/skills-icons/other-icon.svg";
+import useOnScreen from "../../customHooks/useOnScreen";
 
 const Wrapper = styled.section`
   display: flex;
@@ -91,13 +92,13 @@ const RepoNumber = styled.div`
     right: -11px;
     height: calc(100% + 20px);
   }
-`
+`;
 const RepoName = styled.span`
   display: none;
   @media (min-width: ${props => props.theme.desktop}) {
     display: block;
   }
-`
+`;
 
 const BarWrapper = styled.div`
   display: flex;
@@ -187,6 +188,8 @@ function Repositories() {
   const {
     texts: { repositories }
   } = useContext(LanguageContext);
+  const ref = useRef(null);
+  const onScreen = useOnScreen(ref, "-100px");
 
   useEffect(() => {
     fetchRepositiories().then(res => {
@@ -194,6 +197,8 @@ function Repositories() {
       setNumberRepos(data);
     });
   }, []);
+
+  console.log(numberRepos);
 
   interface Images {
     [key: string]: string;
@@ -210,25 +215,27 @@ function Repositories() {
 
   const maxLength = numberRepos && Object.entries(numberRepos[0])[0][1];
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <Title>{repositories.title}</Title>
       <Subtitle>{repositories.subtitle}</Subtitle>
-      <List>
-        {numberRepos &&
-          numberRepos.map((item, index) => {
-            return Object.keys(item).map((key, index) => (
-              <ListItem key={index}>
-                <Technology width={maxLength && (item[key] * 100) / maxLength}>
-                  <BarWrapper>
-                    <RepoName>{key}</RepoName>
-                    <TechImage src={`${techImages[key.toLowerCase()]}`} alt="" />
-                    <RepoNumber>{item[key]}</RepoNumber>
-                  </BarWrapper>
-                </Technology>
-              </ListItem>
-            ));
-          })}
-      </List>
+      {onScreen && (
+        <List>
+          {numberRepos &&
+            numberRepos.map((item, index) => {
+              return Object.keys(item).map((key, index) => (
+                <ListItem key={index}>
+                  <Technology width={maxLength && (item[key] * 100) / maxLength}>
+                    <BarWrapper>
+                      <RepoName>{key}</RepoName>
+                      <TechImage src={`${techImages[key.toLowerCase()]}`} alt="" />
+                      <RepoNumber>{item[key]}</RepoNumber>
+                    </BarWrapper>
+                  </Technology>
+                </ListItem>
+              ));
+            })}
+        </List>
+      )}
     </Wrapper>
   );
 }

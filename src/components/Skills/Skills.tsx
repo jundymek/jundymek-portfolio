@@ -17,7 +17,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   row-gap: 40px;
   text-align: center;
   justify-items: center;
