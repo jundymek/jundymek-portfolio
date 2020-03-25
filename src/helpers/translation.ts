@@ -9,6 +9,7 @@ import pythonImage from "../images/skills-icons/python-icon.svg";
 import sassImage from "../images/skills-icons/sass-icon.svg";
 import typescriptImage from "../images/skills-icons/typescript-icon.svg";
 import htmlImage from "../images/skills-icons/html5-icon.svg";
+import postgreSQLImage from "../images/skills-icons/postgresql-icon.svg";
 import project1Image from "../images/free_proxy.gif";
 import project2Image from "../images/netkat-project.png";
 import project3Image from "../images/pan-kanapka-project.png";
@@ -82,6 +83,7 @@ export const translation = {
         { img: `${reactImage}`, alt: "React", text: "React" },
         { img: `${sassImage}`, alt: "Sass", text: "Sass" },
         { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
+        { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL" },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
     },
@@ -155,6 +157,7 @@ export const translation = {
         { img: `${reactImage}`, alt: "React", text: "React" },
         { img: `${sassImage}`, alt: "Sass", text: "Sass" },
         { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
+        { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL" },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
     },

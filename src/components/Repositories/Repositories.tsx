@@ -9,7 +9,7 @@ import pythonImage from "../../images/skills-icons/python-icon.svg";
 import cssImage from "../../images/skills-icons/css3-icon.svg";
 import typescriptImage from "../../images/skills-icons/typescript-icon.svg";
 import htmlImage from "../../images/skills-icons/html5-icon.svg";
-import otherImage from "../../images/skills-icons/other-icon.svg"
+import otherImage from "../../images/skills-icons/other-icon.svg";
 
 const Wrapper = styled.section`
   display: flex;
@@ -74,9 +74,35 @@ const TechImage = styled.img`
   }
 `;
 
+const RepoNumber = styled.div`
+  position: absolute;
+  right: -8px;
+  width: 60px;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  height: calc(100% + 12px);
+  color: white;
+  background: ${props => props.theme.primaryGray};
+  display: flex;
+  font-size: 30px;
+  padding-right: 5px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  @media (min-width: ${props => props.theme.desktop}) {
+    right: -11px;
+    height: calc(100% + 20px);
+  }
+`
+const RepoName = styled.span`
+  display: none;
+  @media (min-width: ${props => props.theme.desktop}) {
+    display: block;
+  }
+`
+
 const BarWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  position: relative;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -194,8 +220,9 @@ function Repositories() {
               <ListItem key={index}>
                 <Technology width={maxLength && (item[key] * 100) / maxLength}>
                   <BarWrapper>
-                    {key} -
-                    <TechImage src={`${techImages[key.toLowerCase()]}`} alt="" /> - {item[key]}
+                    <RepoName>{key}</RepoName>
+                    <TechImage src={`${techImages[key.toLowerCase()]}`} alt="" />
+                    <RepoNumber>{item[key]}</RepoNumber>
                   </BarWrapper>
                 </Technology>
               </ListItem>
