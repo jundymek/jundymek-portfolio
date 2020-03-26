@@ -17,7 +17,6 @@ import { translation } from "./helpers/translation";
 const GlobalStyles = createGlobalStyle`
 
   body {
-    font-family: "Lato", sans-serif;
     font-family: 'VT323', monospace;
     font-size: 20px;
   }

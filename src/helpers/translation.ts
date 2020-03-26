@@ -1,3 +1,4 @@
+// skills 
 import figmaImage from "../images/figma-icon-mobile.png";
 import djangoImage from "../images/skills-icons/django-icon.svg";
 import reactImage from "../images/skills-icons/react-icon.svg";
@@ -10,9 +11,16 @@ import sassImage from "../images/skills-icons/sass-icon.svg";
 import typescriptImage from "../images/skills-icons/typescript-icon.svg";
 import htmlImage from "../images/skills-icons/html5-icon.svg";
 import postgreSQLImage from "../images/skills-icons/postgresql-icon.svg";
+
+//portfolio projects
 import project1Image from "../images/free_proxy.gif";
 import project2Image from "../images/netkat-project.png";
 import project3Image from "../images/pan-kanapka-project.png";
+
+// contact social icons
+import github from "../images/github-icon.svg";
+import codewars from "../images/codewars-icon.svg"
+import linkedin from "../images/linkedin-icon.svg";
 
 export const translation = {
   PL: {
@@ -87,9 +95,22 @@ export const translation = {
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
     },
-    contact: 
+    contact:
     {
-      buttonLabel: "Send a message"
+      title: "Kontakt",
+      paragraph: "Zatrudnij mnie!",
+      buttonLabel: "Wyślij wiadomość",
+      social: [
+        { title: "Github", img: `${github}`, url: "https://github.com/jundymek" },
+        { title: "Linkedin", img: `${linkedin}`, url: "https://www.linkedin.com/in/lukasz-dymek/" },
+        { title: "Codewars", img: `${codewars}`, url: "https://www.codewars.com/users/jundymek" },
+      ]
+    },
+    footer: 
+    {
+      paragraph1part1: "Wykonano całym",
+      paragraph1part2: "używając",
+      paragraph2: "Typescript, React (z Hookami), styled-components, react-spring, axios..."
     }
   },
   EN: {
@@ -161,9 +182,22 @@ export const translation = {
         { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
       ]
     },
-    contact: 
+    contact:
     {
-      buttonLabel: "Send a message"
+      title: "Contact",
+      paragraph: "Hire me if You want!",
+      buttonLabel: "Send a message",
+      social: [
+        { title: "Github", img: `${github}`, url: "https://github.com/jundymek" },
+        { title: "Linkedin", img: `${linkedin}`, url: "https://www.linkedin.com/in/lukasz-dymek/" },
+        { title: "Codewars", img: `${codewars}`, url: "https://www.codewars.com/users/jundymek" },
+      ]
+    },
+    footer: 
+    {
+      paragraph1part1: "Made with",
+      paragraph1part2: "using",
+      paragraph2: "Typescript, React (with Hooks), styled-components, react-spring, axios and many more..."
     }
   }
 }

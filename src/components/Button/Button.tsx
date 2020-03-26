@@ -4,10 +4,10 @@ import styled from "styled-components";
 const Btn = styled.button`
   background-color: ${props => props.theme.primaryDark};
   border-radius: 50px;
-  width: 100%;
+  width: auto;
   height: 42px;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   margin: 0 20px 20px 20px;
   border: 2px solid black;
   text-transform: uppercase;
@@ -54,9 +54,10 @@ const Btn = styled.button`
 
 interface Props {
   label: string;
+  onClick?: () => void;
 }
 
-function Button({label}:Props) {
+function Button({label, onClick}:Props) {
   return <Btn>{label}</Btn>;
 }
 

@@ -198,8 +198,6 @@ function Repositories() {
     });
   }, []);
 
-  console.log(numberRepos);
-
   interface Images {
     [key: string]: string;
   }

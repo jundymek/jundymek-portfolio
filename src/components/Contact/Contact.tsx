@@ -1,12 +1,13 @@
-import React, {useContext} from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { keyframes } from "styled-components";
 import { LanguageContext } from "../../App";
 import { SectionTitle } from "../../styles/styledComponents";
-import linkedin from "../../images/linkedin-icon.png";
-import instagram from "../../images/instagram-icon.png";
-import behance from "../../images/behance-icon.png";
-import dribble from "../../images/dribble-icon.png";
 import Button from "../Button/Button";
+
+const typing = keyframes`
+  from { max-width: 0 }
+  to { max-width: 200% }
+`;
 
 const Section = styled.section`
   display: block;
@@ -22,13 +23,21 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
-const Paragraph = styled.p`
+interface Length {
+  length: number;
+}
+
+const Paragraph = styled.p<Length>`
   text-align: center;
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: ${typing} 8.5s steps(${props => props.length}, end) infinite;
 `;
 
 const List = styled.ul`
@@ -37,33 +46,54 @@ const List = styled.ul`
   width: 100%;
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
-const icons = [
-  { img: `${linkedin}`, url: "" },
-  { img: `${instagram}`, url: "" },
-  { img: `${behance}`, url: "" },
-  { img: `${dribble}`, url: "" }
-];
+const HandWrite = styled.p`
+  font-family: "Over the Rainbow", cursive;
+  font-weight: bold;
+  text-decoration: underline;
+  @media (min-width: ${props => props.theme.desktop}) {
+    position: absolute;
+    right: -150px;
+    font-size: 30px;
+    transform: rotate(-70deg);
+  }
+`;
+
+const Icon = styled.img`
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  transition: transform 1s ease;
+  :hover {
+    transform: rotate(360deg) scale(1.2);
+  }
+`;
 
 function Contact() {
   const {
     texts: { contact }
   } = useContext(LanguageContext);
+
   return (
     <Section id="contact">
       <Wrapper>
-        <SectionTitle>Contact</SectionTitle>
-        <Paragraph>Want to know more or just chat? You are welcome!</Paragraph>
-        <Button label={contact.buttonLabel} />
+        <SectionTitle>{contact.title}</SectionTitle>
+        <Paragraph length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
+        <a href={`mailto:sss`}>
+          <Button label={contact.buttonLabel} />
+        </a>
         <List>
-          {icons.map((icon, index) => (
+          {contact.social.map((icon, index) => (
             <li key={index}>
-              <img src={icon.img} alt="" />
+              <a href={icon.url} title={icon.title}>
+                <Icon src={icon.img} alt={icon.title} />
+              </a>
             </li>
           ))}
         </List>
+        <HandWrite>Łukasz Dymek</HandWrite>
       </Wrapper>
     </Section>
   );

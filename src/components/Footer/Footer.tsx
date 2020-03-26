@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import { LanguageContext } from "../../App";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
@@ -7,16 +8,20 @@ const FooterContainer = styled.footer`
 
 const Paragraph = styled.p`
   font-size: 18px;
-  line-height: 8px;
+  line-height: 18px;
+  margin: 5px;
   text-align: center;
   color: ${props => props.theme.primaryGray};
 `;
 
 function Footer() {
+  const {
+    texts: { footer }
+  } = useContext(LanguageContext);
   return (
     <FooterContainer>
-      <Paragraph>Like me on</Paragraph>
-      <Paragraph>LinkedIn, Instagram, Behance, Dribble</Paragraph>
+      <Paragraph>{footer.paragraph1part1} <span role="img" aria-label="heart">❤️</span> {footer.paragraph1part2}</Paragraph>
+      <Paragraph>{footer.paragraph2}</Paragraph>
     </FooterContainer>
   );
 }
