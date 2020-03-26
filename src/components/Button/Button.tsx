@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Btn = styled.button`
   background-color: ${props => props.theme.primaryDark};
   border-radius: 50px;
-  width: auto;
+  min-width: 100px;
   height: 42px;
   color: #fff;
   font-size: 16px;

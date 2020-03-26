@@ -13,7 +13,7 @@ const HamburgerBtn = styled.button<NavProps>`
   }
 
   position: absolute;
-  width: 1.83rem;
+  width: 30px;
   height: 20px;
   right: 20px;
   top: 3.61rem;
@@ -30,28 +30,36 @@ const HamburgerBtn = styled.button<NavProps>`
     width: 100%;
     top: 0;
     left: 0;
-    border-top: 0.213rem solid black;
+    border-top: 4px solid black;
     transform: translateY(4px);
+    transition: all 1s ease;
   }
 
   &::after {
-    transform: translateY(12px);
+    transform: translateY(-12px);
   }
 
   ${props =>
     props.isOpen &&
     css`
-      transform: rotate(45deg) scale(0.9);
       border: 0;
       &::before {
-        border-color: red;
+        transform: rotate(-316deg) translateX(-4px) translateY(0px);
       }
 
       &::after {
-        transform: rotate(90deg) translateX(5px);
+        transform: rotate(-228deg) translateY(4px) translateX(0px);
         border-color: ${props => props.theme.primaryBlack};
       }
     `}
+`;
+
+const Label = styled.span<NavProps>`
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 12px;
+  right: ${props => (props.isOpen ? "4px" : "2px")};
 `;
 
 interface Props {
@@ -64,7 +72,11 @@ function Hamburger({ isOpen, setIsOpen }: Props) {
     setIsOpen(prevState => !prevState);
   };
 
-  return <HamburgerBtn isOpen={isOpen} type="button" onClick={handleClick}></HamburgerBtn>;
+  return (
+    <HamburgerBtn isOpen={isOpen} type="button" onClick={handleClick}>
+      <Label isOpen={isOpen}>Menu</Label>
+    </HamburgerBtn>
+  );
 }
 
 export default Hamburger;
