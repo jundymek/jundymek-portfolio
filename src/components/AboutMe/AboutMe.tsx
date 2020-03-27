@@ -5,9 +5,7 @@ import useOnScreen from "../../customHooks/useOnScreen";
 import { useSpring, animated } from "react-spring";
 import { LanguageContext } from "../../App";
 import { Scrambler, Cycler } from "react-text-scrambler";
-
-
-
+import useWindowSize from "../../customHooks/useWindowSize";
 
 const Wrapper = styled(animated.div)`
   padding: 0 29px;
@@ -19,8 +17,12 @@ const CyclerWrapper = styled.div`
   position: absolute;
   left: -180px;
   top: 50%;
-  transform: rotate(-20deg);
-`
+  width: 230px;
+  background-color: black;
+  color: white;
+  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+  transform: rotate(-50deg);
+`;
 
 const Paragraph = styled.p`
   text-align: center;
@@ -46,28 +48,39 @@ function AboutMe() {
     texts: { aboutMe }
   } = useContext(LanguageContext);
 
-  const strings = ["print('Hello World')", "console.log('Hello World')", "echo 'Hello World'", "println('Hello, world!')"];
+  const width = useWindowSize().width;
+
+  const strings = [
+    "print('Hello World')",
+    "console.log('Hello World')",
+    "echo 'Hello World'",
+    "println('Hello, world!')"
+  ];
 
   return (
     <GreySection id="about">
-        <Wrapper ref={ref} style={props}>
-        <CyclerWrapper>
-          <Cycler
+      <Wrapper ref={ref} style={props}>
+        {width && width >= 900 && (
+          <CyclerWrapper>
+            <Cycler
               // duration={ 3000 }
               typewriter={true}
-              strings={ strings } />
-        </CyclerWrapper>
-          <SectionTitle>
-            <Scrambler
-              text={`< ${aboutMe.title} />`}
-              // characters="!@#$%^&*()"
-              typewriter={true}
+              strings={strings}
             />
-          </SectionTitle>
-          {aboutMe.paragraphs.map((paragraph, index) => (
-            <Paragraph key={index}>{paragraph}</Paragraph>
-          ))}
-        </Wrapper>
+          </CyclerWrapper>
+        )}
+
+        <SectionTitle>
+          <Scrambler
+            text={`< ${aboutMe.title} />`}
+            // characters="!@#$%^&*()"
+            typewriter={true}
+          />
+        </SectionTitle>
+        {aboutMe.paragraphs.map((paragraph, index) => (
+          <Paragraph key={index}>{paragraph}</Paragraph>
+        ))}
+      </Wrapper>
     </GreySection>
   );
 }

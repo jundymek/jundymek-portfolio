@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   width: 155px;
+  height: 100px;
   margin: 0;
   padding: 0;
   font-weight: 400;

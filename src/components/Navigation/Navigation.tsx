@@ -22,7 +22,7 @@ const Nav = styled.nav<NavProps>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: ${props => (props.isVisible ? "105vh" : "0")};
+  height: ${props => (props.isVisible ? "100vh" : "0")};
   width: 100%;
   max-width: 1440px;
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};

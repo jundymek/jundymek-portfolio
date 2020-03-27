@@ -93,7 +93,7 @@ function Contact() {
             </li>
           ))}
         </List>
-        <HandWrite>Łukasz Dymek</HandWrite>
+        <HandWrite>jundymek</HandWrite>
       </Wrapper>
     </Section>
   );

@@ -118,7 +118,7 @@ export const translation = {
     {
       title: "Łukasz Dymek",
       paragraphs: ["Python/Django/React",
-        "Simpy developer"]
+        "Simply programmer"]
     },
     aboutMe:
     {
