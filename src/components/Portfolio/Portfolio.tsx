@@ -47,6 +47,7 @@ export default Portfolio;
 
 interface Project {
   img: string;
+  imgMobile: string;
   alt: string;
   title: string;
   text: string;
