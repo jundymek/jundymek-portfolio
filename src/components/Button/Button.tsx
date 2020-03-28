@@ -1,14 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 
-const Btn = styled.button`
+export const Button = styled.button`
   background-color: ${props => props.theme.primaryDark};
-  border-radius: 50px;
   min-width: 100px;
   height: 42px;
   color: #fff;
   font-size: 16px;
-  margin: 0 20px 20px 20px;
+  margin: 0 20px;
   border: 2px solid black;
   text-transform: uppercase;
   cursor: pointer;
@@ -19,25 +17,24 @@ const Btn = styled.button`
     content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    left: -2px;
+    width: calc(100% - 2px);
+    height: calc(100% - 4px);
     color: ${props => props.theme.primaryDark};
-    border-radius: 50px;
-    border: 2px solid black;
+    border: 2px solid white;
     z-index: -2;
   }
   &::before {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: -2px;
     min-width: 0;
-    height: 100%;
+    max-width: calc(100% - 2px);
+    height: calc(100% - 4px);
     color: ${props => props.theme.primaryDark};
     background-color: white;
-    border-radius: 50px;
-    border: 2px solid black;
+    border: 2px solid white;
     transition: all 0.3s;
     z-index: -1;
   }
@@ -52,13 +49,3 @@ const Btn = styled.button`
   }
 `;
 
-interface Props {
-  label: string;
-  onClick?: () => void;
-}
-
-function Button({label, onClick}:Props) {
-  return <Btn>{label}</Btn>;
-}
-
-export default Button;

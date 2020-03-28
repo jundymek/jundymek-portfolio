@@ -42,7 +42,7 @@ function App() {
   }, [language]);
 
   const props = useSpring({
-    to: { opacity: prevLang !==language? 0:1, filter: prevLang !==language ? "blur(5px)": "blur(0px)" },
+    to: { opacity: prevLang !== language ? 0 : 1, filter: prevLang !== language ? "blur(5px)" : "blur(0px)" },
     from: { opacity: 0, filter: "blur(5px)" },
     config: { duration: 1000 },
     reset: true

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import { LanguageContext } from "../../App";
 import { SectionTitle } from "../../styles/styledComponents";
-import Button from "../Button/Button";
+import { Button } from "../Button/Button";
 
 const typing = keyframes`
   from { max-width: 0 }
@@ -82,7 +82,7 @@ function Contact() {
         <SectionTitle>{contact.title}</SectionTitle>
         <Paragraph length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
         <a href={`mailto:sss`}>
-          <Button label={contact.buttonLabel} />
+          <Button>{contact.buttonLabel}</Button>
         </a>
         <List>
           {contact.social.map((icon, index) => (

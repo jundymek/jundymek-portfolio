@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ProjectProps } from "./Portfolio";
-import Button from "../Button/Button";
+import { Button } from "../Button/Button";
 import flipIcon from "../../images/flip-icon.svg";
 
 type Props = {
@@ -26,17 +26,6 @@ const Front = styled.div<Props>`
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
-  /* &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 6px;
-    backface-visibility: hidden;
-  } */
 `;
 
 const Back = styled.div<Props>`
@@ -109,12 +98,6 @@ const Container = styled.div`
   height: 385px;
   margin-bottom: 20px;
   transform-style: preserve-3d;
-  /* &:hover ${Front} {
-    transform: rotateY(-180deg);
-  }
-  &:hover ${Back} {
-    transform: rotateX(0deg);
-  } */
 `;
 
 const Text = styled.p`
@@ -210,15 +193,23 @@ const FrontButton = styled.button`
   position: absolute;
   right: 10px;
   z-index: 1;
+  cursor: pointer;
 `;
 
-const BackButton = styled(FrontButton)`
+const BackButtonFlip = styled(FrontButton)`
   bottom: 5px;
 `;
 
 const FlipImg = styled.img`
   width: 30px;
   height: 30px;
+`;
+
+const BackButton = styled(Button)`
+  border: none;
+  &:hover {
+    border: 2px solid black;
+  }
 `;
 
 function ProjectMobile({ project }: ProjectProps) {
@@ -230,8 +221,6 @@ function ProjectMobile({ project }: ProjectProps) {
     console.log("Flipped");
     setIsFlipped(prevState => !prevState);
   };
-
-
 
   return (
     <Container>
@@ -248,12 +237,12 @@ function ProjectMobile({ project }: ProjectProps) {
           <Title>{project.title}</Title>
           <Text>{project.text}</Text>
           <ButtonWrapper>
-            <Button label="Github" />
-            <Button label="Live" />
+            <BackButton>Github</BackButton>
+            <BackButton>Live</BackButton>
           </ButtonWrapper>
-          <BackButton onClick={() => handleFlip()}>
+          <BackButtonFlip onClick={() => handleFlip()}>
             <FlipImg src={flipIcon}></FlipImg>
-          </BackButton>
+          </BackButtonFlip>
         </Content>
       </Back>
     </Container>

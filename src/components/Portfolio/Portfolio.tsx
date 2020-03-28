@@ -6,7 +6,7 @@ import useWindowSize from "../../customHooks/useWindowSize";
 import ProjectMobile from "./ProjectMobile";
 import Repositories from "../Repositories/Repositories";
 import useOnScreen from "../../customHooks/useOnScreen";
-import Button from "../Button/Button";
+import {Button} from "../Button/Button";
 
 const Wrapper = styled.div`
   max-width: 478px;
@@ -47,7 +47,6 @@ export default Portfolio;
 
 interface Project {
   img: string;
-  imgMobile: string;
   alt: string;
   title: string;
   text: string;
@@ -228,8 +227,8 @@ function Project({ project }: ProjectProps) {
             ))}
         </List>
         <ButtonWrapper>
-          <Button label="Github" />
-          <Button label="Live" />
+          <Button>Github</Button>
+          <Button>Live</Button>
         </ButtonWrapper>
       </Content>
     </Box>
