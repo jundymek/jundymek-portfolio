@@ -25,6 +25,15 @@ const Container = styled.div`
   height: 100px;
 `;
 
+const AllReposSubtitle = styled.p`
+  margin: 0;
+  text-align: center;
+`;
+
+const AllReposLink = styled.a`
+  color: ${props => props.theme.primaryDark};
+`;
+
 const CounterWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,13 +41,11 @@ const CounterWrapper = styled.div`
   align-items: center;
 `;
 
-const AllReposSubtitle = styled.p`
-  margin: 0;
-  text-align: center;
-`;
-
-const AllReposLink = styled.a`
-  color: black;
+const Github = styled.img`
+  position: relative;
+  width: 100px;
+  height: 100px;
+  animation: ${bounce} 1s;
 `;
 
 const Number = styled.span<Props>`
@@ -50,13 +57,6 @@ const Number = styled.span<Props>`
           ${bounce} 1s
         `
       : "none"};
-`;
-
-const Github = styled.img`
-  position: relative;
-  width: 100px;
-  height: 100px;
-  animation: ${bounce} 1s;
 `;
 
 function RepositoriesCounter({ count }: Props) {

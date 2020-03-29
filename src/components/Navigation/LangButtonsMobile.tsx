@@ -5,9 +5,6 @@ import { Props } from "./Navigation";
 
 const LangContainer = styled.div`
   display: none;
-  @media (max-width: ${props => props.theme.desktop}) {
-    display: block;
-  }
   position: absolute;
   right: -30px;
   bottom: 120px;
@@ -15,6 +12,9 @@ const LangContainer = styled.div`
   font-size: 34px;
   line-height: 2;
   font-weight: 800;
+  @media (max-width: ${props => props.theme.desktop}) {
+    display: block;
+  }
 `;
 
 interface Lang {
@@ -26,7 +26,6 @@ const LangButton = styled.button<Lang>`
   padding: 0;
   cursor: pointer;
   font-size: 34px;
-  font-weight: 600;
   color: ${props => !props.isActive && props.theme.primaryGray};
   text-decoration: none;
   background: none;

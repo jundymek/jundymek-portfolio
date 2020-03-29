@@ -65,7 +65,6 @@ function AboutMe() {
             <Cycler typewriter={true} strings={strings} />
           </CyclerWrapper>
         )}
-
         <SectionTitle>
           <Scrambler text={`< ${aboutMe.title} />`} characters="!@#$%^&*()" typewriter={true} />
         </SectionTitle>

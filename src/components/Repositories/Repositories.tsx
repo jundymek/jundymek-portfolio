@@ -14,6 +14,16 @@ import useOnScreen from "../../customHooks/useOnScreen";
 import { SectionSubtitle } from "../../styles/styledComponents";
 import RepositoriesCounter from "./RepositioriesCounter";
 
+const progress = keyframes`
+  from {
+    max-width: 0;
+  }
+
+  to {
+    max-width: 100%;
+  }
+`;
+
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -65,63 +75,6 @@ const ListItem = styled.li`
     font-size: 18px;
   }
 `;
-
-const TechImage = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
-  filter: grayscale(80%);
-  transition: filter 1s ease;
-  :hover {
-    filter: none;
-  }
-`;
-
-const RepoNumber = styled.div`
-  position: absolute;
-  right: -8px;
-  width: 60px;
-  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-  height: calc(100% + 12px);
-  color: white;
-  background: ${props => props.theme.primaryGray};
-  display: flex;
-  font-size: 30px;
-  padding-right: 5px;
-  justify-content: flex-end;
-  align-items: flex-end;
-  @media (min-width: ${props => props.theme.desktop}) {
-    right: -11px;
-    height: calc(100% + 20px);
-  }
-`;
-const RepoName = styled.span`
-  display: none;
-  @media (min-width: ${props => props.theme.desktop}) {
-    display: block;
-  }
-`;
-
-const BarWrapper = styled.div`
-  display: flex;
-  position: relative;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const progress = keyframes`
-  from {
-    max-width: 0;
-  }
-
-  to {
-    max-width: 100%;
-  }
-`;
-
-type Width = {
-  width: number | undefined;
-};
 
 const Technology = styled.span<Width>`
   background: ${props => props.theme.primaryDark};
@@ -185,6 +138,57 @@ const Technology = styled.span<Width>`
   }
 `;
 
+const TechImage = styled.img`
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  filter: grayscale(80%);
+  transition: filter 1s ease;
+  :hover {
+    filter: none;
+  }
+`;
+
+const RepoNumber = styled.div`
+  position: absolute;
+  right: -8px;
+  width: 60px;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  height: calc(100% + 12px);
+  color: white;
+  background: ${props => props.theme.primaryGray};
+  display: flex;
+  font-size: 30px;
+  padding-right: 5px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  @media (min-width: ${props => props.theme.desktop}) {
+    right: -11px;
+    height: calc(100% + 20px);
+  }
+`;
+const RepoName = styled.span`
+  display: none;
+  @media (min-width: ${props => props.theme.desktop}) {
+    display: block;
+  }
+`;
+
+const BarWrapper = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+
+
+type Width = {
+  width: number | undefined;
+};
+
+
+
 function Repositories() {
   const [reposByTechnology, setreposByTechnology] = useState<TechnologyObject[]>();
   const [numberOfAllRepos, setNumberOfAllRepos] = useState(0);
@@ -196,9 +200,8 @@ function Repositories() {
 
   useEffect(() => {
     fetchRepositiories().then(res => {
-      console.log(res.data);
-      const data = getNumberOfReposInEachTechnology(res.data);
-      setreposByTechnology(data);
+      const reposNumber = getNumberOfReposInEachTechnology(res.data);
+      setreposByTechnology(reposNumber);
       setNumberOfAllRepos(res.data.length);
     });
   }, []);
@@ -216,7 +219,6 @@ function Repositories() {
     other: `${otherImage}`
   };
 
-  console.log(numberOfAllRepos);
   const maxLength = reposByTechnology && Object.entries(reposByTechnology[0])[0][1];
   return (
     <Wrapper ref={ref}>

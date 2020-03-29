@@ -4,21 +4,16 @@ import useWindowSize from "../../customHooks/useWindowSize";
 import heroBig from "../../images/me1.png";
 import heroSmall from "../../images/me-small.png";
 
-export const Image = styled.img`
-  width: 100%;
-`;
-
 interface Img {
   image: string;
 }
 
-export const ImageWrapper = styled.div<Img>`
+const ImageWrapper = styled.div<Img>`
   position: relative;
   background: url(${props => props.image});
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0 auto;
-  /* max-width: 900px; */
   align-items: center;
   &:hover:before {
     animation: animate 0.2s linear;
@@ -74,6 +69,10 @@ export const ImageWrapper = styled.div<Img>`
       filter: hue-rotate(360deg);
     }
   }
+`;
+
+const Image = styled.img`
+  width: 100%;
 `;
 
 function HeroImage() {

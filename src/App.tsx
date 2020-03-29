@@ -29,7 +29,7 @@ const AppWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const lang = navigator.language.slice(0, 2) === "en" ? "EN" : "PL";
+const lang = navigator.language.slice(0, 2) === "pl" ? "PL" : "EN";
 export const LanguageContext = React.createContext({ language: lang, texts: translation[lang] });
 
 function App() {

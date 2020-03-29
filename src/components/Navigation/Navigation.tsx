@@ -10,13 +10,10 @@ interface NavProps {
   isVisible: boolean;
 }
 
-export interface Props {
-  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
-}
-
 const Container = styled(WhiteDiv)<NavProps>`
   padding: ${props => props.isVisible && "0"};
 `;
+
 const Nav = styled.nav<NavProps>`
   display: flex;
   transform: ${props => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
@@ -140,10 +137,14 @@ const NavLink = styled.a<NavProps>`
   }
 `;
 
+export interface Props {
+  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
+}
+
 function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
   const width = useWindowSize().width;
-  
+
   useEffect(() => {
     if (isHamburgerOpen) {
       document.body.style.overflow = "hidden";

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { LanguageContext } from "../../App";
 import styled from "styled-components";
 
@@ -20,7 +20,13 @@ function Footer() {
   } = useContext(LanguageContext);
   return (
     <FooterContainer>
-      <Paragraph>{footer.paragraph1part1} <span role="img" aria-label="heart">❤️</span> {footer.paragraph1part2}</Paragraph>
+      <Paragraph>
+        {footer.paragraph1part1}{" "}
+        <span role="img" aria-label="heart">
+          ❤️
+        </span>{" "}
+        {footer.paragraph1part2}
+      </Paragraph>
       <Paragraph>{footer.paragraph2}</Paragraph>
     </FooterContainer>
   );

@@ -25,10 +25,6 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-interface Length {
-  length: number;
-}
-
 const Paragraph = styled.p<Length>`
   text-align: center;
   font-size: 18px;
@@ -48,6 +44,16 @@ const List = styled.ul`
   justify-content: center;
 `;
 
+const Icon = styled.img`
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  transition: transform 1s ease;
+  :hover {
+    transform: rotate(360deg) scale(1.2);
+  }
+`;
+
 const HandWrite = styled.p`
   font-family: "Over the Rainbow", cursive;
   font-weight: bold;
@@ -59,16 +65,9 @@ const HandWrite = styled.p`
     transform: rotate(-70deg);
   }
 `;
-
-const Icon = styled.img`
-  width: 50px;
-  height: 50px;
-  padding: 20px;
-  transition: transform 1s ease;
-  :hover {
-    transform: rotate(360deg) scale(1.2);
-  }
-`;
+interface Length {
+  length: number;
+}
 
 function Contact() {
   const {

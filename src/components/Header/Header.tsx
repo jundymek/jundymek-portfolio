@@ -27,12 +27,11 @@ const Title = styled.h1`
   padding: 0;
   font-weight: 400;
   font-size: 47px;
-  line-height: 3.11rem;
-  margin-bottom: 1.27rem;
+  line-height: 56px;
+  margin-bottom: 23px;
   @media (min-width: ${props => props.theme.desktop}) {
     font-size: $title-font-size;
-    line-height: 3.18rem;
-    /* color: #070707; */
+    line-height: 56px;
   }
 `;
 
@@ -47,12 +46,8 @@ const Paragraph = styled.p`
   padding: 0;
   margin: 0;
   font-size: $default-font-size;
-  line-height: 1.22rem;
+  line-height: 22px;
   font-weight: 400;
-  /* width: 175px; */
-  @media (min-width: ${props => props.theme.desktop}) {
-    /* margin-right: 2rem; */
-  }
 `;
 
 const LangContainer = styled.div`
@@ -102,7 +97,12 @@ function Header({ setLanguage }: Props) {
       <StyledHeader>
         <Wrapper>
           <Title>
-            <Scrambler text={`< ${header.title} />`}  changeFrom="print('Hello world')" renderIn={1} characters="!@#$%^&*()"/>
+            <Scrambler
+              text={`< ${header.title} />`}
+              changeFrom="print('Hello world')"
+              renderIn={1}
+              characters="!@#$%^&*()"
+            />
           </Title>
           <ParagraphWrapper>
             {header.paragraphs.map((paragraph: string, index) => (
