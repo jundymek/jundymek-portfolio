@@ -5,6 +5,7 @@ import { useTrail, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
 import ReactTooltip from "react-tooltip";
+import useWindowSize from "../../customHooks/useWindowSize";
 
 const Section = styled.section`
   display: block;
@@ -44,7 +45,7 @@ const SkillBox = styled.div`
 const Image = styled.img`
   width: 90px;
   height: 90px;
-  filter: grayscale(100%);
+  filter: grayscale(50%);
   transition: filter 1s linear;
   &:hover {
     filter: none;
@@ -63,22 +64,33 @@ const SkillSubtitle = styled.p`
 const MyTooltip = styled(ReactTooltip)`
   top: 0;
   left: 0;
-  min-width: 300px;
   max-width: 80vw;
   font-size: 18px;
+  position: absolute;
   @media (min-width: ${props => props.theme.desktop}) {
     min-width: 200px;
   }
 `;
 
+const TooltipList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+`;
+
+const TooltipItem = styled.li`
+  padding: 5px;
+`;
+
 function Skills() {
   const ref = useRef(null);
-  useOnScreen(ref, "10%");
+  useOnScreen(ref, "0%");
   const {
-    texts: { skills: texts }
+    texts: { skills }
   } = useContext(LanguageContext);
 
-  const trail = useTrail(texts.skills.length, {
+  const trail = useTrail(skills.skills.length, {
     config: { duration: 1000 },
     reset: true,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
@@ -87,36 +99,31 @@ function Skills() {
 
   return (
     <Section ref={ref} id="skills">
-      <SectionTitle>{texts.title}</SectionTitle>
-      <SectionSubtitle>{texts.paragraph}</SectionSubtitle>
+      <SectionTitle>{skills.title}</SectionTitle>
+      <SectionSubtitle>{skills.paragraph}</SectionSubtitle>
       <List>
         {trail.map((props, index) => (
           <ListItem key={index} style={props}>
             <SkillBox>
               <Image
-                src={texts.skills[index].img}
-                alt={texts.skills[index].alt}
+                src={skills.skills[index].img}
+                alt={skills.skills[index].alt}
                 data-tip
                 data-for={index}
                 data-place="top"
                 data-effect="solid"
               />
-              <SkillSubtitle>{texts.skills[index].text}</SkillSubtitle>
-              <MyTooltip id={`${index}`} effect="solid">
-                <h2>Show sad face</h2>
-                <p>{texts.skills[index].tooltipText && texts.skills[index].tooltipText}</p>
-                <p>
-                  Właśnie napisałem <code style={{ color: "red" }}>print "Hello World"</code>
-                </p>
-                <ul>
-                  <li>
-                    <a href="http://www.onet.pl">Netkat</a>
-                  </li>
-                  <li>Pan Kanapka</li>
-                  <li>Site down checker</li>
-                  <li>Dupa blada</li>
-                </ul>
-              </MyTooltip>
+              <SkillSubtitle>{skills.skills[index].text}</SkillSubtitle>
+              {skills.skills[index].tooltipText.length > 0 && (
+                <MyTooltip id={`${index}`}>
+                  <TooltipList>
+                    {skills.skills[index].tooltipText &&
+                      skills.skills[index].tooltipText.map((item, index) => (
+                        <TooltipItem key={index}>{item}</TooltipItem>
+                      ))}
+                  </TooltipList>
+                </MyTooltip>
+              )}
             </SkillBox>
           </ListItem>
         ))}

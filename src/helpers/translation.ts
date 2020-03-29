@@ -73,26 +73,26 @@ export const translation = {
 
     repositories:
     {
-      title: "Projekty na github",
-      subtitle: "Posortowane według technologii (skategoryzowane przez githuba)"
+      title: "Projekty na GitHub",
+      subtitle: "Posortowane według technologii (skategoryzowane przez GitHuba)"
     },
     skills:
     {
       title: "Umiejętności",
       paragraph: "Technologie i programy, których używam",
       skills: [
-        { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania." },
-        { img: `${djangoImage}`, alt: "Django", text: "Django" },
-        { img: `${cssImage}`, alt: "Css3", text: "Css3" },
-        { img: `${htmlImage}`, alt: "Html", text: "HTML5" },
-        { img: `${gitImage}`, alt: "Git", text: "Git" },
-        { img: `${githubImage}`, alt: "GitHub", text: "Github" },
-        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
-        { img: `${reactImage}`, alt: "React", text: "React" },
-        { img: `${sassImage}`, alt: "Sass", text: "Sass" },
-        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
-        { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL" },
-        { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
+        { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: ["django", "django-rest-framework", "beautifulsoup", "requests", "scrapy"] },
+        { img: `${djangoImage}`, alt: "Django", text: "Django", tooltipText: ["django", "django-rest-framework"] },
+        { img: `${cssImage}`, alt: "Css3", text: "Css3", tooltipText: ["sass", "BEM", "flexbox", "grid", "transitions", "animations"] },
+        { img: `${htmlImage}`, alt: "Html", text: "HTML5", tooltipText: ["semantyczny html", "PWA"] },
+        { img: `${gitImage}`, alt: "Git", text: "Git", tooltipText: ["git commit", "git merge", "git branch", "git push", "git pull", "..."] },
+        { img: `${githubImage}`, alt: "GitHub", text: "Github", tooltipText: ["ponad 20 zdalnych repozytoriów"] },
+        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6", tooltipText: ["es6"] },
+        { img: `${reactImage}`, alt: "React", text: "React", tooltipText: ["hooks", "styled-components", "redux", "context-api"] },
+        { img: `${sassImage}`, alt: "Sass", text: "Sass", tooltipText: ["BEM", "mixins", "variables"] },
+        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript", tooltipText: [] },
+        { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL", tooltipText: [] },
+        { img: `${figmaImage}`, alt: "Figma", text: "Figma", tooltipText: [] },
       ]
     },
     contact:
@@ -160,26 +160,26 @@ export const translation = {
     },
     repositories:
     {
-      title: "Projekty na github",
-      subtitle: "Posortowane według technologii (skategoryzowane przez githuba)"
+      title: "GitHub repositories",
+      subtitle: "Sorted by technology (categorized by GitHub)"
     },
     skills:
     {
       title: "Skills",
       paragraph: "Technologies and tools I use",
       skills: [
-        { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: "Zakochałem się w nim po moim pierwszym print 'Hello World' - jeszcze w Pythonie2. Dzięki pythonowi zacząłem naukę programowania i ten język do tej pory uważam za nejprzystępniejszy i po prostu warty wypróbowania." },
-        { img: `${djangoImage}`, alt: "Django", text: "Django" },
-        { img: `${cssImage}`, alt: "Css3", text: "Css3" },
-        { img: `${htmlImage}`, alt: "Html", text: "HTML5" },
-        { img: `${gitImage}`, alt: "Git", text: "Git" },
-        { img: `${githubImage}`, alt: "GitHub", text: "Github" },
-        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6" },
-        { img: `${reactImage}`, alt: "React", text: "React" },
-        { img: `${sassImage}`, alt: "Sass", text: "Sass" },
-        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript" },
-        { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL" },
-        { img: `${figmaImage}`, alt: "Figma", text: "Figma" },
+        { img: `${pythonImage}`, alt: "Python", text: "Python", tooltipText: ["django", "django-rest-framework", "beautifulsoup", "requests", "scrapy"] },
+        { img: `${djangoImage}`, alt: "Django", text: "Django", tooltipText: ["django", "django-rest-framework"] },
+        { img: `${cssImage}`, alt: "Css3", text: "Css3", tooltipText: ["sass", "BEM", "flexbox", "grid", "transitions", "animations"] },
+        { img: `${htmlImage}`, alt: "Html", text: "HTML5", tooltipText: ["semantic html", "PWA"] },
+        { img: `${gitImage}`, alt: "Git", text: "Git", tooltipText: ["git commit", "git merge", "git branch", "git push", "git pull", "..."] },
+        { img: `${githubImage}`, alt: "GitHub", text: "Github", tooltipText: ["above 20 remote repositories"] },
+        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6", tooltipText: ["es6"] },
+        { img: `${reactImage}`, alt: "React", text: "React", tooltipText: ["hooks", "styled-components", "redux", "context-api"] },
+        { img: `${sassImage}`, alt: "Sass", text: "Sass", tooltipText: ["BEM", "mixins", "variables"] },
+        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript", tooltipText: [] },
+        { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL", tooltipText: [] },
+        { img: `${figmaImage}`, alt: "Figma", text: "Figma", tooltipText: [] },
       ]
     },
     contact:

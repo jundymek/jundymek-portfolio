@@ -207,7 +207,7 @@ function Project({ project }: ProjectProps) {
   return (
     <Box>
       <ImageContainer>
-        <ProjectImage src={project.img} alt="" />
+        <ProjectImage src={project.img} alt={project.title} />
       </ImageContainer>
       <Content>
         <Title>{project.title}</Title>

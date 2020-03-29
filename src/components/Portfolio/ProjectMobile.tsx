@@ -228,7 +228,7 @@ function ProjectMobile({ project }: ProjectProps) {
         <FrontWrapper>
           <TitleFront>{project.title}</TitleFront>
           <FrontButton onClick={handleFlip}>
-            <FlipImg src={flipIcon}></FlipImg>
+            <FlipImg src={flipIcon} alt="flip"></FlipImg>
           </FrontButton>
         </FrontWrapper>
       </Front>
@@ -241,7 +241,7 @@ function ProjectMobile({ project }: ProjectProps) {
             <BackButton>Live</BackButton>
           </ButtonWrapper>
           <BackButtonFlip onClick={() => handleFlip()}>
-            <FlipImg src={flipIcon}></FlipImg>
+            <FlipImg src={flipIcon} alt="flip"></FlipImg>
           </BackButtonFlip>
         </Content>
       </Back>

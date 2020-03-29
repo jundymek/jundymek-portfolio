@@ -36,7 +36,7 @@ const Paragraph = styled.p`
 
 function AboutMe() {
   const ref = useRef(null);
-  useOnScreen(ref, "-100px");
+  const onScreen = useOnScreen(ref, "-10%");
 
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
@@ -60,10 +60,9 @@ function AboutMe() {
   return (
     <GreySection id="about">
       <Wrapper ref={ref} style={props}>
-        {width && width >= 900 && (
+        {width && width >= 900 && onScreen && (
           <CyclerWrapper>
             <Cycler
-              // duration={ 3000 }
               typewriter={true}
               strings={strings}
             />
@@ -73,7 +72,7 @@ function AboutMe() {
         <SectionTitle>
           <Scrambler
             text={`< ${aboutMe.title} />`}
-            // characters="!@#$%^&*()"
+            characters="!@#$%^&*()"
             typewriter={true}
           />
         </SectionTitle>
