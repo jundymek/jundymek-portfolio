@@ -12,7 +12,7 @@ export const SectionTitle = styled.h2`
 
 export const SectionSubtitle = styled.p`
   font-size: 18px;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 

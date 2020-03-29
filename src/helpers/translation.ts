@@ -24,6 +24,15 @@ import linkedin from "../images/linkedin-icon.svg";
 
 export const translation = {
   PL: {
+    navigation: {
+      links: [
+        { url: "#", title: "Home" },
+        { url: "#about", title: "O mnie" },
+        { url: "#skills", title: "Umiejętności" },
+        { url: "#portfolio", title: "Projekty" },
+        { url: "#contact", title: "Kontakt" }
+      ]
+    },
     header:
     {
       title: "Łukasz Dymek",
@@ -106,7 +115,7 @@ export const translation = {
         { title: "Codewars", img: `${codewars}`, url: "https://www.codewars.com/users/jundymek" },
       ]
     },
-    footer: 
+    footer:
     {
       paragraph1part1: "Wykonano całym",
       paragraph1part2: "używając",
@@ -114,6 +123,15 @@ export const translation = {
     }
   },
   EN: {
+    navigation: {
+      links: [
+        { url: "#", title: "Home" },
+        { url: "#about", title: "About me" },
+        { url: "#skills", title: "Skills" },
+        { url: "#portfolio", title: "Projects" },
+        { url: "#contact", title: "Contact" }
+      ]
+    },
     header:
     {
       title: "Łukasz Dymek",
@@ -193,7 +211,7 @@ export const translation = {
         { title: "Codewars", img: `${codewars}`, url: "https://www.codewars.com/users/jundymek" },
       ]
     },
-    footer: 
+    footer:
     {
       paragraph1part1: "Made with",
       paragraph1part2: "using",

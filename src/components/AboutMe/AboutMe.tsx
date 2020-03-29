@@ -19,8 +19,8 @@ const CyclerWrapper = styled.div`
   top: 50%;
   width: 230px;
   background-color: black;
-  color: white;
-  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+  color: #f0fff8;
+  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
   transform: rotate(-50deg);
 `;
 
@@ -62,19 +62,12 @@ function AboutMe() {
       <Wrapper ref={ref} style={props}>
         {width && width >= 900 && onScreen && (
           <CyclerWrapper>
-            <Cycler
-              typewriter={true}
-              strings={strings}
-            />
+            <Cycler typewriter={true} strings={strings} />
           </CyclerWrapper>
         )}
 
         <SectionTitle>
-          <Scrambler
-            text={`< ${aboutMe.title} />`}
-            characters="!@#$%^&*()"
-            typewriter={true}
-          />
+          <Scrambler text={`< ${aboutMe.title} />`} characters="!@#$%^&*()" typewriter={true} />
         </SectionTitle>
         {aboutMe.paragraphs.map((paragraph, index) => (
           <Paragraph key={index}>{paragraph}</Paragraph>

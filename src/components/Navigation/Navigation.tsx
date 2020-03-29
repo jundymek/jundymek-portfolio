@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled, { css } from "styled-components";
+import { LanguageContext } from "../../App";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
 import LangButtonsMobile from "./LangButtonsMobile";
@@ -160,6 +161,10 @@ function Navigation({ setLanguage }: Props) {
     width && width > 900 && setisHamburgerOpen(false);
   }, [width, isHamburgerOpen]);
 
+  const {
+    texts: { navigation }
+  } = useContext(LanguageContext);
+
   const handleClick = () => {
     setisHamburgerOpen(false);
   };
@@ -169,7 +174,7 @@ function Navigation({ setLanguage }: Props) {
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
       <Nav isVisible={isHamburgerOpen}>
         <NavUl>
-          {links.map((link, index) => (
+          {navigation.links.map((link, index) => (
             <NavLi key={index}>
               <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text={link.title} href={link.url}>
                 {link.title}

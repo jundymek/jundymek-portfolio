@@ -11,6 +11,7 @@ import typescriptImage from "../../images/skills-icons/typescript-icon.svg";
 import htmlImage from "../../images/skills-icons/html5-icon.svg";
 import otherImage from "../../images/skills-icons/other-icon.svg";
 import useOnScreen from "../../customHooks/useOnScreen";
+import { SectionSubtitle } from "../../styles/styledComponents";
 
 const Wrapper = styled.section`
   display: flex;
@@ -29,11 +30,10 @@ const Title = styled.h3`
   margin-bottom: 0;
 `;
 
-const Subtitle = styled.p`
-  font-size: 16px;
-  margin-top: 0;
+const Subtitle = styled(SectionSubtitle)`
+  font-size: 18px;
   text-align: center;
-  color: ${props => props.theme.primaryGray};
+  color: ${props => props.theme.primaryDark};
 `;
 
 const List = styled.ul`
