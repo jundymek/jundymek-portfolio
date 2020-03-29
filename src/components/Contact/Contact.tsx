@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { LanguageContext } from "../../App";
 import { SectionTitle } from "../../styles/styledComponents";
 import { Button } from "../Button/Button";
+import { Scrambler } from "react-text-scrambler";
 
 const typing = keyframes`
   from { max-width: 0 }
@@ -77,7 +78,9 @@ function Contact() {
   return (
     <Section id="contact">
       <Wrapper>
-        <SectionTitle>{contact.title}</SectionTitle>
+        <SectionTitle>
+          <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" />
+        </SectionTitle>
         <Paragraph length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
         <a href={`mailto:sss`}>
           <Button>{contact.buttonLabel}</Button>

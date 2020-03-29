@@ -5,6 +5,7 @@ import { useTrail, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
 import ReactTooltip from "react-tooltip";
+import { Scrambler } from "react-text-scrambler";
 
 const Section = styled.section`
   display: block;
@@ -98,7 +99,9 @@ function Skills() {
 
   return (
     <Section ref={ref} id="skills">
-      <SectionTitle>{skills.title}</SectionTitle>
+      <SectionTitle>
+        <Scrambler text={`{ ${skills.title} }`} characters="!@#$%^&*()" />
+      </SectionTitle>
       <SectionSubtitle>{skills.paragraph}</SectionSubtitle>
       <List>
         {trail.map((props, index) => (

@@ -66,7 +66,7 @@ function AboutMe() {
           </CyclerWrapper>
         )}
         <SectionTitle>
-          <Scrambler text={`< ${aboutMe.title} />`} characters="!@#$%^&*()" typewriter={true} />
+          <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" />
         </SectionTitle>
         {aboutMe.paragraphs.map((paragraph, index) => (
           <Paragraph key={index}>{paragraph}</Paragraph>

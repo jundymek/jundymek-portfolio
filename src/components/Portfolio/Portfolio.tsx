@@ -2,6 +2,7 @@ import React, { useRef, useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection, SectionSubtitle } from "../../styles/styledComponents";
 import { LanguageContext } from "../../App";
+import { Scrambler } from "react-text-scrambler";
 import useWindowSize from "../../customHooks/useWindowSize";
 import ProjectMobile from "./ProjectMobile";
 import Repositories from "../Repositories/Repositories";
@@ -43,7 +44,9 @@ function Portfolio() {
   return (
     <GreySection ref={ref} id="portfolio">
       <Wrapper>
-        <SectionTitle>{projects.title}</SectionTitle>
+        <SectionTitle>
+          <Scrambler text={`{ ${projects.title} }`} characters="!@#$%^&*()" />
+        </SectionTitle>
         <SectionSubtitle>{projects.subtitle}</SectionSubtitle>
         {!mobile
           ? projects.projects.map((project, index) => <Project key={index} project={project} />)

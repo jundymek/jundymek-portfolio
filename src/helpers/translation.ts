@@ -146,7 +146,7 @@ export const translation = {
     {
       title: "About me",
       paragraphs: [
-        "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in future… developer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote print “Hello World” in Python (yes - 2.0). Currently, I dove into the frontend. Nowadays I spend time mostly writing React code.",
+        "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in the future… developer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote print “Hello World” in Python (yes - 2.0). Currently, I dove into the frontend. Nowadays I spend time mostly writing React code.",
         "I am not declaring myself on any side. I like frontend and backend the same. Most important is real fun when writing code. I dream about work as a programmer full time.",
         "Is it possible? Isn’t it too late for that? NOOOO. So many people told mi that for coding never is too late..."
       ]
@@ -175,7 +175,7 @@ export const translation = {
           img: `${project3Image}`,
           alt: "Pan Kanapka",
           title: "Pan Kanapka",
-          text: "A simple application written to remind me of Python and Django. My friend gave me an idea and I fell into a Pan Kanapka trap. The app is a connection between Mr. Sandwitch and his customers. Mr. Sandwitch adds to the database new places where he delivers his sandwiches. Customers can sign up for push notifications informing that food will be there in a short time.",
+          text: "A simple application written to remind me Python and Django. My friend gave me an idea and I fell into a Pan Kanapka trap. The app is a connection between Mr. Sandwitch and his customers. Mr. Sandwitch adds to the database new places where he delivers his sandwiches. Customers can sign up for push notifications informing that food will be there in a short time.",
           tech: ["Python", "Django", "Django Rest Framework", "Leaflet", "PostgreSql", "django-rest-auth", "django-push-notifications", "google places api"]
         }
       ]
