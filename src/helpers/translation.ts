@@ -85,6 +85,10 @@ export const translation = {
       title: "Projekty na GitHub",
       subtitle: "Posortowane według technologii (skategoryzowane przez GitHuba)"
     },
+    repositoriesCounter: 
+    {
+      subtitle: "Wszystkie repozytoria",
+    },
     skills:
     {
       title: "Umiejętności",
@@ -180,6 +184,10 @@ export const translation = {
     {
       title: "GitHub repositories",
       subtitle: "Sorted by technology (categorized by GitHub)"
+    },
+    repositoriesCounter: 
+    {
+      subtitle: "All repos",
     },
     skills:
     {

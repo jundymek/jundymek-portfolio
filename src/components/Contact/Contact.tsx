@@ -18,7 +18,6 @@ const Section = styled.section`
 
 const Wrapper = styled.div`
   padding: 0 29px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;

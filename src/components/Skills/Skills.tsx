@@ -5,7 +5,6 @@ import { useTrail, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
 import ReactTooltip from "react-tooltip";
-import useWindowSize from "../../customHooks/useWindowSize";
 
 const Section = styled.section`
   display: block;

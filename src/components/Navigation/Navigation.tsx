@@ -142,16 +142,8 @@ const NavLink = styled.a<NavProps>`
 
 function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
-
-  const links = [
-    { url: "#", title: "Home" },
-    { url: "#about", title: "About me" },
-    { url: "#skills", title: "Skills" },
-    { url: "#portfolio", title: "Projects" },
-    { url: "#contact", title: "Contact" }
-  ];
-
   const width = useWindowSize().width;
+  
   useEffect(() => {
     if (isHamburgerOpen) {
       document.body.style.overflow = "hidden";
