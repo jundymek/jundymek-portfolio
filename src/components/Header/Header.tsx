@@ -20,6 +20,11 @@ const Wrapper = styled.div`
   }
 `;
 
+const TitleWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
 const Title = styled.h1`
   width: 155px;
   height: 100px;
@@ -27,11 +32,22 @@ const Title = styled.h1`
   padding: 0;
   font-weight: 400;
   font-size: 47px;
-  line-height: 56px;
+  line-height: 43px;
   margin-bottom: 23px;
   @media (min-width: ${props => props.theme.desktop}) {
-    font-size: $title-font-size;
-    line-height: 56px;
+    line-height: 46px;
+  }
+`;
+
+const Subtitle = styled.p`
+  position: absolute;
+  margin: 0;
+  bottom: 2px;
+  right: -26px;
+  font-family: "Over the Rainbow", cursive;
+  @media (min-width: ${props => props.theme.desktop}) {
+    bottom: -5px;
+    right: -34px;
   }
 `;
 
@@ -39,6 +55,7 @@ const ParagraphWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 32px;
+  margin-top: 32px;
   margin-right: 36px;
 `;
 
@@ -96,14 +113,17 @@ function Header({ setLanguage }: Props) {
     <WhiteDiv>
       <StyledHeader>
         <Wrapper>
-          <Title>
-            <Scrambler
-              text={`< ${header.title} />`}
-              changeFrom="print('Hello world')"
-              renderIn={1}
-              characters="!@#$%^&*()"
-            />
-          </Title>
+          <TitleWrapper>
+            <Title>
+              <Scrambler
+                text={`< ${header.title} />`}
+                changeFrom="print('Hello world')"
+                renderIn={1}
+                characters="!@#$%^&*()"
+              />
+            </Title>
+            <Subtitle>jundymek</Subtitle>
+          </TitleWrapper>
           <ParagraphWrapper>
             {header.paragraphs.map((paragraph: string, index) => (
               <Paragraph key={index}>{paragraph}</Paragraph>
