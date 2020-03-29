@@ -1,27 +1,18 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection } from "../../styles/styledComponents";
-import useOnScreen from "../../customHooks/useOnScreen";
 import { useSpring, animated } from "react-spring";
 import { LanguageContext } from "../../App";
-import { Scrambler, Cycler } from "react-text-scrambler";
-import useWindowSize from "../../customHooks/useWindowSize";
+import { Scrambler } from "react-text-scrambler";
+
+const AboutSection = styled(GreySection)`
+  margin-top: 44px;
+`
 
 const Wrapper = styled(animated.div)`
   padding: 0 29px;
-  max-width: 478px;
+  max-width: 600px;
   position: relative;
-`;
-
-const CyclerWrapper = styled.div`
-  position: absolute;
-  left: -180px;
-  top: 50%;
-  width: 230px;
-  background-color: black;
-  color: #f0fff8;
-  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
-  transform: rotate(-50deg);
 `;
 
 const Paragraph = styled.p`
@@ -34,9 +25,15 @@ const Paragraph = styled.p`
   font-family: "VT323", monospace;
 `;
 
+const Code = styled.code`
+  font-size: 18px;
+  margin: 0 2px;
+  background-color: black;
+  color: #f0fff8;
+  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+`
+
 function AboutMe() {
-  const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "-10%");
 
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
@@ -48,31 +45,17 @@ function AboutMe() {
     texts: { aboutMe }
   } = useContext(LanguageContext);
 
-  const width = useWindowSize().width;
-
-  const strings = [
-    "print('Hello World')",
-    "console.log('Hello World')",
-    "echo 'Hello World'",
-    "println('Hello, world!')"
-  ];
 
   return (
-    <GreySection id="about">
-      <Wrapper ref={ref} style={props}>
-        {width && width >= 900 && onScreen && (
-          <CyclerWrapper>
-            <Cycler typewriter={true} strings={strings} />
-          </CyclerWrapper>
-        )}
+    <AboutSection id="about">
+      <Wrapper style={props}>
         <SectionTitle>
           <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" />
         </SectionTitle>
-        {aboutMe.paragraphs.map((paragraph, index) => (
-          <Paragraph key={index}>{paragraph}</Paragraph>
-        ))}
+        <Paragraph>{aboutMe.paragraph1part1}<Code>{aboutMe.paragraph1code}</Code>{aboutMe.paragraph1part2}</Paragraph>
+        <Paragraph>{aboutMe.paragraph2}</Paragraph>
       </Wrapper>
-    </GreySection>
+    </AboutSection>
   );
 }
 

@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import { LanguageContext } from "../../App";
+import useOnScreen from "../../customHooks/useOnScreen";
 import HeroImage from "./HeroImage";
 import { WhiteDiv } from "../../styles/styledComponents";
-import { Scrambler } from "react-text-scrambler";
+import { Scrambler, Cycler } from "react-text-scrambler";
 
 const StyledHeader = styled.header`
   margin-top: 30px;
+  position: relative;
   @media (min-width: ${props => props.theme.desktop}) {
   }
 `;
@@ -62,20 +64,19 @@ const ParagraphWrapper = styled.div`
 const Paragraph = styled.p`
   padding: 0;
   margin: 0;
-  font-size: $default-font-size;
   line-height: 22px;
   font-weight: 400;
 `;
 
 const LangContainer = styled.div`
   display: none;
-  @media (min-width: ${props => props.theme.desktop}) {
-    display: block;
-  }
   transform: rotate(-90deg);
   height: 1rem;
   margin-bottom: 48px;
   margin-right: -1rem;
+  @media (min-width: ${props => props.theme.desktop}) {
+    display: block;
+  }
 `;
 
 interface Lang {
@@ -96,12 +97,29 @@ const LangButton = styled.button<Lang>`
   border: none;
 `;
 
+const CyclerWrapper = styled.div`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  text-align: center;
+  color: #f0fff8;
+  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+  @media (min-width: ${props => props.theme.desktop}) {
+    font-size: 24px;
+  }
+`;
+
 interface Props {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
 function Header({ setLanguage }: Props) {
   const lang = useContext(LanguageContext);
+  const ref = useRef(null);
+  const onScreen = useOnScreen(ref, "-10%");
   const {
     texts: { header }
   } = useContext(LanguageContext);
@@ -109,9 +127,16 @@ function Header({ setLanguage }: Props) {
     setLanguage(value);
   };
 
+  const strings = [
+    "print('Hello World')",
+    "console.log('Hello World')",
+    "echo 'Hello World'",
+    "println('Hello, world!')"
+  ];
+
   return (
     <WhiteDiv>
-      <StyledHeader>
+      <StyledHeader ref={ref}>
         <Wrapper>
           <TitleWrapper>
             <Title>
@@ -140,6 +165,11 @@ function Header({ setLanguage }: Props) {
           </LangContainer>
         </Wrapper>
         <HeroImage />
+        {onScreen && (
+          <CyclerWrapper>
+            <Cycler typewriter={true} strings={strings} />
+          </CyclerWrapper>
+        )}
       </StyledHeader>
     </WhiteDiv>
   );

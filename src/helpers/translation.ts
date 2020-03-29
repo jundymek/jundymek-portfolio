@@ -42,12 +42,10 @@ export const translation = {
     aboutMe:
     {
       title: "O mnie",
-      paragraphs: [
-        "Cześć - jestem Łukasz. Obecnie Policjant 👮🏻‍♂️, w przyszłości... developer. Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Zaczynałem od Pythona, aktualnie zgłębiam tajniki frontendu. Obecnie próbuję opanować Reacta.",
-        "Nie deklaruję się po którejkolwiek stronie. Front i back podobają mi się jednakowo - najważniejsze jest frajda z pisania kodu. Chciałbym robić to w pełnym wymiarze czasu.",
-        "Czy jest taka szansa? Czy nie jest za późno? NIEEEEE. Już tyle osób powiedziało mi, że nigdy nie jest za późno na kodowanie…",
-      ]
-
+      paragraph1part1: "Cześć - jestem Łukasz. Obecnie Policjant 👮🏻‍♂️, w przyszłości... programista. Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Moja przygoda 'na poważnie' z programowaniem zaczęła kiedy napisałem pierwsze",
+      paragraph1code: "print 'Hello World'",
+      paragraph1part2: "w Pythonie (tak - w Pythonie 2). Aktualnie zgłębiam tajniki frontendu. Obecnie próbuję opanować Reacta.",
+      paragraph2: "Nie deklaruję się po którejkolwiek stronie. Front i back podobają mi się jednakowo - najważniejsze jest frajda z pisania kodu. Chciałbym robić to w pełnym wymiarze czasu.",
     },
     projects:
     {
@@ -145,11 +143,10 @@ export const translation = {
     aboutMe:
     {
       title: "About me",
-      paragraphs: [
-        "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in the future… developer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote print “Hello World” in Python (yes - 2.0). Currently, I dove into the frontend. Nowadays I spend time mostly writing React code.",
-        "I am not declaring myself on any side. I like frontend and backend the same. Most important is real fun when writing code. I dream about work as a programmer full time.",
-        "Is it possible? Isn’t it too late for that? NOOOO. So many people told mi that for coding never is too late..."
-      ]
+      paragraph1part1: "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in the future… developer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote",
+      paragraph1code: "print 'Hello World'",
+      paragraph1part2: "in Python (yes - Python 2). Currently, I dove into the frontend. Nowadays I spend time mostly writing React code.",
+      paragraph2: "I am not declaring myself on any side. I like frontend and backend the same. Most important is real fun when writing code. I dream about work as a programmer full time.",
     },
     projects:
     {
