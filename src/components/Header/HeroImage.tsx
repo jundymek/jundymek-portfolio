@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import useWindowSize from "../../customHooks/useWindowSize";
-import heroBig from "../../images/hero/hero-image-big.png";
-import heroSmall from "../../images/hero/hero-image-small.png";
+import heroBig from "../../images/hero/hero-image-big-min.png";
+import heroSmall from "../../images/hero/hero-image-small-min.png";
 
 interface Img {
   image: string;
