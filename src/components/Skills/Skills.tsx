@@ -53,12 +53,10 @@ const Image = styled.img`
 `;
 
 const SkillSubtitle = styled.p`
-  font-size: 0.77rem;
+  font-size: 14px;
   font-style: italic;
-  font-weight: 500;
-  line-height: 1rem;
-  max-width: 4.2rem;
-  color: ${props => props.theme.primaryGray};
+  color: darkslategray;
+  max-width: 80%;
 `;
 
 const MyTooltip = styled(ReactTooltip)`
