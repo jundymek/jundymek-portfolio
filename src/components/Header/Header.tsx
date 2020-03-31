@@ -143,7 +143,7 @@ function Header({ setLanguage }: Props) {
               <Scrambler
                 text={`< ${header.title} />`}
                 changeFrom="print('Hello world')"
-                renderIn={1}
+                renderIn={700}
                 characters="!@#$%^&*()"
               />
             </Title>
