@@ -15,7 +15,7 @@ const Front = styled.div<Props>`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 385px;
+  height: 485px;
   border: 1px solid ${props => props.theme.primaryGray};
   backface-visibility: hidden;
   background-image: url(${props => props.image});
@@ -34,7 +34,7 @@ const Back = styled.div<Props>`
   left: 0;
   width: 100%;
   height: 100%;
-  height: 385px;
+  height: 485px;
   background: linear-gradient(
       216deg,
       rgba(77, 77, 77, 0.05) 0%,
@@ -95,7 +95,7 @@ const Container = styled.div`
   align-items: center;
   width: 90%;
   perspective: 1000px;
-  height: 385px;
+  height: 485px;
   margin-bottom: 20px;
   transform-style: preserve-3d;
 `;
@@ -110,6 +110,7 @@ const Text = styled.p`
 const Title = styled.h2`
   color: white;
   margin: 10px;
+  width: 70%;
 `;
 
 const TitleFront = styled(Title)`
@@ -197,7 +198,7 @@ const FrontButton = styled.button`
 `;
 
 const BackButtonFlip = styled(FrontButton)`
-  bottom: 5px;
+  top: 20px;
 `;
 
 const FlipImg = styled.img`

@@ -10,7 +10,7 @@ import useOnScreen from "../../customHooks/useOnScreen";
 import Project from "./Project";
 
 const Wrapper = styled.div`
-  max-width: 478px;
+  /* max-width: 478px; */
   width: 100%;
   height: auto;
   display: flex;
