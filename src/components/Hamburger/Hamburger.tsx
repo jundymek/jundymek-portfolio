@@ -6,23 +6,29 @@ interface NavProps {
 }
 
 const HamburgerBtn = styled.button<NavProps>`
-  display: block;
+  position: absolute;
+  width: 44px;
+  height: 50px;
+  right: 10px;
+  top: 50px;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: ${props => props.isOpen && "none"};
+`;
 
+const HamburgerBars = styled.div<NavProps>`
+  display: block;
   @media (min-width: ${props => props.theme.desktop}) {
     display: none;
   }
 
-  position: absolute;
+  position: relative;
   width: 30px;
   height: 20px;
-  right: 20px;
-  top: 3.61rem;
-  background: transparent;
-  border: 0;
   border-top: 4px solid black;
   transition: transform 0.3s linear;
-  z-index: 1;
-  outline: none;
   &::before,
   &::after {
     position: absolute;
@@ -42,6 +48,7 @@ const HamburgerBtn = styled.button<NavProps>`
   ${props =>
     props.isOpen &&
     css`
+      transform: translateX(0px);
       border: 0;
       &::before {
         transform: rotate(-314deg) translateX(-4px) translateY(0px);
@@ -74,7 +81,9 @@ function Hamburger({ isOpen, setIsOpen }: Props) {
 
   return (
     <HamburgerBtn isOpen={isOpen} type="button" onClick={handleClick}>
-      <Label isOpen={isOpen}>Menu</Label>
+      <HamburgerBars isOpen={isOpen}>
+        <Label isOpen={isOpen}>Menu</Label>
+      </HamburgerBars>
     </HamburgerBtn>
   );
 }
