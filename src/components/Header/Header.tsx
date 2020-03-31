@@ -140,12 +140,7 @@ function Header({ setLanguage }: Props) {
         <Wrapper>
           <TitleWrapper>
             <Title>
-              <Scrambler
-                text={`< ${header.title} />`}
-                changeFrom="print('Hello world')"
-                renderIn={700}
-                characters="!@#$%^&*()"
-              />
+              <Scrambler text={`< ${header.title} />`} renderIn={1000} characters="!@#$%^&*()" />
             </Title>
             <Subtitle>jundymek</Subtitle>
           </TitleWrapper>

@@ -45,7 +45,7 @@ function Portfolio() {
     <GreySection ref={ref} id="portfolio">
       <Wrapper>
         <SectionTitle>
-          <Scrambler text={`{ ${projects.title} }`} characters="!@#$%^&*()" />
+          <Scrambler text={`{ ${projects.title} }`} characters="!@#$%^&*()" renderIn={1000} />
         </SectionTitle>
         <SectionSubtitle>{projects.subtitle}</SectionSubtitle>
         {!mobile

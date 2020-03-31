@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { LanguageContext } from "../../App";
 import { SectionTitle } from "../../styles/styledComponents";
+import useOnScreen from "../../customHooks/useOnScreen";
 import { Button } from "../Button/Button";
 import { Scrambler } from "react-text-scrambler";
 
@@ -75,11 +76,14 @@ function Contact() {
     texts: { contact }
   } = useContext(LanguageContext);
 
+  const ref = useRef(null);
+  useOnScreen(ref, "0%");
+
   return (
     <Section id="contact">
-      <Wrapper>
+      <Wrapper ref={ref}>
         <SectionTitle>
-          <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" />
+          <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" renderIn={1000} />
         </SectionTitle>
         <Paragraph length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
         <a href={`mailto:sss`}>

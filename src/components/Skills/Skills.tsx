@@ -100,7 +100,7 @@ function Skills() {
   return (
     <Section ref={ref} id="skills">
       <SectionTitle>
-        <Scrambler text={`{ ${skills.title} }`} characters="!@#$%^&*()" />
+        <Scrambler text={`{ ${skills.title} }`} characters="!@#$%^&*()" renderIn={1000} />
       </SectionTitle>
       <SectionSubtitle>{skills.paragraph}</SectionSubtitle>
       <List>

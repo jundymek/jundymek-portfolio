@@ -196,7 +196,7 @@ function Repositories() {
     texts: { repositories }
   } = useContext(LanguageContext);
   const ref = useRef(null);
-  const onScreen = useOnScreen(ref, "-100px");
+  const onScreen = useOnScreen(ref, "50%");
 
   useEffect(() => {
     fetchRepositiories().then(res => {

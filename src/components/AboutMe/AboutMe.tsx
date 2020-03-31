@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection } from "../../styles/styledComponents";
 import { useSpring, animated } from "react-spring";
+import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
 import { Scrambler } from "react-text-scrambler";
 
 const AboutSection = styled(GreySection)`
   margin-top: 44px;
-`
+`;
 
 const Wrapper = styled(animated.div)`
   padding: 0 29px;
@@ -31,10 +32,9 @@ const Code = styled.code`
   background-color: black;
   color: #f0fff8;
   text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
-`
+`;
 
 function AboutMe() {
-
   const props = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
     from: { opacity: 0, filter: "blur(12px)" },
@@ -45,14 +45,20 @@ function AboutMe() {
     texts: { aboutMe }
   } = useContext(LanguageContext);
 
+  const ref = useRef(null);
+  useOnScreen(ref, "0%");
 
   return (
     <AboutSection id="about">
-      <Wrapper style={props}>
+      <Wrapper ref={ref} style={props}>
         <SectionTitle>
-          <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" />
+          <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" renderIn={1000} />
         </SectionTitle>
-        <Paragraph>{aboutMe.paragraph1part1}<Code>{aboutMe.paragraph1code}</Code>{aboutMe.paragraph1part2}</Paragraph>
+        <Paragraph>
+          {aboutMe.paragraph1part1}
+          <Code>{aboutMe.paragraph1code}</Code>
+          {aboutMe.paragraph1part2}
+        </Paragraph>
         <Paragraph>{aboutMe.paragraph2}</Paragraph>
       </Wrapper>
     </AboutSection>
