@@ -44,7 +44,7 @@ const HamburgerBtn = styled.button<NavProps>`
     css`
       border: 0;
       &::before {
-        transform: rotate(-316deg) translateX(-4px) translateY(0px);
+        transform: rotate(-314deg) translateX(-4px) translateY(0px);
       }
 
       &::after {

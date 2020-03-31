@@ -26,8 +26,8 @@ const Paragraph = styled.p`
 `;
 
 const Code = styled.code`
-  font-size: 18px;
-  margin: 0 2px;
+  font-size: 14px;
+  margin: 0 10px;
   background-color: black;
   color: #f0fff8;
   text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;

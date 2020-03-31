@@ -1,5 +1,5 @@
 // skills 
-import figmaImage from "../images/figma-icon-mobile.png";
+import figmaImage from "../images/skills-icons/figma-icon-mobile.png";
 import djangoImage from "../images/skills-icons/django-icon.svg";
 import reactImage from "../images/skills-icons/react-icon.svg";
 import cssImage from "../images/skills-icons/css3-icon.svg";
@@ -13,9 +13,9 @@ import htmlImage from "../images/skills-icons/html5-icon.svg";
 import postgreSQLImage from "../images/skills-icons/postgresql-icon.svg";
 
 //portfolio projects
-import project1Image from "../images/free_proxy.gif";
-import project2Image from "../images/netkat-project.png";
-import project3Image from "../images/pan-kanapka-project.png";
+import project1Image from "../images/projects/free_proxy.gif";
+import project2Image from "../images/projects/netkat-project.png";
+import project3Image from "../images/projects/pan-kanapka-project.png";
 
 // contact social icons
 import github from "../images/github-icon.svg";
