@@ -10,7 +10,7 @@ const HamburgerBtn = styled.button<NavProps>`
   width: 44px;
   height: 50px;
   right: 10px;
-  top: 50px;
+  top: 40px;
   z-index: 1;
   border: none;
   background: transparent;

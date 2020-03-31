@@ -62,6 +62,9 @@ const NavUl = styled.ul`
     padding-bottom: 22px;
     border-bottom: 1px solid ${props => props.theme.primaryGray};
   }
+  @media (orientation: landscape) {
+    margin-top: 6%;
+  }
 `;
 
 const NavLi = styled.li`
