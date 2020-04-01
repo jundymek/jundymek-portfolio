@@ -11,6 +11,9 @@ const Section = styled.section`
   display: block;
   margin: 0 auto;
   max-width: 1440px;
+  @media (min-width: ${props => props.theme.desktop}) {
+    scroll-margin-top: 300px;
+  }
 `;
 
 const List = styled.ul`

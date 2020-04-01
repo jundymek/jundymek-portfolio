@@ -23,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     scroll-behavior: smooth;
   }
+  
 `;
 
 const AppWrapper = styled.div`
@@ -45,7 +46,7 @@ function App() {
     to: { opacity: prevLang !== language ? 0 : 1 },
     from: { opacity: 0 },
     config: { duration: 1000 },
-    reset: true,
+    reset: true
   });
 
   return (

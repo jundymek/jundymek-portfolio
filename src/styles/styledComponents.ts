@@ -20,6 +20,9 @@ export const WhiteDiv = styled.div`
   padding: 0 20px;
   margin: 0 auto;
   max-width: 1440px;
+  @media (min-width: ${props => props.theme.desktop}) {
+    scroll-margin-top: 300px;
+  }
 `;
 
 export const GreySection = styled.section`
@@ -31,4 +34,8 @@ export const GreySection = styled.section`
   align-items: center;
   margin-top: 83px;
   padding-bottom: 28px;
+  @media (min-width: ${props => props.theme.desktop}) {
+    scroll-margin-top: 300px;
+  }
+  
 `;
