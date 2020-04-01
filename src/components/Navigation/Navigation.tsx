@@ -207,7 +207,7 @@ function Navigation({ setLanguage }: Props) {
                 jundymek
               </NavLinkSpecial>
             ) : (
-              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} href="#">
+              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text="Home" href="#">
                 Home
               </NavLink>
             )}
