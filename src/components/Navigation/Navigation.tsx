@@ -5,13 +5,15 @@ import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
 import LangButtonsMobile from "./LangButtonsMobile";
 import { WhiteDiv } from "../../styles/styledComponents";
+import { useScrollYPosition } from "react-use-scroll-position";
 
 interface NavProps {
-  isVisible: boolean;
+  isVisible?: boolean;
+  isFixed?: boolean;
 }
 
 const Container = styled(WhiteDiv)<NavProps>`
-  padding: ${props => props.isVisible && "0"};
+  padding: ${props => (props.isVisible || props.isFixed) && "0"};
 `;
 
 const Nav = styled.nav<NavProps>`
@@ -26,14 +28,25 @@ const Nav = styled.nav<NavProps>`
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
   @media (min-width: ${props => props.theme.desktop}) {
     transform: none;
-    margin-top: 34px;
     display: block;
     width: 100%;
     height: auto;
+    z-index: 0;
+    ${props =>
+      props.isFixed &&
+      css`
+        position: fixed;
+        top: 0;
+        left: 0;
+        max-width: 100vw;
+        width: 100vw;
+        background: white;
+        z-index: 1;
+      `}
   }
 `;
 
-const NavUl = styled.ul`
+const NavUl = styled.ul<NavProps>`
   list-style-type: none;
   margin-left: 10%;
   margin-top: 10%;
@@ -58,11 +71,12 @@ const NavUl = styled.ul`
     padding: 0;
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: ${props => (props.isFixed ? "space-around" : "space-between")};
     padding-bottom: 22px;
     border-bottom: 1px solid ${props => props.theme.primaryGray};
+    margin-top: 50px;
   }
-  @media (orientation: landscape) {
+  @media (orientation: landscape, max-width: ${props => props.theme.desktop}) {
     margin-top: 6%;
   }
 `;
@@ -140,13 +154,27 @@ const NavLink = styled.a<NavProps>`
   }
 `;
 
+const NavLinkSpecial = styled.a`
+  text-decoration: underline;
+  display: inline-flex;
+  font-family: "Over the Rainbow", cursive;
+  font-size: 22px;
+  transition: 0.5s;
+  transform: rotate(-10deg);
+  padding-bottom: 10px;
+  height: 100%;
+  color: ${props => props.theme.primaryGray};
+`;
+
 export interface Props {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
 function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
   const width = useWindowSize().width;
+  const scrollY = useScrollYPosition();
 
   useEffect(() => {
     if (isHamburgerOpen) {
@@ -155,7 +183,9 @@ function Navigation({ setLanguage }: Props) {
       document.body.style.overflow = "unset";
     }
     width && width > 900 && setisHamburgerOpen(false);
-  }, [width, isHamburgerOpen]);
+    scrollY > 200 && setIsFixed(true);
+    scrollY <= 200 && setIsFixed(false);
+  }, [width, isHamburgerOpen, scrollY]);
 
   const {
     texts: { navigation }
@@ -166,10 +196,21 @@ function Navigation({ setLanguage }: Props) {
   };
 
   return (
-    <Container isVisible={isHamburgerOpen}>
+    <Container isVisible={isHamburgerOpen} isFixed={isFixed}>
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
-      <Nav isVisible={isHamburgerOpen}>
-        <NavUl>
+      <Nav isVisible={isHamburgerOpen} isFixed={isFixed}>
+        <NavUl isFixed={isFixed}>
+          <NavLi>
+            {isFixed ? (
+              <NavLinkSpecial onClick={handleClick} href="/">
+                jundymek
+              </NavLinkSpecial>
+            ) : (
+              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} href="/">
+                Home
+              </NavLink>
+            )}
+          </NavLi>
           {navigation.links.map((link, index) => (
             <NavLi key={index}>
               <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text={link.title} href={link.url}>

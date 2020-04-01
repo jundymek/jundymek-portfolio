@@ -26,7 +26,6 @@ export const translation = {
   PL: {
     navigation: {
       links: [
-        { url: "#", title: "Home" },
         { url: "#about", title: "O mnie" },
         { url: "#skills", title: "Umiejętności" },
         { url: "#portfolio", title: "Projekty" },
@@ -127,7 +126,6 @@ export const translation = {
   EN: {
     navigation: {
       links: [
-        { url: "#", title: "Home" },
         { url: "#about", title: "About me" },
         { url: "#skills", title: "Skills" },
         { url: "#portfolio", title: "Projects" },
