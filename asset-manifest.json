@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/jundymek-portfolio/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/jundymek-portfolio/static/js/main.33833124.chunk.js",
-    "main.js.map": "/jundymek-portfolio/static/js/main.33833124.chunk.js.map",
+    "main.js": "/jundymek-portfolio/static/js/main.99a1c06a.chunk.js",
+    "main.js.map": "/jundymek-portfolio/static/js/main.99a1c06a.chunk.js.map",
     "runtime-main.js": "/jundymek-portfolio/static/js/runtime-main.5ca070d0.js",
     "runtime-main.js.map": "/jundymek-portfolio/static/js/runtime-main.5ca070d0.js.map",
     "static/js/2.fe57acc0.chunk.js": "/jundymek-portfolio/static/js/2.fe57acc0.chunk.js",
     "static/js/2.fe57acc0.chunk.js.map": "/jundymek-portfolio/static/js/2.fe57acc0.chunk.js.map",
     "index.html": "/jundymek-portfolio/index.html",
-    "precache-manifest.a6de57bbdf1a9641beb737ceff3da176.js": "/jundymek-portfolio/precache-manifest.a6de57bbdf1a9641beb737ceff3da176.js",
+    "precache-manifest.49f2ae81d0d27c5d7fadc5fb22fbfdba.js": "/jundymek-portfolio/precache-manifest.49f2ae81d0d27c5d7fadc5fb22fbfdba.js",
     "service-worker.js": "/jundymek-portfolio/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/jundymek-portfolio/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.fe57acc0.chunk.js.LICENSE.txt": "/jundymek-portfolio/static/js/2.fe57acc0.chunk.js.LICENSE.txt",
@@ -37,6 +37,6 @@
     "static/js/runtime-main.5ca070d0.js",
     "static/js/2.fe57acc0.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.33833124.chunk.js"
+    "static/js/main.99a1c06a.chunk.js"
   ]
 }
