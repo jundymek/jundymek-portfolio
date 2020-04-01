@@ -6,6 +6,7 @@ import Hamburger from "../Hamburger/Hamburger";
 import LangButtonsMobile from "./LangButtonsMobile";
 import { WhiteDiv } from "../../styles/styledComponents";
 import { useScrollYPosition } from "react-use-scroll-position";
+import { flicker } from "./styles/animations";
 
 interface NavProps {
   isVisible?: boolean;
@@ -67,9 +68,10 @@ const NavUl = styled.ul<NavProps>`
     background: #fd79a8;
   }
   @media (min-width: ${props => props.theme.desktop}) {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: flex;
+    max-width: 1440px;
     width: 100%;
     justify-content: ${props => (props.isFixed ? "space-around" : "space-between")};
     padding-bottom: 22px;
@@ -159,11 +161,10 @@ const NavLinkSpecial = styled.a`
   display: inline-flex;
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
-  transition: 0.5s;
-  transform: rotate(-10deg);
   padding-bottom: 10px;
   height: 100%;
   color: ${props => props.theme.primaryGray};
+  animation: ${flicker} 1s linear both;
 `;
 
 export interface Props {
@@ -202,11 +203,11 @@ function Navigation({ setLanguage }: Props) {
         <NavUl isFixed={isFixed}>
           <NavLi>
             {isFixed ? (
-              <NavLinkSpecial onClick={handleClick} href="/">
+              <NavLinkSpecial onClick={handleClick} href="#">
                 jundymek
               </NavLinkSpecial>
             ) : (
-              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} href="/">
+              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} href="#">
                 Home
               </NavLink>
             )}
