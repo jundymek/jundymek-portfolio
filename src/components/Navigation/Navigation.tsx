@@ -197,7 +197,7 @@ function Navigation({ setLanguage }: Props) {
   };
 
   return (
-    <Container isVisible={isHamburgerOpen} isFixed={isFixed}>
+    <Container isVisible={isHamburgerOpen}>
       <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
       <Nav isVisible={isHamburgerOpen} isFixed={isFixed}>
         <NavUl isFixed={isFixed}>
