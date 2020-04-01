@@ -14,16 +14,19 @@ const HamburgerBtn = styled.button<NavProps>`
   z-index: 1;
   border: none;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   outline: ${props => props.isOpen && "none"};
+  @media (min-width: ${props => props.theme.desktop}) {
+    display: none;
+  }
 `;
 
 const HamburgerBars = styled.div<NavProps>`
   display: block;
-  @media (min-width: ${props => props.theme.desktop}) {
-    display: none;
-  }
-
   position: relative;
   width: 30px;
   height: 20px;
@@ -51,22 +54,20 @@ const HamburgerBars = styled.div<NavProps>`
       transform: translateX(0px);
       border: 0;
       &::before {
-        transform: rotate(-314deg) translateX(-4px) translateY(0px);
+        transform: rotate(-314deg) translateX(0px) translateY(0px);
       }
 
       &::after {
-        transform: rotate(-228deg) translateY(4px) translateX(0px);
+        transform: rotate(-228deg) translateY(0px) translateX(0px);
         border-color: ${props => props.theme.primaryBlack};
       }
     `}
 `;
 
 const Label = styled.span<NavProps>`
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  top: 12px;
-  right: ${props => (props.isOpen ? "4px" : "2px")};
+  margin-top: ${props => (props.isOpen ? "-4px" : "-8px")};
+  font-size: 10px;
+  color: ${props => props.theme.primaryGray};
 `;
 
 interface Props {
@@ -81,9 +82,8 @@ function Hamburger({ isOpen, setIsOpen }: Props) {
 
   return (
     <HamburgerBtn isOpen={isOpen} type="button" onClick={handleClick}>
-      <HamburgerBars isOpen={isOpen}>
-        <Label isOpen={isOpen}>Menu</Label>
-      </HamburgerBars>
+      <HamburgerBars isOpen={isOpen}></HamburgerBars>
+      <Label isOpen={isOpen}>Menu</Label>
     </HamburgerBtn>
   );
 }

@@ -55,7 +55,7 @@ const Image = styled.img`
 const SkillSubtitle = styled.p`
   font-size: 14px;
   font-style: italic;
-  color: darkslategray;
+  color: ${props => props.theme.primaryGray};
   max-width: 80%;
 `;
 
