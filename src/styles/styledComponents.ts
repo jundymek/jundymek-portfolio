@@ -8,6 +8,7 @@ export const SectionTitle = styled.h2`
   margin-bottom: 0;
   text-align: center;
   line-height: 41px;
+  min-height: 46px;
 `;
 
 export const SectionSubtitle = styled.p`
@@ -21,7 +22,7 @@ export const WhiteDiv = styled.div`
   margin: 0 auto;
   max-width: 1440px;
   @media (min-width: ${props => props.theme.desktop}) {
-    scroll-margin-top: 300px;
+    scroll-margin-top: 100px;
   }
 `;
 
@@ -35,7 +36,7 @@ export const GreySection = styled.section`
   margin-top: 83px;
   padding-bottom: 28px;
   @media (min-width: ${props => props.theme.desktop}) {
-    scroll-margin-top: 300px;
+    scroll-margin-top: 100px;
   }
   
 `;

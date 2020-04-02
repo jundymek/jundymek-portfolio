@@ -6,7 +6,6 @@ import Hamburger from "../Hamburger/Hamburger";
 import LangButtonsMobile from "./LangButtonsMobile";
 import { WhiteDiv } from "../../styles/styledComponents";
 import { useScrollYPosition } from "react-use-scroll-position";
-import { flicker } from "./styles/animations";
 
 interface NavProps {
   isVisible?: boolean;
@@ -163,13 +162,13 @@ const NavLink = styled.a<NavProps>`
 
 const NavLinkSpecial = styled.a<NavProps>`
   text-decoration: underline;
-  display: ${props => props.isFixed && !props.isOpen ? "inline-flex" : "none"};
+  display: ${props => (props.isFixed && !props.isOpen ? "inline-flex" : "none")};
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
   padding-bottom: 10px;
   color: #f0fff8;
+  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
   margin-left: ${props => props.isFixed && "30px"};
-  animation: ${flicker} 1s linear both;
   @media (min-width: ${props => props.theme.desktop}) {
     display: inline-flex;
     color: ${props => props.theme.primaryDark};
@@ -187,11 +186,13 @@ const HamburgerWrapper = styled.div<NavProps>`
   position: ${props => props.isFixed && "fixed"};
   top: 0;
   left: 0;
-  background: ${props => (props.isFixed && !props.isOpen && "black")};
+  background: ${props => props.isFixed && !props.isOpen && props.theme.primaryDark};
   opacity: ${props => (props.isFixed && !props.isOpen ? ".9" : "1")};
+  transition: opacity 1s ease;
   @media (min-width: ${props => props.theme.desktop}) {
     background: white;
     display: none;
+    opacity: 1;
   }
 `;
 
@@ -202,9 +203,10 @@ export interface Props {
 function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
-  const [isMobile, setIsMobile] = useState(false)
-  const width = useWindowSize().width;
+  const [isMobile, setIsMobile] = useState(false);
   const scrollY = useScrollYPosition();
+  const [lastY, setLastY] = useState(scrollY);
+  const width = useWindowSize().width;
 
   useEffect(() => {
     if (isHamburgerOpen) {
@@ -212,11 +214,18 @@ function Navigation({ setLanguage }: Props) {
     } else {
       document.body.style.overflow = "unset";
     }
-    width && width > 900 && setisHamburgerOpen(false);
-    width && width < 900 && setIsMobile(true)
-    scrollY > 200 && setIsFixed(true);
+    width && width > 900 && setisHamburgerOpen(false); setIsMobile(false);
+    width && width < 900 && setIsMobile(true);
+
     scrollY <= 200 && setIsFixed(false);
-  }, [width, isHamburgerOpen, scrollY]);
+    if (isMobile) {
+      scrollY > 200 && scrollY < lastY - 40 && setIsFixed(true);
+      scrollY > 200 && scrollY > lastY && setIsFixed(false);
+    } else {
+      scrollY > 200 && setIsFixed(true);
+    }
+    setLastY(scrollY);
+  }, [width, isHamburgerOpen, scrollY, lastY, isMobile]);
 
   const {
     texts: { navigation }

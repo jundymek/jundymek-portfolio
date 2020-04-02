@@ -34,6 +34,7 @@ const Wrapper = styled.section`
   position: relative;
   @media (min-width: ${props => props.theme.desktop}) {
     width: 80%;
+    min-height: 560px;
   }
 `;
 

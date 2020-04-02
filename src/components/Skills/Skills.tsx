@@ -12,7 +12,7 @@ const Section = styled.section`
   margin: 0 auto;
   max-width: 1440px;
   @media (min-width: ${props => props.theme.desktop}) {
-    scroll-margin-top: 300px;
+    scroll-margin-top: 100px;
   }
 `;
 
@@ -86,7 +86,7 @@ const TooltipItem = styled.li`
 
 function Skills() {
   const ref = useRef(null);
-  useOnScreen(ref, "0%");
+  useOnScreen(ref, "100%");
   const {
     texts: { skills }
   } = useContext(LanguageContext);

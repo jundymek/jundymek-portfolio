@@ -8,6 +8,9 @@ import { Scrambler } from "react-text-scrambler";
 
 const AboutSection = styled(GreySection)`
   margin-top: 44px;
+  @media (min-width: ${props => props.theme.desktop}) {
+    min-height: 460px;
+  }
 `;
 
 const Wrapper = styled(animated.div)`

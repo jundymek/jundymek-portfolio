@@ -3,11 +3,11 @@ import styled, { css } from "styled-components";
 
 interface NavProps {
   isOpen: boolean;
-  isFixed?: boolean;
+  isFixed: boolean;
 }
 
 const HamburgerBtn = styled.button<NavProps>`
-  position: ${props => props.isFixed && !props.isOpen ? "static" : "absolute"};
+  position: ${props => (props.isFixed && !props.isOpen ? "static" : "absolute")};
   margin: 0;
   padding: 10px 0 0 0;
   width: 44px;
@@ -16,7 +16,7 @@ const HamburgerBtn = styled.button<NavProps>`
   top: 40px;
   z-index: 2;
   border: none;
-  margin-right: ${props => props.isFixed ? "30px" : "0"};
+  margin-right: ${props => (props.isFixed && !props.isOpen ? "30px" : "0")};
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -66,12 +66,6 @@ const HamburgerBars = styled.div<NavProps>`
         border-color: ${props => props.theme.primaryBlack};
       }
     `}
-`;
-
-const Label = styled.span<NavProps>`
-  margin-top: ${props => (props.isOpen ? "-4px" : "-8px")};
-  font-size: 10px;
-  color: ${props => props.theme.primaryGray};
 `;
 
 interface Props {
