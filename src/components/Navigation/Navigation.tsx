@@ -11,6 +11,8 @@ import { flicker } from "./styles/animations";
 interface NavProps {
   isVisible?: boolean;
   isFixed?: boolean;
+  isOpen?: boolean;
+  isMobile?: boolean;
 }
 
 const Container = styled(WhiteDiv)<NavProps>`
@@ -56,7 +58,7 @@ const Nav = styled.nav<NavProps>`
 const NavUl = styled.ul<NavProps>`
   list-style-type: none;
   margin-left: 10%;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   padding: 0;
   & li:nth-child(5n + 1) a:before {
     background: #81ecec;
@@ -82,10 +84,7 @@ const NavUl = styled.ul<NavProps>`
     justify-content: ${props => (props.isFixed ? "space-around" : "space-between")};
     padding-bottom: 22px;
     border-bottom: 1px solid ${props => props.theme.primaryGray};
-    margin-top: 50px;
-  }
-  @media (orientation: landscape, max-width: ${props => props.theme.desktop}) {
-    margin-top: 6%;
+    margin-top: 38px;
   }
 `;
 
@@ -162,15 +161,38 @@ const NavLink = styled.a<NavProps>`
   }
 `;
 
-const NavLinkSpecial = styled.a`
+const NavLinkSpecial = styled.a<NavProps>`
   text-decoration: underline;
-  display: inline-flex;
+  display: ${props => props.isFixed && !props.isOpen ? "inline-flex" : "none"};
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
   padding-bottom: 10px;
-  height: 100%;
-  color: ${props => props.theme.primaryGray};
+  color: #f0fff8;
+  margin-left: ${props => props.isFixed && "30px"};
   animation: ${flicker} 1s linear both;
+  @media (min-width: ${props => props.theme.desktop}) {
+    display: inline-flex;
+    color: ${props => props.theme.primaryDark};
+  }
+`;
+
+const HamburgerWrapper = styled.div<NavProps>`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  height: ${props => props.isFixed && "70px"};
+  margin: 0 auto;
+  position: ${props => props.isFixed && "fixed"};
+  top: 0;
+  left: 0;
+  background: ${props => (props.isFixed && !props.isOpen && "black")};
+  opacity: ${props => (props.isFixed && !props.isOpen ? ".9" : "1")};
+  @media (min-width: ${props => props.theme.desktop}) {
+    background: white;
+    display: none;
+  }
 `;
 
 export interface Props {
@@ -180,6 +202,7 @@ export interface Props {
 function Navigation({ setLanguage }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
   const width = useWindowSize().width;
   const scrollY = useScrollYPosition();
 
@@ -190,6 +213,7 @@ function Navigation({ setLanguage }: Props) {
       document.body.style.overflow = "unset";
     }
     width && width > 900 && setisHamburgerOpen(false);
+    width && width < 900 && setIsMobile(true)
     scrollY > 200 && setIsFixed(true);
     scrollY <= 200 && setIsFixed(false);
   }, [width, isHamburgerOpen, scrollY]);
@@ -204,14 +228,17 @@ function Navigation({ setLanguage }: Props) {
 
   return (
     <Container isVisible={isHamburgerOpen}>
-      <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} />
+      <HamburgerWrapper isFixed={isFixed} isOpen={isHamburgerOpen} isMobile={isMobile}>
+        <NavLinkSpecial isFixed={isFixed} isOpen={isHamburgerOpen} isMobile={isMobile} href="#">
+          jundymek
+        </NavLinkSpecial>
+        <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} isFixed={isFixed} />
+      </HamburgerWrapper>
       <Nav isVisible={isHamburgerOpen} isFixed={isFixed}>
         <NavUl isFixed={isFixed}>
           <NavLi>
-            {isFixed ? (
-              <NavLinkSpecial onClick={handleClick} href="#">
-                jundymek
-              </NavLinkSpecial>
+            {isFixed && !isHamburgerOpen ? (
+              <NavLinkSpecial href="#">jundymek</NavLinkSpecial>
             ) : (
               <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text="Home" href="#">
                 Home

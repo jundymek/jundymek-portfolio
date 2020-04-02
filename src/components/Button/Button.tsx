@@ -12,7 +12,7 @@ export const Button = styled.button`
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  z-index: 1;
+  z-index: 0;
   &::after {
     content: "";
     position: absolute;
