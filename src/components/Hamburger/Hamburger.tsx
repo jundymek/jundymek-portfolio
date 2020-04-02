@@ -59,11 +59,14 @@ const HamburgerBars = styled.div<NavProps>`
       border: 0;
       &::before {
         transform: rotate(-314deg) translateX(0px) translateY(0px);
+        border-color: #f0fff8;
+        box-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
       }
 
       &::after {
         transform: rotate(-228deg) translateY(0px) translateX(0px);
-        border-color: ${props => props.theme.primaryBlack};
+        border-color: #f0fff8;
+        box-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
       }
     `}
 `;

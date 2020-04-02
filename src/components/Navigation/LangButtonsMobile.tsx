@@ -8,6 +8,7 @@ const LangContainer = styled.div`
   position: absolute;
   right: -14px;
   bottom: 70px;
+  color: #f0fff8;
   transform: rotate(90deg);
   font-size: 24px;
   line-height: 2;
@@ -26,7 +27,9 @@ const LangButton = styled.button<Lang>`
   padding: 0;
   cursor: pointer;
   font-size: 24px;
-  color: ${props => !props.isActive && props.theme.primaryGray};
+  color: ${props => props.isActive && "#f0fff8"};
+  color: #f0fff8;
+  text-shadow: ${props => props.isActive && "0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66"};
   text-decoration: none;
   background: none;
   border: none;

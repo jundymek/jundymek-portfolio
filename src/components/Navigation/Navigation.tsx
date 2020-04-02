@@ -29,11 +29,12 @@ const Nav = styled.nav<NavProps>`
   top: 0;
   left: 0;
   max-width: 1440px;
-  transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
+  transition: ${props => (props.isVisible ? "transform 0.4s ease-out" : "None")};
   position: fixed;
-  background: white;
+  background: rgba(0, 0, 0, 0.97);
   z-index: 1;
   @media (min-width: ${props => props.theme.desktop}) {
+    background: white;
     position: unset;
     transform: none;
     display: block;
@@ -60,19 +61,20 @@ const NavUl = styled.ul<NavProps>`
   /* margin-top: 10%; */
   padding: 0;
   & li:nth-child(5n + 1) a:before {
-    background: #81ecec;
+    background: #5b5b5b;
+    color: white;
   }
   & li:nth-child(5n + 2) a:before {
-    background: #ff7675;
+    background: #191987;
   }
   & li:nth-child(5n + 3) a:before {
-    background: #55efc4;
+    background: #0b0707;
   }
   & li:nth-child(5n + 4) a:before {
-    background: #a29bfe;
+    background: #071407;
   }
   & li:nth-child(5n + 5) a:before {
-    background: #fd79a8;
+    background: #2b2008;
   }
   @media (min-width: ${props => props.theme.desktop}) {
     margin: 0 auto;
@@ -110,12 +112,14 @@ const NavLi = styled.li`
 const NavLink = styled.a<NavProps>`
   text-decoration: none;
   display: inline-flex;
-  font-weight: 700;
-  transition: 0.5s;
   height: 100%;
-  color: ${props => props.theme.primaryGray};
+  color: #f0fff8;
+  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+  @media (min-width: ${props => props.theme.desktop}) {
+    color: ${props => props.theme.primaryGray};
+    text-shadow: unset;
+  }
   &:hover {
-    background: rgba(255, 255, 255, 1);
     color: ${props => props.theme.primaryDark};
     ${props =>
       props.isVisible &&
@@ -127,6 +131,8 @@ const NavLink = styled.a<NavProps>`
           letter-spacing: 5px;
           width: 100%;
           height: 100%;
+          color: #f0fff8;
+          text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
           @media (orientation: landscape) {
             letter-spacing: 50px;
           }
@@ -177,7 +183,7 @@ const NavLinkSpecial = styled.a<NavProps>`
 
 const HamburgerWrapper = styled.div<NavProps>`
   display: flex;
-  width: 100%;
+  width: ${props => (props.isOpen ? "20%" : "100%")};
   justify-content: space-between;
   align-items: center;
   z-index: 2;
@@ -185,7 +191,7 @@ const HamburgerWrapper = styled.div<NavProps>`
   margin: 0 auto;
   position: ${props => props.isFixed && "fixed"};
   top: 0;
-  left: 0;
+  right: 0;
   background: ${props => props.isFixed && !props.isOpen && props.theme.primaryDark};
   opacity: ${props => (props.isFixed && !props.isOpen ? ".9" : "1")};
   transition: opacity 1s ease;
@@ -214,13 +220,14 @@ function Navigation({ setLanguage }: Props) {
     } else {
       document.body.style.overflow = "unset";
     }
-    width && width > 900 && setisHamburgerOpen(false); setIsMobile(false);
+    width && width > 900 && setisHamburgerOpen(false);
+    setIsMobile(false);
     width && width < 900 && setIsMobile(true);
 
     scrollY <= 200 && setIsFixed(false);
     if (isMobile) {
       scrollY > 200 && scrollY < lastY - 40 && setIsFixed(true);
-      scrollY > 200 && scrollY > lastY && setIsFixed(false);
+      scrollY > 200 && scrollY > lastY + 40 && setIsFixed(false);
     } else {
       scrollY > 200 && setIsFixed(true);
     }
