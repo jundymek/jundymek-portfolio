@@ -23,11 +23,17 @@ const Nav = styled.nav<NavProps>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: ${props => (props.isVisible ? "100vh" : "0")};
+  height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
   max-width: 1440px;
   transition: ${props => (props.isVisible ? "transform 0.2s ease-out" : "None")};
+  position: fixed;
+  background: white;
+  z-index: 1;
   @media (min-width: ${props => props.theme.desktop}) {
+    position: unset;
     transform: none;
     display: block;
     width: 100%;
