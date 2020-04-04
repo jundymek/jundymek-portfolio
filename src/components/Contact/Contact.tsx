@@ -24,7 +24,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 `;
 
 const Paragraph = styled.p<Length>`
@@ -86,9 +85,7 @@ function Contact() {
           <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" renderIn={1000} />
         </SectionTitle>
         <Paragraph length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
-        <a href={`mailto:sss`}>
-          <Button>{contact.buttonLabel}</Button>
-        </a>
+        <Button href={`mailto:lukasz@gdzietylkochce.com`}>{contact.buttonLabel}</Button>
         <List>
           {contact.social.map((icon, index) => (
             <li key={index}>

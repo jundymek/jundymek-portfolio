@@ -46,6 +46,7 @@ const Title = styled.h3`
 const Subtitle = styled(SectionSubtitle)`
   font-size: 18px;
   text-align: center;
+  padding: 0 10px;
   color: ${props => props.theme.primaryDark};
 `;
 

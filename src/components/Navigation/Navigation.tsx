@@ -223,7 +223,7 @@ function Navigation({ setLanguage }: Props) {
 
     scrollY <= 200 && setIsFixed(false);
     if (isMobile) {
-      scrollY > 200 && scrollY < lastY - 40 && setIsFixed(true);
+      scrollY > 200 && scrollY < lastY - 20 && setIsFixed(true);
       scrollY > 200 && scrollY > lastY + 40 && setIsFixed(false);
     } else {
       scrollY > 200 && setIsFixed(true);

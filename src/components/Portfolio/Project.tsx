@@ -174,8 +174,8 @@ function Project({ project }: ProjectProps) {
             ))}
         </List>
         <ButtonWrapper>
-          <Button>Github</Button>
-          <Button>Live</Button>
+          <Button href={project.githubUrl}>Github</Button>
+          <Button href={project.liveUrl}>Live</Button>
         </ButtonWrapper>
       </Content>
     </Box>

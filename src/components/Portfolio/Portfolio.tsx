@@ -28,6 +28,8 @@ export interface Project {
   title: string;
   text: string;
   tech?: string[];
+  githubUrl: string;
+  liveUrl: string;
 }
 export interface ProjectProps {
   project: Project;

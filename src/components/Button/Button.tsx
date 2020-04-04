@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.a`
+  display: inline-block;
   background-color: ${props => props.theme.primaryDark};
   min-width: 100px;
-  height: 42px;
+  text-align: center;
   color: #fff;
-  font-size: 16px;
+  padding: 10px 5px;
+  font-size: 20px;
   margin: 0 20px;
   border: 2px solid black;
+  text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
@@ -48,4 +51,3 @@ export const Button = styled.button`
     width: 178px;
   }
 `;
-

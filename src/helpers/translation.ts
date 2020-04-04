@@ -57,7 +57,10 @@ export const translation = {
           alt: "Free proxy",
           title: "Free proxy",
           text: "Moja pierwsza biblioteka umieszczona na PyPI. Jest to prosty skrypt scrapujący stronę https://www.sslproxies.org/ i pobiearający z niej proxy do dalszego wykorzystania. Program sprawdza na bieżąco czy proxy działają i zwraca proxy, które można w danej chwili wykorzystać. Zwraca proxy w formie stringa. Biblioteka została napisana w trakcie pisania pewnego bota, do którego potrzebowałem proxy. Jako, że nie mogłem znaleźć nic działającego z biblioteką selenium postanowiłem sam napisać coś odpowiedniego. Tak powstało free-proxy.",
-          tech: ["Python", "Requests library"]
+          tech: ["Python", "Requests library"],
+          githubUrl: "https://github.com/jundymek/free-proxy",
+          liveUrl: "https://pypi.org/project/free-proxy/"
+
         },
         {
           img: `${project2Image}`,
@@ -65,14 +68,18 @@ export const translation = {
           title: "Netkat - katalog stron",
           text:
             "Mój pierwszy większy projekt programistyczny. Napisany w Pythonie/Django działający katalog stron internetowych. Kiedyś zajmowałem się SEO i stwierdziłem, że jak mam się uczyć django to warto napisać cokolwiek sensownego zamiast setnego tutoriala todo. Tak powstał pisany nocami netkat - wyniośle nazwałem go “skrypt katalogu stron internetowych”, ale jestem mega dumny z tego projektu. ",
-          tech: ["Python", "Django", "PostgreSQL"]
+          tech: ["Python", "Django", "PostgreSQL"],
+          githubUrl: "https://github.com/jundymek/netkat",
+          liveUrl: "https://www.netkat.pl"
         },
         {
           img: `${project3Image}`,
           alt: "Pan Kanapka",
           title: "Pan Kanapka",
           text: "Prosta aplikacja napisana w ramach nauki przypomnienia Django. Znajomy rzucił pomysł i tak wpadłem w sidła Pana Kanapki…:) Aplikacja to taki łącznik pomiędzy Panem Kanapką i jego klientami. Pan Kanapka dodaje do bazy lokalizacje, gdzie rozwozi kanapki, natomiast klient może się zapisać na powiadomienia push, informujące, że niedługo zjawi się jedzenie. ",
-          tech: ["Python", "Django", "Django Rest Framework", "Leaflet", "PostgreSql", "django-rest-auth", "django-push-notifications", "google places api"]
+          tech: ["Python", "Django", "Django Rest Framework", "Leaflet", "PostgreSql", "django-rest-auth", "django-push-notifications", "google places api"],
+          githubUrl: "https://github.com/jundymek/pan-kanapka-front",
+          liveUrl: "https://pan-kanapka-front.herokuapp.com"
         }
       ]
     },
@@ -82,7 +89,7 @@ export const translation = {
       title: "Projekty na GitHub",
       subtitle: "Posortowane według technologii (skategoryzowane przez GitHuba)"
     },
-    repositoriesCounter: 
+    repositoriesCounter:
     {
       subtitle: "Wszystkie repozytoria",
     },
@@ -157,21 +164,28 @@ export const translation = {
           alt: "Free proxy",
           title: "Free proxy",
           text: "My first python library placed on PyPI. It is a simple script which scrapes https://www.sslproxies.org/  site for proxy for further use. Program checks on the fly whether the proxy is working and gives the first working proxy. It returns proxy as a string. The library was written when I was writing a bot in python. I needed proxy and because I couldn’t find anything working with selenium library I decided to create something from scratch.",
-          tech: ["Python", "Requests Library"]
+          tech: ["Python", "Requests Library"],
+          githubUrl: "https://github.com/jundymek/free-proxy",
+          liveUrl: "https://pypi.org/project/free-proxy/"
+
         },
         {
           img: `${project2Image}`,
           alt: "Netkat",
           title: "Netkat - site dictionary",
           text: "My first big programming project. Written in Python/Django, working site dictionary. I used to make some SEO in the past and decided to write something related. I didn’t want to reproduce another todo app. And here it is - NETKAT - “site dictionary script”. I am proud of it.",
-          tech: ["Python", "Django", "PostgreSQL"]
+          tech: ["Python", "Django", "PostgreSQL"],
+          githubUrl: "https://github.com/jundymek/netkat",
+          liveUrl: "https://www.netkat.pl"
         },
         {
           img: `${project3Image}`,
           alt: "Pan Kanapka",
           title: "Pan Kanapka",
           text: "A simple application written to remind me Python and Django. My friend gave me an idea and I fell into a Pan Kanapka trap. The app is a connection between Mr. Sandwitch and his customers. Mr. Sandwitch adds to the database new places where he delivers his sandwiches. Customers can sign up for push notifications informing that food will be there in a short time.",
-          tech: ["Python", "Django", "Django Rest Framework", "Leaflet", "PostgreSql", "django-rest-auth", "django-push-notifications", "google places api"]
+          tech: ["Python", "Django", "Django Rest Framework", "Leaflet", "PostgreSql", "django-rest-auth", "django-push-notifications", "google places api"],
+          githubUrl: "https://github.com/jundymek/pan-kanapka-front",
+          liveUrl: "https://pan-kanapka-front.herokuapp.com"
         }
       ]
     },
@@ -180,7 +194,7 @@ export const translation = {
       title: "GitHub repositories",
       subtitle: "Sorted by technology (categorized by GitHub)"
     },
-    repositoriesCounter: 
+    repositoriesCounter:
     {
       subtitle: "All repos",
     },

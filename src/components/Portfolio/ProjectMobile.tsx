@@ -216,8 +216,6 @@ const BackButton = styled(Button)`
 function ProjectMobile({ project }: ProjectProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  console.log(isFlipped);
-
   const handleFlip = () => {
     console.log("Flipped");
     setIsFlipped(prevState => !prevState);
