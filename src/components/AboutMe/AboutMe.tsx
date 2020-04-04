@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import styled from "styled-components";
-import { SectionTitle, GreySection } from "../../styles/styledComponents";
+import { SectionTitle, GreySection, TerminalLookMixin } from "../../styles/styledComponents";
 import { useSpring, animated } from "react-spring";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
@@ -33,8 +33,7 @@ const Code = styled.code`
   font-size: 14px;
   margin: 0 10px;
   background-color: black;
-  color: #f0fff8;
-  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+  ${TerminalLookMixin}
 `;
 
 function AboutMe() {

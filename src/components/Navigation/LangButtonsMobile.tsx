@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { LanguageContext } from "../../App";
 import { Props } from "./Navigation";
+import { TerminalLookMixin } from "../../styles/styledComponents";
 
 const LangContainer = styled.div`
   display: none;
@@ -29,10 +30,14 @@ const LangButton = styled.button<Lang>`
   font-size: 24px;
   color: ${props => props.isActive && "#f0fff8"};
   color: #f0fff8;
-  text-shadow: ${props => props.isActive && "0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66"};
   text-decoration: none;
   background: none;
   border: none;
+  ${props =>
+    props.isActive &&
+    css`
+      ${TerminalLookMixin}
+    `}
 `;
 
 function LangButtonsMobile({ setLanguage }: Props) {

@@ -4,7 +4,7 @@ import { LanguageContext } from "../../App";
 import useWindowSize from "../../customHooks/useWindowSize";
 import Hamburger from "../Hamburger/Hamburger";
 import LangButtonsMobile from "./LangButtonsMobile";
-import { WhiteDiv } from "../../styles/styledComponents";
+import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents";
 import { useScrollYPosition } from "react-use-scroll-position";
 
 interface NavProps {
@@ -31,7 +31,7 @@ const Nav = styled.nav<NavProps>`
   max-width: 1440px;
   transition: ${props => (props.isVisible ? "transform 0.4s ease-out" : "None")};
   position: fixed;
-  background: rgba(0, 0, 0, 0.97);
+  background: rgba(0, 0, 0, 0.94);
   z-index: 1;
   @media (min-width: ${props => props.theme.desktop}) {
     background: white;
@@ -113,8 +113,7 @@ const NavLink = styled.a<NavProps>`
   text-decoration: none;
   display: inline-flex;
   height: 100%;
-  color: #f0fff8;
-  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+  ${TerminalLookMixin};
   @media (min-width: ${props => props.theme.desktop}) {
     color: ${props => props.theme.primaryGray};
     text-shadow: unset;
@@ -131,8 +130,7 @@ const NavLink = styled.a<NavProps>`
           letter-spacing: 5px;
           width: 100%;
           height: 100%;
-          color: #f0fff8;
-          text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+          ${TerminalLookMixin};
           @media (orientation: landscape) {
             letter-spacing: 50px;
           }
@@ -172,8 +170,7 @@ const NavLinkSpecial = styled.a<NavProps>`
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
   padding-bottom: 10px;
-  color: #f0fff8;
-  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+  ${TerminalLookMixin};
   margin-left: ${props => props.isFixed && "30px"};
   @media (min-width: ${props => props.theme.desktop}) {
     display: inline-flex;
@@ -193,8 +190,8 @@ const HamburgerWrapper = styled.div<NavProps>`
   top: 0;
   right: 0;
   background: ${props => props.isFixed && !props.isOpen && props.theme.primaryDark};
-  opacity: ${props => (props.isFixed && !props.isOpen ? ".9" : "1")};
-  transition: opacity 1s ease;
+  opacity: ${props => (props.isFixed && !props.isOpen ? ".98" : "1")};
+  transition: 1s ease;
   @media (min-width: ${props => props.theme.desktop}) {
     background: white;
     display: none;

@@ -182,13 +182,9 @@ const BarWrapper = styled.div`
   align-items: center;
 `;
 
-
-
 type Width = {
   width: number | undefined;
 };
-
-
 
 function Repositories() {
   const [reposByTechnology, setreposByTechnology] = useState<TechnologyObject[]>();

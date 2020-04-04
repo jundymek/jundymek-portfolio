@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const SectionTitle = styled.h2`
   padding: 0;
@@ -38,5 +38,14 @@ export const GreySection = styled.section`
   @media (min-width: ${props => props.theme.desktop}) {
     scroll-margin-top: 100px;
   }
-  
+`;
+
+export const TerminalLookMixin = css`
+  color: #f0fff8;
+  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+`;
+
+export const HamburgerMixin = css`
+  border-color: #f0fff8;
+  box-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
 `;

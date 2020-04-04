@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { LanguageContext } from "../../App";
 import useOnScreen from "../../customHooks/useOnScreen";
 import HeroImage from "./HeroImage";
-import { WhiteDiv } from "../../styles/styledComponents";
+import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents";
 import { Scrambler, Cycler } from "react-text-scrambler";
 
 const StyledHeader = styled.header`
@@ -105,8 +105,7 @@ const CyclerWrapper = styled.div`
   align-items: center;
   background-color: black;
   text-align: center;
-  color: #f0fff8;
-  text-shadow: 0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;
+  ${TerminalLookMixin};
   @media (min-width: ${props => props.theme.desktop}) {
     font-size: 24px;
   }
