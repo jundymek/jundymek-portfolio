@@ -148,7 +148,7 @@ export const translation = {
     aboutMe:
     {
       title: "About me",
-      paragraph1part1: "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in the future… developer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote",
+      paragraph1part1: "Hi - my name is Łukasz. Currently a Cop👮🏻‍♂️, in the future… programmer. For the last couple of years, I spend my all free time coding. My programming adventure started when I first wrote",
       paragraph1code: "print 'Hello World'",
       paragraph1part2: "in Python (yes - Python 2). Currently, I dove into the frontend. Nowadays I spend time mostly writing React code.",
       paragraph2: "I am not declaring myself on any side. I like frontend and backend the same. Most important is real fun when writing code. I dream about work as a programmer full time.",
