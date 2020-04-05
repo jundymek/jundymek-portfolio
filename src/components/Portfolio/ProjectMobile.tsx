@@ -33,8 +33,8 @@ const Back = styled.div<Props>`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  height: 485px;
+  height: max-content;
+  min-height: 485px;
   background: linear-gradient(
       216deg,
       rgba(77, 77, 77, 0.05) 0%,
@@ -87,6 +87,9 @@ const Back = styled.div<Props>`
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 const Container = styled.div`
@@ -95,7 +98,6 @@ const Container = styled.div`
   align-items: center;
   width: 90%;
   perspective: 1000px;
-  height: 485px;
   margin-bottom: 20px;
   transform-style: preserve-3d;
 `;
@@ -105,6 +107,7 @@ const Text = styled.p`
   line-height: 22px;
   text-align: justify;
   color: white;
+  margin: 0;
 `;
 
 const Title = styled.h2`
@@ -122,7 +125,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-bottom: 10px;
+  padding: 10px 0;
 `;
 
 const Content = styled.div`

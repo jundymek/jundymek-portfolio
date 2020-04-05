@@ -197,11 +197,13 @@ function Repositories() {
   const onScreen = useOnScreen(ref, "50%");
 
   useEffect(() => {
-    fetchRepositiories().then(res => {
-      const reposNumber = getNumberOfReposInEachTechnology(res.data);
-      setreposByTechnology(reposNumber);
-      setNumberOfAllRepos(res.data.length);
-    });
+    fetchRepositiories()
+      .then(res => {
+        const reposNumber = getNumberOfReposInEachTechnology(res.data);
+        setreposByTechnology(reposNumber);
+        setNumberOfAllRepos(res.data.length);
+      })
+      .catch(e => console.warn(e));
   }, []);
 
   interface Images {
