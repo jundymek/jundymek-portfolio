@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const Paragraph = styled.p<Length>`
@@ -59,9 +60,10 @@ const HandWrite = styled.p`
   font-family: "Over the Rainbow", cursive;
   font-weight: bold;
   text-decoration: underline;
+  margin: 0;
   @media (min-width: ${props => props.theme.desktop}) {
     position: absolute;
-    right: -150px;
+    right: -100px;
     font-size: 30px;
     transform: rotate(-70deg);
   }
