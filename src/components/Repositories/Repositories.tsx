@@ -13,6 +13,7 @@ import otherImage from "../../images/skills-icons/other-icon.svg";
 import useOnScreen from "../../customHooks/useOnScreen";
 import { SectionSubtitle } from "../../styles/styledComponents";
 import RepositoriesCounter from "./RepositioriesCounter";
+import Loader from "../Loader/Loader";
 
 const progress = keyframes`
   from {
@@ -87,8 +88,6 @@ const Technology = styled.span<Width>`
   text-align: center;
   padding: 6px;
   border-radius: 2px;
-  -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
-  -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   background: linear-gradient(
       216deg,
@@ -190,6 +189,7 @@ type Width = {
 function Repositories() {
   const [reposByTechnology, setreposByTechnology] = useState<TechnologyObject[]>();
   const [numberOfAllRepos, setNumberOfAllRepos] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const {
     texts: { repositories }
   } = useContext(LanguageContext);
@@ -202,8 +202,12 @@ function Repositories() {
         const reposNumber = getNumberOfReposInEachTechnology(res.data);
         setreposByTechnology(reposNumber);
         setNumberOfAllRepos(res.data.length);
+        setIsLoading(false);
       })
-      .catch(e => console.warn(e));
+      .catch(e => {
+        console.warn(e);
+        setIsLoading(false);
+      });
   }, []);
 
   interface Images {
@@ -224,7 +228,7 @@ function Repositories() {
     <Wrapper ref={ref}>
       <Title>{repositories.title}</Title>
       <Subtitle>{repositories.subtitle}</Subtitle>
-      {onScreen && (
+      {onScreen && !isLoading ? (
         <>
           <List>
             {reposByTechnology &&
@@ -244,6 +248,8 @@ function Repositories() {
           </List>
           <RepositoriesCounter count={numberOfAllRepos} />
         </>
+      ) : (
+        <Loader />
       )}
     </Wrapper>
   );

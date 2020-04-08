@@ -1,6 +1,8 @@
 import React from "react";
 import { render, waitFor, act, screen } from "@testing-library/react";
 import Header from "./Header";
+import { LanguageContext } from "../../App";
+import { translation } from "../../helpers/translation";
 
 export function setupIntersectionObserverMock({ observe = () => null, unobserve = () => null } = {}) {
   class IntersectionObserver {
@@ -35,5 +37,27 @@ describe("Header component", () => {
       render(<Header />);
     });
     await waitFor(() => expect(screen.getByTestId("title")).toHaveTextContent("Łukasz Dymek"), { timeout: 5000 });
+  });
+  it("header PL version", () => {
+    const lang = { language: "PL", texts: translation["PL"] };
+    act(() => {
+      render(
+        <LanguageContext.Provider value={lang}>
+          <Header />
+        </LanguageContext.Provider>
+      );
+    });
+    expect(screen.getByTestId("title")).toHaveTextContent("programista");
+  });
+  it("header EN version", () => {
+    const lang = { language: "EN", texts: translation["EN"] };
+    act(() => {
+      render(
+        <LanguageContext.Provider value={lang}>
+          <Header />
+        </LanguageContext.Provider>
+      );
+    });
+    expect(screen.getByTestId("title")).toHaveTextContent("programmer");
   });
 });
