@@ -11,7 +11,7 @@ import typescriptImage from "../../images/skills-icons/typescript-icon.svg";
 import htmlImage from "../../images/skills-icons/html5-icon.svg";
 import otherImage from "../../images/skills-icons/other-icon.svg";
 import useOnScreen from "../../customHooks/useOnScreen";
-import { SectionSubtitle, BackgroundMixin } from "../../styles/styledComponents";
+import { SectionSubtitle, BackgroundMixin, TerminalLookMixin } from "../../styles/styledComponents";
 import RepositoriesCounter from "./RepositioriesCounter";
 import Loader from "../Loader/Loader";
 
@@ -98,33 +98,23 @@ const TechImage = styled.img`
   width: 30px;
   height: 30px;
   margin: 0 10px;
-  filter: grayscale(80%);
+  filter: grayscale(20%);
   transition: filter 1s ease;
   :hover {
     filter: none;
   }
 `;
 
-const RepoNumber = styled.div`
+const RepoNumber = styled.span`
   position: absolute;
-  right: -8px;
-  width: 60px;
-  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-  height: calc(100% + 12px);
-  color: white;
-  background: ${props => props.theme.primaryGray};
-  display: flex;
-  font-size: 30px;
-  padding-right: 5px;
-  justify-content: flex-end;
-  align-items: flex-end;
-  @media (min-width: ${props => props.theme.desktop}) {
-    right: -11px;
-    height: calc(100% + 20px);
-  }
+  right: 10px;
+  ${TerminalLookMixin};
+  font-size: 40px;
 `;
+
 const RepoName = styled.span`
   display: none;
+  font-size: 25px;
   @media (min-width: ${props => props.theme.desktop}) {
     display: block;
   }
