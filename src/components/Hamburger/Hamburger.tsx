@@ -14,10 +14,10 @@ const HamburgerBtn = styled.button<NavProps>`
   width: 44px;
   height: 50px;
   right: 14px;
-  top: 40px;
+  top: 10px;
   z-index: 2;
   border: none;
-  margin-right: ${props => (props.isFixed && !props.isOpen ? "30px" : "0")};
+  margin-right: ${props => (props.isFixed && !props.isOpen ? "10px" : "0")};
   background: transparent;
   display: flex;
   flex-direction: column;

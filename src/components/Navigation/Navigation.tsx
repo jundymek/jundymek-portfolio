@@ -190,7 +190,7 @@ const HamburgerWrapper = styled.div<NavProps>`
   top: 0;
   right: 0;
   background: ${props => props.isFixed && !props.isOpen && props.theme.primaryDark};
-  opacity: ${props => (props.isFixed && !props.isOpen ? ".98" : "1")};
+  opacity: ${props => (props.isFixed && !props.isOpen ? ".90" : "1")};
   transition: 1s ease;
   @media (min-width: ${props => props.theme.desktop}) {
     background: white;
@@ -217,7 +217,7 @@ function Navigation({ setLanguage }: Props) {
     } else {
       document.body.style.overflow = "unset";
     }
-    width && width > 900 && setisHamburgerOpen(false);
+    width && width >= 900 && setisHamburgerOpen(false);
     setIsMobile(false);
     width && width < 900 && setIsMobile(true);
 
