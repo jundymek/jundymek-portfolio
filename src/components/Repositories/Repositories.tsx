@@ -40,7 +40,7 @@ const Wrapper = styled.section`
 `;
 
 const Title = styled.h3`
-  font-size: 22px;
+  font-size: 30px;
   margin-bottom: 0;
 `;
 

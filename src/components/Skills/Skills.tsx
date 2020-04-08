@@ -86,7 +86,7 @@ const TooltipItem = styled.li`
 
 function Skills() {
   const ref = useRef(null);
-  useOnScreen(ref, "100%");
+  useOnScreen(ref, "10%");
   const {
     texts: { skills }
   } = useContext(LanguageContext);
