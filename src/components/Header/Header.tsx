@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   @media (min-width: ${props => props.theme.desktop}) {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.72rem;
+    margin-bottom: 34px;
     align-items: flex-end;
   }
 `;
@@ -71,9 +71,8 @@ const Paragraph = styled.p`
 const LangContainer = styled.div`
   display: none;
   transform: rotate(-90deg);
-  height: 1rem;
-  margin-bottom: 48px;
-  margin-right: -1rem;
+  margin-right: -14px;
+  align-self: center;
   @media (min-width: ${props => props.theme.desktop}) {
     display: block;
   }
@@ -130,7 +129,7 @@ function Header({ setLanguage }: Props) {
     "print('Hello World')",
     "console.log('Hello World')",
     "echo 'Hello World'",
-    "println('Hello, world!')"
+    "println('Hello World')"
   ];
 
   return (
