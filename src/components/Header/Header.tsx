@@ -134,11 +134,11 @@ function Header({ setLanguage }: Props) {
   ];
 
   return (
-    <WhiteDiv>
+    <WhiteDiv data-testid="title">
       <StyledHeader ref={ref}>
         <Wrapper>
           <TitleWrapper>
-            <Title>
+            <Title data-testid="scrambler">
               <Scrambler text={`< ${header.title} />`} renderIn={1000} characters="!@#$%^&*()" />
             </Title>
             <Subtitle>jundymek</Subtitle>
