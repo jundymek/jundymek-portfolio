@@ -41,7 +41,7 @@ export const translation = {
     aboutMe:
     {
       title: "O mnie",
-      paragraph1part1: "Cześć - jestem Łukasz. Obecnie Policjant 👮🏻‍♂️, w przyszłości... programista. Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Moja przygoda 'na poważnie' z programowaniem zaczęła kiedy napisałem pierwsze",
+      paragraph1part1: "Cześć - jestem Łukasz. Obecnie Policjant 👮🏻‍♂️, w przyszłości... programista. Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Moja przygoda 'na poważnie' z programowaniem zaczęła się kiedy napisałem pierwsze",
       paragraph1code: "print 'Hello World'",
       paragraph1part2: "w Pythonie (tak - w Pythonie 2). Aktualnie zgłębiam tajniki frontendu i próbuję opanować Reacta.",
       paragraph2: "Nie deklaruję się po którejkolwiek stronie. Front i back podobają mi się jednakowo - najważniejsza jest frajda z pisania kodu. Chciałbym robić to w pełnym wymiarze czasu.",
