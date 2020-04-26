@@ -16,9 +16,10 @@ const Container = styled(WhiteDiv)<NavProps>`
 `;
 export interface Props {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
+  visibleSection?: string;
 }
 
-function Navigation({ setLanguage }: Props) {
+function Navigation({ setLanguage, visibleSection }: Props) {
   const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -48,7 +49,7 @@ function Navigation({ setLanguage }: Props) {
 
   return (
     <Container>
-      <NavigationDesktop isFixed={isFixed} />
+      <NavigationDesktop isFixed={isFixed} visibleSection={visibleSection}/>
       <NavigationMobile isFixed={isFixed} setLanguage={setLanguage} />
     </Container>
   );

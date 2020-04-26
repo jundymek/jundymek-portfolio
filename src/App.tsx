@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, JSXElementConstructor } from "react";
 import styled from "styled-components";
 import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
@@ -38,6 +38,7 @@ export const LanguageContext = React.createContext({ language: lang, texts: tran
 function App() {
   const [language, setLanguage] = useState<"PL" | "EN">(lang);
   const [texts, setTexts] = useState(translation[language]);
+  const [visibleSection, setVisibleSection] = useState<undefined | string>(undefined);
   const ref = useRef(null);
   const prevLang = usePrevious(language);
   useEffect(() => {
@@ -51,18 +52,80 @@ function App() {
     reset: true,
   });
 
+  useEffect(() => {
+    const containerHeight = appRef.current.offsetHeight;
+
+    const handleScroll = () => {
+      const { height: headerHeight } = getDimensions(headerRef.current);
+      const scrollPosition = window.scrollY + headerHeight;
+
+      const selected = sectionRefs.find(({ section, ref }) => {
+        const element = ref.current;
+        if (element) {
+          const { offsetBottom, offsetTop } = getDimensions(element);
+          return scrollPosition > offsetTop && scrollPosition < offsetBottom;
+        }
+      });
+
+      if (scrollPosition + 800 >= containerHeight) {
+        setVisibleSection("Contact");
+      } else if (selected && selected.section !== visibleSection) {
+        setVisibleSection(selected.section);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [visibleSection]);
+
+  const appRef = useRef(document.createElement("div"));
+  const headerRef = useRef(null);
+  const aboutSectionRef = useRef(null);
+  const skillsSectionRef = useRef(null);
+  const portfolioSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
+
+  const sectionRefs = [
+    { section: "About", ref: aboutSectionRef },
+    { section: "Skills", ref: skillsSectionRef },
+    { section: "Portfolio", ref: portfolioSectionRef },
+    { section: "Contact", ref: contactSectionRef },
+  ];
+
+  const getDimensions = (e: any) => {
+    const { height } = e.getBoundingClientRect();
+    const offsetTop = e.offsetTop;
+    const offsetBottom = offsetTop + height;
+    return {
+      height,
+      offsetTop,
+      offsetBottom,
+    };
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <LanguageContext.Provider value={{ language, texts }}>
         <GlobalStyles />
-        <animated.div ref={ref} style={prevLang && language === prevLang ? props : undefined}>
-          <AppWrapper>
-            <Navigation setLanguage={setLanguage} />
-            <Header setLanguage={setLanguage} />
-            <AboutMe />
-            <Skills />
-            <Portfolio />
-            <Contact />
+        <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
+          <AppWrapper ref={appRef}>
+            <Navigation setLanguage={setLanguage} visibleSection={visibleSection} />
+            <div ref={headerRef}>
+              <Header setLanguage={setLanguage} />
+            </div>
+            <div ref={aboutSectionRef}>
+              <AboutMe />
+            </div>
+            <div ref={skillsSectionRef}>
+              <Skills />
+            </div>
+            <div ref={portfolioSectionRef}>
+              <Portfolio />
+            </div>
+            <div ref={contactSectionRef}>
+              <Contact />
+            </div>
             <Footer />
           </AppWrapper>
         </animated.div>

@@ -5,6 +5,8 @@ import { TerminalLookMixin } from "../../styles/styledComponents";
 
 interface NavProps {
   isFixed?: boolean;
+  visibleSection?: string;
+  active?: boolean;
 }
 
 const Nav = styled.nav<NavProps>`
@@ -25,7 +27,7 @@ const Nav = styled.nav<NavProps>`
       top: 0;
       left: 0;
       max-width: 100vw;
-      background: #F6F6F6;
+      background: #f6f6f6;
       z-index: 1;
     `}
 `;
@@ -47,7 +49,7 @@ const NavUl = styled.ul<NavProps>`
 const NavLi = styled.li`
   font-weight: 700;
   font-size: 34px;
-  
+
   @media (orientation: landscape) {
     line-height: 5px;
   }
@@ -60,7 +62,7 @@ const NavLi = styled.li`
 `;
 
 const NavLink = styled.a<NavProps>`
-  text-decoration: none;
+  text-decoration: ${(props) => (props.active && props.isFixed ? "underline" : "none")};
   display: inline-flex;
   height: 100%;
   ${TerminalLookMixin};
@@ -107,7 +109,7 @@ const NavLinkSpecial = styled.a<NavProps>`
   color: ${(props) => props.theme.primaryDark};
 `;
 
-function NavigationDesktop({ isFixed }: NavProps) {
+function NavigationDesktop({ isFixed, visibleSection }: NavProps) {
   const {
     texts: { navigation },
   } = useContext(LanguageContext);
@@ -126,7 +128,7 @@ function NavigationDesktop({ isFixed }: NavProps) {
         </NavLi>
         {navigation.links.map((link, index) => (
           <NavLi key={index}>
-            <NavLink data-text={link.title} href={link.url}>
+            <NavLink data-text={link.title} href={link.url} active={visibleSection === link.section} isFixed={isFixed}>
               {link.title}
             </NavLink>
           </NavLi>

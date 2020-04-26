@@ -26,10 +26,10 @@ export const translation = {
   PL: {
     navigation: {
       links: [
-        { url: "#about", title: "O mnie" },
-        { url: "#skills", title: "Umiejętności" },
-        { url: "#portfolio", title: "Projekty" },
-        { url: "#contact", title: "Kontakt" }
+        { url: "#about", title: "O mnie", section: "About" },
+        { url: "#skills", title: "Umiejętności", section: "Skills" },
+        { url: "#portfolio", title: "Projekty", section: "Portfolio" },
+        { url: "#contact", title: "Kontakt", section: "Contact" }
       ]
     },
     header:
@@ -133,10 +133,10 @@ export const translation = {
   EN: {
     navigation: {
       links: [
-        { url: "#about", title: "About me" },
-        { url: "#skills", title: "Skills" },
-        { url: "#portfolio", title: "Projects" },
-        { url: "#contact", title: "Contact" }
+        { url: "#about", title: "About me", section: "About" },
+        { url: "#skills", title: "Skills", section: "Skills" },
+        { url: "#portfolio", title: "Projects", section: "Portfolio" },
+        { url: "#contact", title: "Contact", section: "Contact" }
       ]
     },
     header:

@@ -8,8 +8,9 @@ import { Scrambler } from "react-text-scrambler";
 
 const AboutSection = styled(GreySection)`
   margin-top: 44px;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     min-height: 460px;
+    scroll-margin-top: 400px;
   }
 `;
 
@@ -41,10 +42,10 @@ function AboutMe() {
     to: { opacity: 1, filter: "blur(0px)" },
     from: { opacity: 0, filter: "blur(12px)" },
     config: { duration: 1000 },
-    reset: true
+    reset: true,
   });
   const {
-    texts: { aboutMe }
+    texts: { aboutMe },
   } = useContext(LanguageContext);
 
   const ref = useRef(null);
