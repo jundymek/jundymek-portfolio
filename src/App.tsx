@@ -12,6 +12,7 @@ import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import { useSpring, animated } from "react-spring";
 import usePrevious from "./customHooks/usePrevious";
+import useActiveSection from "./customHooks/useActiveSection";
 import { translation } from "./helpers/translation";
 
 const GlobalStyles = createGlobalStyle`
@@ -38,7 +39,6 @@ export const LanguageContext = React.createContext({ language: lang, texts: tran
 function App() {
   const [language, setLanguage] = useState<"PL" | "EN">(lang);
   const [texts, setTexts] = useState(translation[language]);
-  const [visibleSection, setVisibleSection] = useState<undefined | string>(undefined);
   const ref = useRef(null);
   const prevLang = usePrevious(language);
   useEffect(() => {
@@ -51,33 +51,6 @@ function App() {
     config: { duration: 1000 },
     reset: true,
   });
-
-  useEffect(() => {
-    const containerHeight = appRef.current.offsetHeight;
-
-    const handleScroll = () => {
-      const { height: headerHeight } = getDimensions(headerRef.current);
-      const scrollPosition = window.scrollY + headerHeight;
-
-      const selected = sectionRefs.find(({ section, ref }) => {
-        const element = ref.current;
-        if (element) {
-          const { offsetBottom, offsetTop } = getDimensions(element);
-          return scrollPosition > offsetTop && scrollPosition < offsetBottom;
-        }
-      });
-
-      if (scrollPosition + 800 >= containerHeight) {
-        setVisibleSection("Contact");
-      } else if (selected && selected.section !== visibleSection) {
-        setVisibleSection(selected.section);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [visibleSection]);
 
   const appRef = useRef(document.createElement("div"));
   const headerRef = React.createRef<HTMLDivElement>();
@@ -93,16 +66,7 @@ function App() {
     { section: "Contact", ref: contactSectionRef },
   ];
 
-  const getDimensions = (e: any) => {
-    const { height } = e.getBoundingClientRect();
-    const offsetTop = e.offsetTop;
-    const offsetBottom = offsetTop + height;
-    return {
-      height,
-      offsetTop,
-      offsetBottom,
-    };
-  };
+  const activeSection = useActiveSection(headerRef, appRef, sectionRefs);
 
   return (
     <ThemeProvider theme={theme}>
@@ -110,7 +74,7 @@ function App() {
         <GlobalStyles />
         <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
           <AppWrapper ref={appRef}>
-            <Navigation setLanguage={setLanguage} visibleSection={visibleSection} />
+            <Navigation setLanguage={setLanguage} visibleSection={activeSection} />
             <Header ref={headerRef} setLanguage={setLanguage} />
             <AboutMe ref={aboutSectionRef} />
             <Skills ref={skillsSectionRef} />

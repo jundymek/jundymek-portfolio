@@ -38,7 +38,6 @@ const Code = styled.code`
 `;
 
 const AboutMe = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
-  console.log(ref)
   const props1 = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
     from: { opacity: 0, filter: "blur(12px)" },
