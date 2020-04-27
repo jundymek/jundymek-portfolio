@@ -5,6 +5,12 @@ interface Refs {
   ref: React.RefObject<HTMLElement>;
 }
 
+interface Dimensions {
+  height: number;
+  offsetTop: number;
+  offsetBottom: number;
+}
+
 function useActiveSection(
   headerRef: React.RefObject<HTMLDivElement>,
   appRef: React.MutableRefObject<HTMLDivElement>,
@@ -12,15 +18,18 @@ function useActiveSection(
 ) {
   const [visibleSection, setVisibleSection] = useState<undefined | string>(undefined);
 
-  const getDimensions = (e: any) => {
-    const { height } = e.getBoundingClientRect();
-    const offsetTop = e.offsetTop;
-    const offsetBottom = offsetTop + height;
-    return {
-      height,
-      offsetTop,
-      offsetBottom,
-    };
+  const getDimensions = (element: HTMLElement | null): Dimensions => {
+    if (element) {
+      const { height } = element.getBoundingClientRect();
+      const offsetTop = element.offsetTop;
+      const offsetBottom = offsetTop + height;
+      return {
+        height,
+        offsetTop,
+        offsetBottom,
+      };
+    }
+    return { height: 0, offsetTop: 0, offsetBottom: 0 };
   };
 
   useEffect(() => {
@@ -29,12 +38,14 @@ function useActiveSection(
     const handleScroll = () => {
       const { height: headerHeight } = getDimensions(headerRef.current);
       const scrollPosition = window.scrollY + headerHeight;
+
       const selected = sectionRefs.find(({ section, ref }) => {
         const element = ref.current;
         if (element) {
           const { offsetBottom, offsetTop } = getDimensions(element);
           return scrollPosition > offsetTop && scrollPosition < offsetBottom;
         }
+        return null;
       });
 
       if (scrollPosition + 800 >= containerHeight) {

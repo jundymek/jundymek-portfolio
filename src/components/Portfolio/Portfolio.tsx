@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection, SectionSubtitle } from "../../styles/styledComponents";
 import { LanguageContext } from "../../App";
@@ -39,7 +39,7 @@ const  Portfolio = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
   const windowWidth = useWindowSize().width;
   const mobile = windowWidth && windowWidth < 900;
   // const ref = useRef(null);
-  useOnScreen(ref, "0px");
+  // useOnScreen(ref, "0px");
   const {
     texts: { projects }
   } = useContext(LanguageContext);
