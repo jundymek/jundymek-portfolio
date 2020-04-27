@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { LanguageContext } from "../../App";
 import useOnScreen from "../../customHooks/useOnScreen";
@@ -9,12 +9,12 @@ import { Scrambler, Cycler } from "react-text-scrambler";
 const StyledHeader = styled.header`
   margin-top: 30px;
   position: relative;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
   }
 `;
 
 const Wrapper = styled.div`
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     display: flex;
     justify-content: space-between;
     margin-bottom: 34px;
@@ -36,7 +36,7 @@ const Title = styled.h1`
   font-size: 47px;
   line-height: 43px;
   margin-bottom: 23px;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     line-height: 46px;
   }
 `;
@@ -47,7 +47,7 @@ const Subtitle = styled.p`
   bottom: 2px;
   right: -26px;
   font-family: "Over the Rainbow", cursive;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     bottom: -5px;
     right: -34px;
   }
@@ -73,7 +73,7 @@ const LangContainer = styled.div`
   transform: rotate(-90deg);
   margin-right: -14px;
   align-self: center;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     display: block;
   }
 `;
@@ -89,9 +89,9 @@ const LangButton = styled.button<Lang>`
   font-style: italic;
   font-size: 18px;
   font-family: "VT323", monospace;
-  color: ${props => !props.isActive && props.theme.primaryGray};
+  color: ${(props) => !props.isActive && props.theme.primaryGray};
   font-weight: 500;
-  text-decoration: ${props => (props.isActive ? "underline" : "none")};
+  text-decoration: ${(props) => (props.isActive ? "underline" : "none")};
   background: none;
   border: none;
 `;
@@ -105,21 +105,20 @@ const CyclerWrapper = styled.div`
   background-color: black;
   text-align: center;
   ${TerminalLookMixin};
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     font-size: 24px;
   }
 `;
 
-interface Props {
+interface HeaderProps {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
-function Header({ setLanguage }: Props) {
+const Header = React.forwardRef(({ setLanguage }: HeaderProps, ref: React.Ref<HTMLDivElement>) => {
   const lang = useContext(LanguageContext);
-  const ref = useRef(null);
   const onScreen = useOnScreen(ref, "-10%");
   const {
-    texts: { header }
+    texts: { header },
   } = useContext(LanguageContext);
   const handleClick = (value: "PL" | "EN") => {
     setLanguage(value);
@@ -129,12 +128,12 @@ function Header({ setLanguage }: Props) {
     "print('Hello World')",
     "console.log('Hello World')",
     "echo 'Hello World'",
-    "println('Hello World')"
+    "println('Hello World')",
   ];
 
   return (
-    <WhiteDiv data-testid="title">
-      <StyledHeader ref={ref}>
+    <WhiteDiv data-testid="title" ref={ref}>
+      <StyledHeader>
         <Wrapper>
           <TitleWrapper>
             <Title data-testid="scrambler">
@@ -166,6 +165,6 @@ function Header({ setLanguage }: Props) {
       </StyledHeader>
     </WhiteDiv>
   );
-}
+});
 
 export default Header;

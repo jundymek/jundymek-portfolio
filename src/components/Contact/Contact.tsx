@@ -34,7 +34,7 @@ const Paragraph = styled.p<Length>`
   line-height: 22px;
   overflow: hidden;
   white-space: nowrap;
-  animation: ${typing} 8.5s steps(${props => props.length}, end) infinite;
+  animation: ${typing} 8.5s steps(${(props) => props.length}, end) infinite;
 `;
 
 const List = styled.ul`
@@ -61,7 +61,7 @@ const HandWrite = styled.p`
   font-weight: bold;
   text-decoration: underline;
   margin: 0;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     position: absolute;
     right: -100px;
     font-size: 30px;
@@ -72,17 +72,17 @@ interface Length {
   length: number;
 }
 
-function Contact() {
+const Contact = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
   const {
-    texts: { contact }
+    texts: { contact },
   } = useContext(LanguageContext);
 
-  const ref = useRef(null);
+  // const ref = useRef(null);
   useOnScreen(ref, "0%");
 
   return (
-    <Section id="contact">
-      <Wrapper ref={ref}>
+    <Section id="contact" ref={ref}>
+      <Wrapper>
         <SectionTitle>
           <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" renderIn={1000} />
         </SectionTitle>
@@ -101,6 +101,6 @@ function Contact() {
       </Wrapper>
     </Section>
   );
-}
+});
 
 export default Contact;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, JSXElementConstructor } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import Navigation from "./components/Navigation/Navigation";
 import { createGlobalStyle } from "styled-components";
@@ -80,11 +80,11 @@ function App() {
   }, [visibleSection]);
 
   const appRef = useRef(document.createElement("div"));
-  const headerRef = useRef(null);
-  const aboutSectionRef = useRef(null);
-  const skillsSectionRef = useRef(null);
-  const portfolioSectionRef = useRef(null);
-  const contactSectionRef = useRef(null);
+  const headerRef = React.createRef<HTMLDivElement>();
+  const aboutSectionRef = React.createRef<HTMLElement>();
+  const skillsSectionRef = React.createRef<HTMLElement>();
+  const portfolioSectionRef = React.createRef<HTMLElement>();
+  const contactSectionRef = React.createRef<HTMLElement>();
 
   const sectionRefs = [
     { section: "About", ref: aboutSectionRef },
@@ -111,21 +111,11 @@ function App() {
         <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
           <AppWrapper ref={appRef}>
             <Navigation setLanguage={setLanguage} visibleSection={visibleSection} />
-            <div ref={headerRef}>
-              <Header setLanguage={setLanguage} />
-            </div>
-            <div ref={aboutSectionRef}>
-              <AboutMe />
-            </div>
-            <div ref={skillsSectionRef}>
-              <Skills />
-            </div>
-            <div ref={portfolioSectionRef}>
-              <Portfolio />
-            </div>
-            <div ref={contactSectionRef}>
-              <Contact />
-            </div>
+            <Header ref={headerRef} setLanguage={setLanguage} />
+            <AboutMe ref={aboutSectionRef} />
+            <Skills ref={skillsSectionRef} />
+            <Portfolio ref={portfolioSectionRef} />
+            <Contact ref={contactSectionRef} />
             <Footer />
           </AppWrapper>
         </animated.div>

@@ -37,8 +37,9 @@ const Code = styled.code`
   ${TerminalLookMixin}
 `;
 
-function AboutMe() {
-  const props = useSpring({
+const AboutMe = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
+  console.log(ref)
+  const props1 = useSpring({
     to: { opacity: 1, filter: "blur(0px)" },
     from: { opacity: 0, filter: "blur(12px)" },
     config: { duration: 1000 },
@@ -48,24 +49,24 @@ function AboutMe() {
     texts: { aboutMe },
   } = useContext(LanguageContext);
 
-  const ref = useRef(null);
-  useOnScreen(ref, "0%");
+  const ref1 = useRef(null);
+  useOnScreen(ref1, "0%");
 
   return (
-    <AboutSection id="about">
-      <Wrapper ref={ref} style={props}>
-        <SectionTitle>
-          <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" renderIn={1000} />
-        </SectionTitle>
-        <Paragraph>
-          {aboutMe.paragraph1part1}
-          <Code>{aboutMe.paragraph1code}</Code>
-          {aboutMe.paragraph1part2}
-        </Paragraph>
-        <Paragraph>{aboutMe.paragraph2}</Paragraph>
-      </Wrapper>
-    </AboutSection>
+      <AboutSection id="about" ref={ref}>
+        <Wrapper  >
+          <SectionTitle>
+            <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" renderIn={1000} />
+          </SectionTitle>
+          <Paragraph>
+            {aboutMe.paragraph1part1}
+            <Code>{aboutMe.paragraph1code}</Code>
+            {aboutMe.paragraph1part2}
+          </Paragraph>
+          <Paragraph>{aboutMe.paragraph2}</Paragraph>
+        </Wrapper>
+      </AboutSection>
   );
-}
+});
 
 export default AboutMe;

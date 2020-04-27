@@ -84,8 +84,8 @@ const TooltipItem = styled.li`
   padding: 5px;
 `;
 
-function Skills() {
-  const ref = useRef(null);
+const  Skills = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
+  // const ref = useRef(null);
   useOnScreen(ref, "0%");
   const {
     texts: { skills }
@@ -133,6 +133,6 @@ function Skills() {
       </List>
     </Section>
   );
-}
+});
 
 export default Skills;
