@@ -66,7 +66,7 @@ function App() {
     { section: "Contact", ref: contactSectionRef },
   ];
 
-  const activeSection = useActiveSection(headerRef, appRef, sectionRefs);
+  const activeSection = useActiveSection(appRef, sectionRefs);
 
   return (
     <ThemeProvider theme={theme}>

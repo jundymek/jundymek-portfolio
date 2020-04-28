@@ -11,11 +11,7 @@ interface Dimensions {
   offsetBottom: number;
 }
 
-function useActiveSection(
-  headerRef: React.RefObject<HTMLDivElement>,
-  appRef: React.MutableRefObject<HTMLDivElement>,
-  sectionRefs: Refs[]
-) {
+function useActiveSection(appRef: React.MutableRefObject<HTMLDivElement>, sectionRefs: Refs[]) {
   const [visibleSection, setVisibleSection] = useState<undefined | string>(undefined);
 
   const getDimensions = (element: HTMLElement | null): Dimensions => {
@@ -33,11 +29,10 @@ function useActiveSection(
   };
 
   useEffect(() => {
-    const containerHeight = appRef.current.offsetHeight;
+    const containerHeight = appRef.current.clientHeight;
 
     const handleScroll = () => {
-      const { height: headerHeight } = getDimensions(headerRef.current);
-      const scrollPosition = window.scrollY + headerHeight;
+      const scrollPosition = window.scrollY + 300;
 
       const selected = sectionRefs.find(({ section, ref }) => {
         const element = ref.current;
@@ -45,10 +40,9 @@ function useActiveSection(
           const { offsetBottom, offsetTop } = getDimensions(element);
           return scrollPosition > offsetTop && scrollPosition < offsetBottom;
         }
-        return null;
+        return false;
       });
-
-      if (scrollPosition + 800 >= containerHeight) {
+      if (scrollPosition + window.innerHeight >= containerHeight) {
         setVisibleSection("Contact");
       } else if (selected && selected.section !== visibleSection) {
         setVisibleSection(selected.section);
@@ -58,7 +52,7 @@ function useActiveSection(
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [visibleSection, appRef, headerRef, sectionRefs]);
+  }, [visibleSection, appRef, sectionRefs]);
 
   return visibleSection;
 }
