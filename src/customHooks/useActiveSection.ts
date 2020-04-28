@@ -58,7 +58,7 @@ function useActiveSection(
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [visibleSection]);
+  }, [visibleSection, appRef, headerRef, sectionRefs]);
 
   return visibleSection;
 }
