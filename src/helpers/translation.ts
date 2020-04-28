@@ -127,7 +127,7 @@ export const translation = {
     {
       paragraph1part1: "Wykonano całym",
       paragraph1part2: "używając",
-      paragraph2: "Typescript, React (z Hookami), styled-components, react-spring, axios..."
+      paragraph2: "Typescript, React (z Hookami), styled-components, react-spring, axios i wielu innych..."
     }
   },
   EN: {

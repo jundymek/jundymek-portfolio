@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { SectionTitle, GreySection, TerminalLookMixin } from "../../styles/styledComponents";
 import { LanguageContext } from "../../App";
 import { Scrambler } from "react-text-scrambler";
+import useOnScreen from "../../customHooks/useOnScreen";
 
 const AboutSection = styled(GreySection)`
   margin-top: 44px;
@@ -39,6 +40,8 @@ const AboutMe = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
   const {
     texts: { aboutMe },
   } = useContext(LanguageContext);
+
+  useOnScreen(ref, "0%");
 
   return (
     <AboutSection id="about" ref={ref}>

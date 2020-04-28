@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import { LanguageContext } from "../../App";
 import { SectionTitle } from "../../styles/styledComponents";
@@ -77,7 +77,6 @@ const Contact = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
     texts: { contact },
   } = useContext(LanguageContext);
 
-  // const ref = useRef(null);
   useOnScreen(ref, "0%");
 
   return (

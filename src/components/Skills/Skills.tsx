@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, SectionSubtitle } from "../../styles/styledComponents";
 import { useTrail, animated } from "react-spring";
@@ -6,6 +6,7 @@ import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
 import ReactTooltip from "react-tooltip";
 import { Scrambler } from "react-text-scrambler";
+import usePrevious from "../../customHooks/usePrevious";
 
 const Section = styled.section`
   display: block;
@@ -85,14 +86,15 @@ const TooltipItem = styled.li`
 `;
 
 const Skills = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
-  const skillsOnScreen = useOnScreen(ref, "0%");
+  const skillsOnScreen = useOnScreen(ref, "0%").toString();
+  const prevSkillsOnScreen = usePrevious(skillsOnScreen)
   const {
     texts: { skills },
   } = useContext(LanguageContext);
 
   const trail = useTrail(skills.skills.length, {
-    config: { duration: 1400 },
-    // reset: skillsOnScreen ? false : true,
+    config: { duration: 800 },
+    reset: skillsOnScreen === "true" && prevSkillsOnScreen === "false" ? true : false,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
     to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" },
   });

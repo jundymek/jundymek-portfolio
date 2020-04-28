@@ -65,36 +65,10 @@ const NavLink = styled.a<NavProps>`
   text-decoration: ${(props) => (props.active && props.isFixed ? "underline" : "none")};
   display: inline-flex;
   height: 100%;
-  ${TerminalLookMixin};
   color: ${(props) => props.theme.primaryGray};
-  text-shadow: unset;
+  position: relative;
   &:hover {
     color: ${(props) => props.theme.primaryDark};
-  }
-  &:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8vh;
-    color: rgba(0, 0, 0, 0.1);
-    z-index: -1;
-    opacity: 0;
-    font-weight: 900;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    -webkit-text-orientation: upright;
-    text-transform: uppercase;
-    letter-spacing: 500px;
-    transition: letter-spacing 0.5s, top 0.5s, opacity 0.5s;
-    @media (orientation: landscape) {
-      text-orientation: unset;
-      writing-mode: horizontal-tb;
-    }
   }
 `;
 

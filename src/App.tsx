@@ -46,10 +46,10 @@ function App() {
   }, [language]);
 
   const props = useSpring({
-    to: { opacity: prevLang !== language ? 0 : 1 },
+    to: { opacity: prevLang && prevLang !== language ? 0 : 1 },
     from: { opacity: 0 },
     config: { duration: 1000 },
-    reset: true,
+    reset: prevLang && prevLang === language ? false : true,
   });
 
   const appRef = useRef(document.createElement("div"));
@@ -72,7 +72,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <LanguageContext.Provider value={{ language, texts }}>
         <GlobalStyles />
-        <animated.div ref={ref} style={prevLang && language !== prevLang ? props : undefined}>
+        <animated.div ref={ref} style={prevLang && language === prevLang ? props : undefined}>
           <AppWrapper ref={appRef}>
             <Navigation setLanguage={setLanguage} visibleSection={activeSection} />
             <Header ref={headerRef} setLanguage={setLanguage} />

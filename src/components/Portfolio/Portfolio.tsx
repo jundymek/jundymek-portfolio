@@ -39,7 +39,7 @@ const  Portfolio = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
   const windowWidth = useWindowSize().width;
   const mobile = windowWidth && windowWidth < 900;
   // const ref = useRef(null);
-  // useOnScreen(ref, "0px");
+  useOnScreen(ref, "0px");
   const {
     texts: { projects }
   } = useContext(LanguageContext);
