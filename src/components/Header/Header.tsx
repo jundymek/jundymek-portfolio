@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import { LanguageContext } from "../../App";
 import useOnScreen from "../../customHooks/useOnScreen";
@@ -114,7 +114,8 @@ interface HeaderProps {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
 }
 
-const Header = React.forwardRef(({ setLanguage }: HeaderProps, ref: React.Ref<HTMLDivElement>) => {
+function Header({ setLanguage }: HeaderProps) {
+  const ref = useRef(null);
   const lang = useContext(LanguageContext);
   const onScreen = useOnScreen(ref, "-10%");
   const {
@@ -165,6 +166,6 @@ const Header = React.forwardRef(({ setLanguage }: HeaderProps, ref: React.Ref<HT
       </StyledHeader>
     </WhiteDiv>
   );
-});
+}
 
 export default Header;

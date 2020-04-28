@@ -53,7 +53,6 @@ function App() {
   });
 
   const appRef = useRef(document.createElement("div"));
-  const headerRef = React.createRef<HTMLDivElement>();
   const aboutSectionRef = React.createRef<HTMLElement>();
   const skillsSectionRef = React.createRef<HTMLElement>();
   const portfolioSectionRef = React.createRef<HTMLElement>();
@@ -75,7 +74,7 @@ function App() {
         <animated.div ref={ref} style={prevLang && language === prevLang ? props : undefined}>
           <AppWrapper ref={appRef}>
             <Navigation setLanguage={setLanguage} visibleSection={activeSection} />
-            <Header ref={headerRef} setLanguage={setLanguage} />
+            <Header setLanguage={setLanguage} />
             <AboutMe ref={aboutSectionRef} />
             <Skills ref={skillsSectionRef} />
             <Portfolio ref={portfolioSectionRef} />
