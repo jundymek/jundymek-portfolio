@@ -11,7 +11,7 @@ const Section = styled.section`
   display: block;
   margin: 0 auto;
   max-width: 1440px;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     scroll-margin-top: 300px;
   }
 `;
@@ -25,7 +25,7 @@ const List = styled.ul`
   row-gap: 40px;
   text-align: center;
   justify-items: center;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 10%;
     padding: 0 100px;
@@ -58,7 +58,7 @@ const Image = styled.img`
 const SkillSubtitle = styled.p`
   font-size: 14px;
   font-style: italic;
-  color: ${props => props.theme.primaryGray};
+  color: ${(props) => props.theme.primaryGray};
   max-width: 80%;
 `;
 
@@ -68,7 +68,7 @@ const MyTooltip = styled(ReactTooltip)`
   max-width: 80vw;
   font-size: 18px;
   position: absolute;
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     min-width: 200px;
   }
 `;
@@ -84,18 +84,17 @@ const TooltipItem = styled.li`
   padding: 5px;
 `;
 
-const  Skills = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
-  // const ref = useRef(null);
-  useOnScreen(ref, "0%");
+const Skills = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
+  const skillsOnScreen = useOnScreen(ref, "0%");
   const {
-    texts: { skills }
+    texts: { skills },
   } = useContext(LanguageContext);
 
   const trail = useTrail(skills.skills.length, {
-    config: { duration: 1000 },
-    reset: true,
+    config: { duration: 1400 },
+    // reset: skillsOnScreen ? false : true,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
-    to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" }
+    to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" },
   });
 
   return (

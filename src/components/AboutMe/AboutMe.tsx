@@ -1,8 +1,6 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { SectionTitle, GreySection, TerminalLookMixin } from "../../styles/styledComponents";
-import { useSpring, animated } from "react-spring";
-import useOnScreen from "../../customHooks/useOnScreen";
 import { LanguageContext } from "../../App";
 import { Scrambler } from "react-text-scrambler";
 
@@ -14,7 +12,7 @@ const AboutSection = styled(GreySection)`
   }
 `;
 
-const Wrapper = styled(animated.div)`
+const Wrapper = styled.div`
   padding: 0 29px;
   max-width: 600px;
   position: relative;
@@ -38,33 +36,24 @@ const Code = styled.code`
 `;
 
 const AboutMe = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
-  const props1 = useSpring({
-    to: { opacity: 1, filter: "blur(0px)" },
-    from: { opacity: 0, filter: "blur(12px)" },
-    config: { duration: 1000 },
-    reset: true,
-  });
   const {
     texts: { aboutMe },
   } = useContext(LanguageContext);
 
-  const ref1 = useRef(null);
-  useOnScreen(ref1, "0%");
-
   return (
-      <AboutSection id="about" ref={ref}>
-        <Wrapper  >
-          <SectionTitle>
-            <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" renderIn={1000} />
-          </SectionTitle>
-          <Paragraph>
-            {aboutMe.paragraph1part1}
-            <Code>{aboutMe.paragraph1code}</Code>
-            {aboutMe.paragraph1part2}
-          </Paragraph>
-          <Paragraph>{aboutMe.paragraph2}</Paragraph>
-        </Wrapper>
-      </AboutSection>
+    <AboutSection id="about" ref={ref}>
+      <Wrapper>
+        <SectionTitle>
+          <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" renderIn={1000} />
+        </SectionTitle>
+        <Paragraph>
+          {aboutMe.paragraph1part1}
+          <Code>{aboutMe.paragraph1code}</Code>
+          {aboutMe.paragraph1part2}
+        </Paragraph>
+        <Paragraph>{aboutMe.paragraph2}</Paragraph>
+      </Wrapper>
+    </AboutSection>
   );
 });
 
