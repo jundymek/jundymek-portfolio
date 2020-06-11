@@ -239,8 +239,8 @@ function ProjectMobile({ project }: ProjectProps) {
           <Title>{project.title}</Title>
           <Text>{project.text}</Text>
           <ButtonWrapper>
-            <BackButton>Github</BackButton>
-            <BackButton>Live</BackButton>
+            <BackButton href={project.githubUrl}>Github</BackButton>
+            <BackButton href={project.liveUrl}>Live</BackButton>
           </ButtonWrapper>
           <BackButtonFlip onClick={() => handleFlip()}>
             <FlipImg src={flipIcon} alt="flip"></FlipImg>
