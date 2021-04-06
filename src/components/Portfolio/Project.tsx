@@ -84,7 +84,7 @@ const TechItem = styled.span`
     width: 0;
     max-width: 0;
     height: 1px;
-    background: ${props => props.theme.primaryDark};
+    background: ${(props) => props.theme.primaryDark};
     transition: 1s ease;
   }
   &:hover::after {
@@ -113,7 +113,7 @@ const Box = styled.div`
   height: 100%;
   margin: 20px 0;
   padding: 10px;
-  border: 1px solid ${props => props.theme.primaryGray};
+  border: 1px solid ${(props) => props.theme.primaryGray};
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
@@ -123,33 +123,33 @@ const Box = styled.div`
   }
   &:hover ${Title} {
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateY(0);
-    transition-delay: 0.5s;
+    transition-delay: 0.2s;
   }
   &:hover ${Paragraph} {
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateY(0);
-    transition-delay: 1s;
+    transition-delay: 0.4s;
   }
   &:hover ${List} {
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateY(0);
-    transition-delay: 1.5s;
+    transition-delay: 0.6s;
   }
   &:hover ${ButtonWrapper} {
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateY(0);
-    transition-delay: 2s;
+    transition-delay: 0.8s;
   }
 `;
 
 function Project({ project }: ProjectProps) {
   const {
-    texts: { projects }
+    texts: { projects },
   } = useContext(LanguageContext);
   return (
     <Box>

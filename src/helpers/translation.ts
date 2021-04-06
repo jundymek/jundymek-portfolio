@@ -16,6 +16,7 @@ import postgreSQLImage from "../images/skills-icons/postgresql-icon.svg";
 import project1Image from "../images/projects/free_proxy.gif";
 import project2Image from "../images/projects/netkat-project.png";
 import project3Image from "../images/projects/pan-kanapka-project.png";
+import project4Image from "../images/projects/crypto-portfolio.jpg";
 
 // contact social icons
 import github from "../images/github-icon.svg";
@@ -51,6 +52,26 @@ export const translation = {
       subtitle: "Wybrane projekty mojego autorstwa",
       paragraph: "Użyte technologie / biblioteki",
       projects: [
+        {
+          img: `${project4Image}`,
+          alt: "Simplest cryptocurrency portfolio",
+          title: "Simplest cryptocurrency portfolio",
+          text:
+            "Bardzo proste portfolio kryptowalut pozwalające w czasie rzeczywistym śledzenie zawartości własnego portfela. Aplikacja korzysta z publicznego API Bitbay, skąd na bierząco pobierane są aktualne kursy. Użytkonicy mogą zakładać prywatne konta i tworzyć własne portfele. Wszystko zapisywane jest w bazie danych PostgreSQL.",
+          tech: [
+            "React",
+            "NextJs",
+            "Typescript",
+            "Lerna",
+            "Tailwind css",
+            "Styled-components",
+            "Hapi",
+            "Prisma",
+            "PostgreSQL",
+          ],
+          githubUrl: "https://github.com/jundymek/next-cryptocurrency",
+          liveUrl: "https://simplest-crypto-portfolio.herokuapp.com/",
+        },
         {
           img: `${project1Image}`,
           alt: "Free proxy",
@@ -182,6 +203,26 @@ export const translation = {
       subtitle: "Choosen projects I made",
       paragraph: "Technologies / libraries used",
       projects: [
+        {
+          img: `${project4Image}`,
+          alt: "Simplest cryptocurrency portfolio",
+          title: "Simplest cryptocurrency portfolio",
+          text:
+            "Simplest Bitcoin & cryptocurrency portfolio tracker. No redundant options. Every portfolio app is full of redundant options and I thought that I could write my own simple portfolio app. And here it is. As simple as possible but fulfilling its role.",
+          tech: [
+            "React",
+            "NextJs",
+            "Typescript",
+            "Lerna",
+            "Tailwind css",
+            "Styled-components",
+            "Hapi",
+            "Prisma",
+            "PostgreSQL",
+          ],
+          githubUrl: "https://github.com/jundymek/next-cryptocurrency",
+          liveUrl: "https://simplest-crypto-portfolio.herokuapp.com/",
+        },
         {
           img: `${project1Image}`,
           alt: "Free proxy",

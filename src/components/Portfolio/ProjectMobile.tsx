@@ -16,11 +16,11 @@ const Front = styled.div<Props>`
   align-items: center;
   width: 100%;
   height: 485px;
-  border: 1px solid ${props => props.theme.primaryGray};
+  border: 1px solid ${(props) => props.theme.primaryGray};
   backface-visibility: hidden;
-  background-image: url(${props => props.image});
+  background-image: url(${(props) => props.image});
   background-size: cover;
-  transform: ${props => (props.isFlipped ? "rotateY(-180deg)" : "none")};
+  transform: ${(props) => (props.isFlipped ? "rotateY(-180deg)" : "none")};
   transition: 1s;
   position: relative;
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
@@ -33,7 +33,7 @@ const Back = styled.div<Props>`
   top: 0;
   left: 0;
   width: 100%;
-  height: max-content;
+  height: 100%;
   min-height: 485px;
   background: linear-gradient(
       216deg,
@@ -81,9 +81,9 @@ const Back = styled.div<Props>`
     ),
     linear-gradient(92deg, hsl(214, 0%, 11%), hsl(214, 0%, 11%));
   backface-visibility: hidden;
-  transform: ${props => (!props.isFlipped ? "rotateY(180deg)" : "none")};
+  transform: ${(props) => (!props.isFlipped ? "rotateY(180deg)" : "none")};
   transition: 1s;
-  border: 1px solid ${props => props.theme.primaryDark};
+  border: 1px solid ${(props) => props.theme.primaryDark};
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
@@ -221,7 +221,7 @@ function ProjectMobile({ project }: ProjectProps) {
 
   const handleFlip = () => {
     console.log("Flipped");
-    setIsFlipped(prevState => !prevState);
+    setIsFlipped((prevState) => !prevState);
   };
 
   return (
