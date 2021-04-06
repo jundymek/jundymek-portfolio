@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/static/js/main.46552aee.chunk.js",
-    "main.js.map": "/static/js/main.46552aee.chunk.js.map",
+    "main.js": "/static/js/main.b9b95f3f.chunk.js",
+    "main.js.map": "/static/js/main.b9b95f3f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e834a3c1.js",
     "runtime-main.js.map": "/static/js/runtime-main.e834a3c1.js.map",
     "static/js/2.76a2a2c4.chunk.js": "/static/js/2.76a2a2c4.chunk.js",
@@ -31,12 +31,13 @@
     "static/media/python-icon.97a72db0.svg": "/static/media/python-icon.97a72db0.svg",
     "static/media/react-icon.9e9c78fa.svg": "/static/media/react-icon.9e9c78fa.svg",
     "static/media/sass-icon.8ec16938.svg": "/static/media/sass-icon.8ec16938.svg",
-    "static/media/typescript-icon.22f17efa.svg": "/static/media/typescript-icon.22f17efa.svg"
+    "static/media/typescript-icon.e3e3acf9.svg": "/static/media/typescript-icon.e3e3acf9.svg",
+    "static/media/vue-icon.f1fd23be.svg": "/static/media/vue-icon.f1fd23be.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e834a3c1.js",
     "static/js/2.76a2a2c4.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.46552aee.chunk.js"
+    "static/js/main.b9b95f3f.chunk.js"
   ]
 }
