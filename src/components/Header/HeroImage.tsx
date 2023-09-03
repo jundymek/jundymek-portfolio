@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import useWindowSize from "../../customHooks/useWindowSize";
-import heroBig from "../../images/hero/hero-image-big-min.png";
-import heroSmall from "../../images/hero/hero-image-small-min.png";
+import React from "react"
+import styled from "styled-components"
+import useWindowSize from "../../customHooks/useWindowSize"
+import heroBig from "../../images/hero/hero-image-big-min.png"
+import heroSmall from "../../images/hero/hero-image-small-min.png"
 
 interface Img {
-  image: string;
+  image: string
 }
 
 const ImageWrapper = styled.div<Img>`
   position: relative;
-  background: url(${props => props.image});
+  background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0 auto;
@@ -25,7 +25,7 @@ const ImageWrapper = styled.div<Img>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(${props => props.image});
+    background: url(${(props) => props.image});
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.5;
@@ -69,14 +69,14 @@ const ImageWrapper = styled.div<Img>`
       filter: hue-rotate(360deg);
     }
   }
-`;
+`
 
 const Image = styled.img`
   width: 100%;
-`;
+`
 
-function HeroImage() {
-  const windowWidth = useWindowSize().width;
+const HeroImage = () => {
+  const windowWidth = useWindowSize().width
   return (
     <ImageWrapper image={windowWidth && windowWidth > 600 ? heroBig : heroSmall}>
       {windowWidth && windowWidth > 600 ? (
@@ -85,7 +85,7 @@ function HeroImage() {
         <Image src={heroSmall} alt="Łukasz Dymek" />
       )}
     </ImageWrapper>
-  );
+  )
 }
 
-export default HeroImage;
+export default HeroImage

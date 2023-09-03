@@ -1,17 +1,17 @@
-import React, { useContext, useRef } from "react";
-import styled from "styled-components";
-import { LanguageContext } from "../../App";
-import useOnScreen from "../../customHooks/useOnScreen";
-import HeroImage from "./HeroImage";
-import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents";
-import { Scrambler, Cycler } from "react-text-scrambler";
+import React, { useContext, useRef } from "react"
+import styled from "styled-components"
+import { LanguageContext } from "../../App"
+import useOnScreen from "../../customHooks/useOnScreen"
+import HeroImage from "./HeroImage"
+import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents"
+import { Scrambler, Cycler } from "react-text-scrambler"
 
 const StyledHeader = styled.header`
   margin-top: 30px;
   position: relative;
   @media (min-width: ${(props) => props.theme.desktop}) {
   }
-`;
+`
 
 const Wrapper = styled.div`
   @media (min-width: ${(props) => props.theme.desktop}) {
@@ -20,12 +20,12 @@ const Wrapper = styled.div`
     margin-bottom: 34px;
     align-items: flex-end;
   }
-`;
+`
 
 const TitleWrapper = styled.div`
   position: relative;
   display: inline-block;
-`;
+`
 
 const Title = styled.h1`
   width: 155px;
@@ -39,7 +39,7 @@ const Title = styled.h1`
   @media (min-width: ${(props) => props.theme.desktop}) {
     line-height: 46px;
   }
-`;
+`
 
 const Subtitle = styled.p`
   position: absolute;
@@ -51,7 +51,7 @@ const Subtitle = styled.p`
     bottom: -5px;
     right: -34px;
   }
-`;
+`
 
 const ParagraphWrapper = styled.div`
   display: flex;
@@ -59,14 +59,14 @@ const ParagraphWrapper = styled.div`
   margin-bottom: 32px;
   margin-top: 32px;
   margin-right: 36px;
-`;
+`
 
 const Paragraph = styled.p`
   padding: 0;
   margin: 0;
   line-height: 22px;
   font-weight: 400;
-`;
+`
 
 const LangContainer = styled.div`
   display: none;
@@ -76,10 +76,10 @@ const LangContainer = styled.div`
   @media (min-width: ${(props) => props.theme.desktop}) {
     display: block;
   }
-`;
+`
 
 interface Lang {
-  isActive?: boolean;
+  isActive?: boolean
 }
 
 const LangButton = styled.button<Lang>`
@@ -94,7 +94,7 @@ const LangButton = styled.button<Lang>`
   text-decoration: ${(props) => (props.isActive ? "underline" : "none")};
   background: none;
   border: none;
-`;
+`
 
 const CyclerWrapper = styled.div`
   width: 100%;
@@ -108,29 +108,24 @@ const CyclerWrapper = styled.div`
   @media (min-width: ${(props) => props.theme.desktop}) {
     font-size: 24px;
   }
-`;
+`
 
-interface HeaderProps {
-  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
+type HeaderProps = {
+  setLanguage?: React.Dispatch<React.SetStateAction<"PL" | "EN">>
 }
 
-function Header({ setLanguage }: HeaderProps) {
-  const ref = useRef(null);
-  const lang = useContext(LanguageContext);
-  const onScreen = useOnScreen(ref, "-10%");
+const Header = ({ setLanguage }: HeaderProps) => {
+  const ref = useRef(null)
+  const lang = useContext(LanguageContext)
+  const onScreen = useOnScreen(ref, "-10%")
   const {
     texts: { header },
-  } = useContext(LanguageContext);
+  } = useContext(LanguageContext)
   const handleClick = (value: "PL" | "EN") => {
-    setLanguage(value);
-  };
+    setLanguage?.(value)
+  }
 
-  const strings = [
-    "print('Hello World')",
-    "console.log('Hello World')",
-    "echo 'Hello World'",
-    "println('Hello World')",
-  ];
+  const strings = ["print('Hello World')", "console.log('Hello World')", "echo 'Hello World'", "println('Hello World')"]
 
   return (
     <WhiteDiv data-testid="title" ref={ref}>
@@ -165,7 +160,7 @@ function Header({ setLanguage }: HeaderProps) {
         )}
       </StyledHeader>
     </WhiteDiv>
-  );
+  )
 }
 
-export default Header;
+export default Header

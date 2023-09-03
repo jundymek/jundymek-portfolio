@@ -7,10 +7,10 @@ import gitImage from "../images/skills-icons/git-icon.svg"
 import githubImage from "../images/skills-icons/github-icon.svg"
 import javascriptImage from "../images/skills-icons/javascript-icon.svg"
 import pythonImage from "../images/skills-icons/python-icon.svg"
-import sassImage from "../images/skills-icons/sass-icon.svg"
 import typescriptImage from "../images/skills-icons/typescript-icon.svg"
 import htmlImage from "../images/skills-icons/html5-icon.svg"
 import postgreSQLImage from "../images/skills-icons/postgresql-icon.svg"
+import vueImage from "../images/skills-icons/vue.svg"
 
 //portfolio projects
 import project1Image from "../images/projects/free_proxy.gif"
@@ -71,7 +71,7 @@ export const translation = {
             "PostgreSQL",
           ],
           githubUrl: "https://github.com/jundymek/next-cryptocurrency",
-          liveUrl: "https://simplest-crypto-portfolio.herokuapp.com/",
+          liveUrl: null,
         },
         {
           img: `${project1Image}`,
@@ -89,7 +89,7 @@ export const translation = {
           text: "Mój pierwszy większy projekt programistyczny. Napisany w Pythonie/Django działający katalog stron internetowych. Kiedyś zajmowałem się SEO i stwierdziłem, że jak mam się uczyć django to warto napisać cokolwiek sensownego zamiast setnego tutoriala todo. Tak powstał pisany nocami netkat - wyniośle nazwałem go “skrypt katalogu stron internetowych”, ale jestem mega dumny z tego projektu. ",
           tech: ["Python", "Django", "PostgreSQL"],
           githubUrl: "https://github.com/jundymek/netkat",
-          liveUrl: "https://www.netkat.pl",
+          liveUrl: null,
         },
         {
           img: `${project3Image}`,
@@ -107,7 +107,7 @@ export const translation = {
             "google places api",
           ],
           githubUrl: "https://github.com/jundymek/pan-kanapka-front",
-          liveUrl: "https://pan-kanapka-front.herokuapp.com",
+          liveUrl: null,
         },
       ],
     },
@@ -117,12 +117,28 @@ export const translation = {
       subtitle: "Posortowane według technologii (skategoryzowane przez GitHuba)",
     },
     repositoriesCounter: {
-      subtitle: "Wszystkie repozytoria",
+      subtitle: "Wszystkie publiczne repozytoria",
     },
     skills: {
-      title: "Umiejętności",
-      paragraph: "Technologie i programy, których używam",
+      title: "Skills",
+      paragraph: "Technologies and tools I use",
       skills: [
+        { img: `${htmlImage}`, alt: "Html", text: "HTML5", tooltipText: ["semantic html", "PWA"] },
+        {
+          img: `${cssImage}`,
+          alt: "Css3",
+          text: "Css3",
+          tooltipText: ["sass", "BEM", "flexbox", "grid", "transitions", "animations"],
+        },
+        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6", tooltipText: ["es6"] },
+        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript", tooltipText: [] },
+        {
+          img: `${reactImage}`,
+          alt: "React",
+          text: "React",
+          tooltipText: ["hooks", "styled-components", "redux", "context-api"],
+        },
+        { img: `${vueImage}`, alt: "Vue", text: "Vue", tooltipText: ["Vue2", "Vue3"] },
         {
           img: `${pythonImage}`,
           alt: "Python",
@@ -131,28 +147,12 @@ export const translation = {
         },
         { img: `${djangoImage}`, alt: "Django", text: "Django", tooltipText: ["django", "django-rest-framework"] },
         {
-          img: `${cssImage}`,
-          alt: "Css3",
-          text: "Css3",
-          tooltipText: ["sass", "BEM", "flexbox", "grid", "transitions", "animations"],
-        },
-        { img: `${htmlImage}`, alt: "Html", text: "HTML5", tooltipText: ["semantyczny html", "PWA"] },
-        {
           img: `${gitImage}`,
           alt: "Git",
           text: "Git",
           tooltipText: ["git commit", "git merge", "git branch", "git push", "git pull", "..."],
         },
-        { img: `${githubImage}`, alt: "GitHub", text: "Github", tooltipText: ["ponad 20 zdalnych repozytoriów"] },
-        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6", tooltipText: ["es6"] },
-        {
-          img: `${reactImage}`,
-          alt: "React",
-          text: "React",
-          tooltipText: ["hooks", "styled-components", "redux", "context-api"],
-        },
-        { img: `${sassImage}`, alt: "Sass", text: "Sass", tooltipText: ["BEM", "mixins", "variables"] },
-        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript", tooltipText: [] },
+        { img: `${githubImage}`, alt: "GitHub", text: "Github", tooltipText: ["above 20 remote repositories"] },
         { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL", tooltipText: [] },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma", tooltipText: [] },
       ],
@@ -220,7 +220,7 @@ export const translation = {
             "PostgreSQL",
           ],
           githubUrl: "https://github.com/jundymek/next-cryptocurrency",
-          liveUrl: "https://simplest-crypto-portfolio.herokuapp.com/",
+          liveUrl: null,
         },
         {
           img: `${project1Image}`,
@@ -238,7 +238,7 @@ export const translation = {
           text: "My first big programming project. Written in Python/Django, working site dictionary. I used to make some SEO in the past and decided to write something related. I didn’t want to reproduce another todo app. And here it is - NETKAT - “site dictionary script”. I am proud of it.",
           tech: ["Python", "Django", "PostgreSQL"],
           githubUrl: "https://github.com/jundymek/netkat",
-          liveUrl: "https://www.netkat.pl",
+          liveUrl: null,
         },
         {
           img: `${project3Image}`,
@@ -256,7 +256,7 @@ export const translation = {
             "google places api",
           ],
           githubUrl: "https://github.com/jundymek/pan-kanapka-front",
-          liveUrl: "https://pan-kanapka-front.herokuapp.com",
+          liveUrl: null,
         },
       ],
     },
@@ -265,12 +265,28 @@ export const translation = {
       subtitle: "Sorted by technology (categorized by GitHub)",
     },
     repositoriesCounter: {
-      subtitle: "All repos",
+      subtitle: "All puplic repos",
     },
     skills: {
       title: "Skills",
       paragraph: "Technologies and tools I use",
       skills: [
+        { img: `${htmlImage}`, alt: "Html", text: "HTML5", tooltipText: ["semantic html", "PWA"] },
+        {
+          img: `${cssImage}`,
+          alt: "Css3",
+          text: "Css3",
+          tooltipText: ["sass", "BEM", "flexbox", "grid", "transitions", "animations"],
+        },
+        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6", tooltipText: ["es6"] },
+        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript", tooltipText: [] },
+        {
+          img: `${reactImage}`,
+          alt: "React",
+          text: "React",
+          tooltipText: ["hooks", "styled-components", "redux", "context-api"],
+        },
+        { img: `${vueImage}`, alt: "Vue", text: "Vue", tooltipText: ["Vue2", "Vue3"] },
         {
           img: `${pythonImage}`,
           alt: "Python",
@@ -279,28 +295,12 @@ export const translation = {
         },
         { img: `${djangoImage}`, alt: "Django", text: "Django", tooltipText: ["django", "django-rest-framework"] },
         {
-          img: `${cssImage}`,
-          alt: "Css3",
-          text: "Css3",
-          tooltipText: ["sass", "BEM", "flexbox", "grid", "transitions", "animations"],
-        },
-        { img: `${htmlImage}`, alt: "Html", text: "HTML5", tooltipText: ["semantic html", "PWA"] },
-        {
           img: `${gitImage}`,
           alt: "Git",
           text: "Git",
           tooltipText: ["git commit", "git merge", "git branch", "git push", "git pull", "..."],
         },
         { img: `${githubImage}`, alt: "GitHub", text: "Github", tooltipText: ["above 20 remote repositories"] },
-        { img: `${javascriptImage}`, alt: "Javascript", text: "Javascript ES6", tooltipText: ["es6"] },
-        {
-          img: `${reactImage}`,
-          alt: "React",
-          text: "React",
-          tooltipText: ["hooks", "styled-components", "redux", "context-api"],
-        },
-        { img: `${sassImage}`, alt: "Sass", text: "Sass", tooltipText: ["BEM", "mixins", "variables"] },
-        { img: `${typescriptImage}`, alt: "Typescript", text: "Typescript", tooltipText: [] },
         { img: `${postgreSQLImage}`, alt: "PostgreSQL", text: "PostgreSQL", tooltipText: [] },
         { img: `${figmaImage}`, alt: "Figma", text: "Figma", tooltipText: [] },
       ],

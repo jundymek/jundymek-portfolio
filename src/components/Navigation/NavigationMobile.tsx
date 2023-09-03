@@ -1,24 +1,30 @@
-import React, { useEffect, useState, useContext } from "react";
-import styled, { css } from "styled-components";
-import { LanguageContext } from "../../App";
-import Hamburger from "../Hamburger/Hamburger";
-import LangButtonsMobile from "./LangButtonsMobile";
-import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents";
+import React, { useEffect, useState, useContext } from "react"
+import styled, { css } from "styled-components"
+import { LanguageContext } from "../../App"
+import Hamburger from "../Hamburger/Hamburger"
+import LangButtonsMobile from "./LangButtonsMobile"
+import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents"
 
 interface NavProps {
-  isFixed?: boolean;
-  isVisible?: boolean;
-  isOpen?: boolean;
+  isFixed?: boolean
+  isVisible?: boolean
+  isOpen?: boolean
 }
 
-const Container = styled(WhiteDiv)<NavProps>`
+const Container = styled(WhiteDiv)<{
+  isVisible?: boolean
+  isFixed?: boolean
+}>`
   padding: ${(props) => (props.isVisible || props.isFixed) && "0"};
   @media (min-width: ${(props) => props.theme.desktop}) {
     display: none;
   }
-`;
+`
 
-const Nav = styled.nav<NavProps>`
+const Nav = styled.nav<{
+  isFixed?: boolean
+  isVisible?: boolean
+}>`
   display: flex;
   transform: ${(props) => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
   flex-direction: column;
@@ -33,9 +39,11 @@ const Nav = styled.nav<NavProps>`
   position: fixed;
   background: rgba(0, 0, 0, 0.94);
   z-index: 1;
-`;
+`
 
-const NavUl = styled.ul<NavProps>`
+const NavUl = styled.ul<{
+  isFixed?: boolean
+}>`
   list-style-type: none;
   margin-left: 10%;
   /* margin-top: 10%; */
@@ -56,7 +64,7 @@ const NavUl = styled.ul<NavProps>`
   & li:nth-child(5n + 5) a:before {
     background: #2b2008;
   }
-`;
+`
 
 const NavLi = styled.li`
   font-weight: 700;
@@ -68,9 +76,11 @@ const NavLi = styled.li`
   &:not(:first-child) {
     margin-top: 60px;
   }
-`;
+`
 
-const NavLink = styled.a<NavProps>`
+const NavLink = styled.a<{
+  isVisible?: boolean
+}>`
   text-decoration: none;
   display: inline-flex;
   height: 100%;
@@ -119,9 +129,12 @@ const NavLink = styled.a<NavProps>`
       writing-mode: horizontal-tb;
     }
   }
-`;
+`
 
-const NavLinkSpecial = styled.a<NavProps>`
+const NavLinkSpecial = styled.a<{
+  isFixed?: boolean
+  isOpen?: boolean
+}>`
   text-decoration: underline;
   display: ${(props) => (props.isFixed && !props.isOpen ? "inline-flex" : "none")};
   font-family: "Over the Rainbow", cursive;
@@ -129,9 +142,12 @@ const NavLinkSpecial = styled.a<NavProps>`
   padding-bottom: 10px;
   ${TerminalLookMixin};
   margin-left: ${(props) => props.isFixed && "30px"};
-`;
+`
 
-const HamburgerWrapper = styled.div<NavProps>`
+const HamburgerWrapper = styled.div<{
+  isFixed?: boolean
+  isOpen?: boolean
+}>`
   display: flex;
   width: ${(props) => (props.isOpen ? "20%" : "100%")};
   justify-content: space-between;
@@ -145,31 +161,31 @@ const HamburgerWrapper = styled.div<NavProps>`
   background: ${(props) => props.isFixed && !props.isOpen && props.theme.primaryDark};
   opacity: ${(props) => (props.isFixed && !props.isOpen ? ".90" : "1")};
   transition: 1s ease;
-`;
+`
 
-export interface NavigationMobileProps {
-  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>;
-  isFixed: boolean;
+export type NavigationMobileProps = {
+  setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>
+  isFixed: boolean
 }
 
-function NavigationMobile({ isFixed = false, setLanguage }: NavigationMobileProps) {
-  const [isHamburgerOpen, setisHamburgerOpen] = useState(false);
+const NavigationMobile = ({ isFixed = false, setLanguage }: NavigationMobileProps) => {
+  const [isHamburgerOpen, setisHamburgerOpen] = useState(false)
 
   useEffect(() => {
     if (isHamburgerOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "unset"
     }
-  }, [isHamburgerOpen]);
+  }, [isHamburgerOpen])
 
   const {
     texts: { navigation },
-  } = useContext(LanguageContext);
+  } = useContext(LanguageContext)
 
   const handleClick = () => {
-    setisHamburgerOpen(false);
-  };
+    setisHamburgerOpen(false)
+  }
   return (
     <Container isVisible={isHamburgerOpen}>
       <HamburgerWrapper isFixed={isFixed} isOpen={isHamburgerOpen}>
@@ -200,7 +216,7 @@ function NavigationMobile({ isFixed = false, setLanguage }: NavigationMobileProp
         <LangButtonsMobile setLanguage={setLanguage} />
       </Nav>
     </Container>
-  );
+  )
 }
 
-export default NavigationMobile;
+export default NavigationMobile

@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
-import styled, { css } from "styled-components";
-import { LanguageContext } from "../../App";
-import { TerminalLookMixin } from "../../styles/styledComponents";
+import React, { useContext } from "react"
+import styled, { css } from "styled-components"
+import { LanguageContext } from "../../App"
+import { TerminalLookMixin } from "../../styles/styledComponents"
 
-interface NavProps {
-  isFixed?: boolean;
-  visibleSection?: string;
-  active?: boolean;
-}
-
-const Nav = styled.nav<NavProps>`
+const Nav = styled.nav<{
+  isFixed?: boolean
+}>`
   height: 100%;
   max-width: 1440px;
   background: white;
@@ -30,9 +26,11 @@ const Nav = styled.nav<NavProps>`
       background: #f6f6f6;
       z-index: 1;
     `}
-`;
+`
 
-const NavUl = styled.ul<NavProps>`
+const NavUl = styled.ul<{
+  isFixed?: boolean
+}>`
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
@@ -44,7 +42,7 @@ const NavUl = styled.ul<NavProps>`
   padding-bottom: 22px;
   border-bottom: 1px solid ${(props) => props.theme.primaryGray};
   margin-top: 38px;
-`;
+`
 
 const NavLi = styled.li`
   font-weight: 700;
@@ -59,9 +57,12 @@ const NavLi = styled.li`
   &:not(:first-child) {
     margin-top: 0;
   }
-`;
+`
 
-const NavLink = styled.a<NavProps>`
+const NavLink = styled.a<{
+  active?: boolean
+  isFixed?: boolean
+}>`
   text-decoration: ${(props) => (props.active && props.isFixed ? "underline" : "none")};
   display: inline-flex;
   height: 100%;
@@ -70,9 +71,11 @@ const NavLink = styled.a<NavProps>`
   &:hover {
     color: ${(props) => props.theme.primaryDark};
   }
-`;
+`
 
-const NavLinkSpecial = styled.a<NavProps>`
+const NavLinkSpecial = styled.a<{
+  isFixed?: boolean
+}>`
   text-decoration: underline;
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
@@ -81,12 +84,18 @@ const NavLinkSpecial = styled.a<NavProps>`
   margin-left: ${(props) => props.isFixed && "30px"};
   display: inline-flex;
   color: ${(props) => props.theme.primaryDark};
-`;
+`
 
-function NavigationDesktop({ isFixed, visibleSection }: NavProps) {
+type NavigationDesktopProps = {
+  isFixed?: boolean
+  visibleSection?: string
+  active?: boolean
+}
+
+const NavigationDesktop = ({ isFixed, visibleSection }: NavigationDesktopProps) => {
   const {
     texts: { navigation },
-  } = useContext(LanguageContext);
+  } = useContext(LanguageContext)
 
   return (
     <Nav isFixed={isFixed}>
@@ -109,7 +118,7 @@ function NavigationDesktop({ isFixed, visibleSection }: NavProps) {
         ))}
       </NavUl>
     </Nav>
-  );
+  )
 }
 
-export default NavigationDesktop;
+export default NavigationDesktop

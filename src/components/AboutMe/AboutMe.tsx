@@ -40,7 +40,7 @@ const Code = styled.code`
   ${TerminalLookMixin}
 `
 
-const AboutMe = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
+const AboutMe = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const {
     texts: { aboutMe },
   } = useContext(LanguageContext)

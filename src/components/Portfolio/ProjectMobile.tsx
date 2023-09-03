@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { ProjectProps } from "./Portfolio";
-import { Button } from "../Button/Button";
-import flipIcon from "../../images/flip-icon.svg";
+import React, { useState } from "react"
+import styled from "styled-components"
+import { Button } from "../Button/Button"
+import flipIcon from "../../images/flip-icon.svg"
+import { ProjectType } from "./Project"
 
-type Props = {
-  image?: string;
-  isFlipped: boolean;
-};
-
-const Front = styled.div<Props>`
+const Front = styled.div<{
+  image?: string
+  isFlipped: boolean
+}>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -26,9 +24,11 @@ const Front = styled.div<Props>`
   -webkit-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
   box-shadow: 6px 4px 4px -1px rgba(0, 0, 0, 0.38);
-`;
+`
 
-const Back = styled.div<Props>`
+const Back = styled.div<{
+  isFlipped: boolean
+}>`
   position: absolute;
   top: 0;
   left: 0;
@@ -90,7 +90,7 @@ const Back = styled.div<Props>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -100,7 +100,7 @@ const Container = styled.div`
   perspective: 1000px;
   margin-bottom: 20px;
   transform-style: preserve-3d;
-`;
+`
 
 const Text = styled.p`
   font-size: 18px;
@@ -108,17 +108,17 @@ const Text = styled.p`
   text-align: justify;
   color: white;
   margin: 0;
-`;
+`
 
 const Title = styled.h2`
   color: white;
   margin: 10px;
   width: 70%;
-`;
+`
 
 const TitleFront = styled(Title)`
   font-size: 20px;
-`;
+`
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -126,7 +126,7 @@ const ButtonWrapper = styled.div`
   align-items: center;
   width: 100%;
   padding: 10px 0;
-`;
+`
 
 const Content = styled.div`
   padding: 10px;
@@ -134,7 +134,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
+`
 
 const FrontWrapper = styled.div`
   width: 100%;
@@ -187,7 +187,7 @@ const FrontWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   position: relative;
-`;
+`
 
 const FrontButton = styled.button`
   margin: 0;
@@ -198,31 +198,35 @@ const FrontButton = styled.button`
   right: 10px;
   z-index: 1;
   cursor: pointer;
-`;
+`
 
 const BackButtonFlip = styled(FrontButton)`
   top: 20px;
-`;
+`
 
 const FlipImg = styled.img`
   width: 30px;
   height: 30px;
-`;
+`
 
 const BackButton = styled(Button)`
   border: none;
   &:hover {
     border: 2px solid black;
   }
-`;
+`
 
-function ProjectMobile({ project }: ProjectProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
+type ProjectMobileProps = {
+  project: ProjectType
+}
+
+const ProjectMobile = ({ project }: ProjectMobileProps) => {
+  const [isFlipped, setIsFlipped] = useState(false)
 
   const handleFlip = () => {
-    console.log("Flipped");
-    setIsFlipped((prevState) => !prevState);
-  };
+    console.log("Flipped")
+    setIsFlipped((prevState) => !prevState)
+  }
 
   return (
     <Container>
@@ -240,7 +244,7 @@ function ProjectMobile({ project }: ProjectProps) {
           <Text>{project.text}</Text>
           <ButtonWrapper>
             <BackButton href={project.githubUrl}>Github</BackButton>
-            <BackButton href={project.liveUrl}>Live</BackButton>
+            {project.liveUrl && <BackButton href={project.liveUrl}>Live</BackButton>}
           </ButtonWrapper>
           <BackButtonFlip onClick={() => handleFlip()}>
             <FlipImg src={flipIcon} alt="flip"></FlipImg>
@@ -248,7 +252,7 @@ function ProjectMobile({ project }: ProjectProps) {
         </Content>
       </Back>
     </Container>
-  );
+  )
 }
 
-export default ProjectMobile;
+export default ProjectMobile

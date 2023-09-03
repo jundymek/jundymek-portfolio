@@ -1,22 +1,22 @@
-import React, { useContext } from "react";
-import styled, { keyframes } from "styled-components";
-import { LanguageContext } from "../../App";
-import { SectionTitle } from "../../styles/styledComponents";
-import useOnScreen from "../../customHooks/useOnScreen";
-import { Button } from "../Button/Button";
-import { Scrambler } from "react-text-scrambler";
+import React, { useContext } from "react"
+import styled, { keyframes } from "styled-components"
+import { LanguageContext } from "../../App"
+import { SectionTitle } from "../../styles/styledComponents"
+import useOnScreen from "../../customHooks/useOnScreen"
+import { Button } from "../Button/Button"
+import { Scrambler } from "react-text-scrambler"
 
 const typing = keyframes`
   from { max-width: 0 }
   to { max-width: 200% }
-`;
+`
 
 const Section = styled.section`
   display: block;
   margin: 0 auto;
   max-width: 478px;
   width: 100%;
-`;
+`
 
 const Wrapper = styled.div`
   padding: 0 29px;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-`;
+`
 
 const Paragraph = styled.p<Length>`
   text-align: center;
@@ -35,7 +35,7 @@ const Paragraph = styled.p<Length>`
   overflow: hidden;
   white-space: nowrap;
   animation: ${typing} 8.5s steps(${(props) => props.length}, end) infinite;
-`;
+`
 
 const List = styled.ul`
   margin-top: 30px;
@@ -44,7 +44,7 @@ const List = styled.ul`
   list-style-type: none;
   display: flex;
   justify-content: center;
-`;
+`
 
 const Icon = styled.img`
   width: 50px;
@@ -54,7 +54,7 @@ const Icon = styled.img`
   :hover {
     transform: rotate(360deg) scale(1.2);
   }
-`;
+`
 
 const HandWrite = styled.p`
   font-family: "Over the Rainbow", cursive;
@@ -67,17 +67,17 @@ const HandWrite = styled.p`
     font-size: 30px;
     transform: rotate(-70deg);
   }
-`;
+`
 interface Length {
-  length: number;
+  length: number
 }
 
-const Contact = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
+const Contact = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const {
     texts: { contact },
-  } = useContext(LanguageContext);
+  } = useContext(LanguageContext)
 
-  useOnScreen(ref, "0%");
+  useOnScreen(ref, "0%")
 
   return (
     <Section id="contact" ref={ref}>
@@ -99,7 +99,7 @@ const Contact = React.forwardRef((props, ref: React.Ref<HTMLElement>) => {
         <HandWrite>jundymek</HandWrite>
       </Wrapper>
     </Section>
-  );
-});
+  )
+})
 
-export default Contact;
+export default Contact

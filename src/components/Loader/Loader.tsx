@@ -1,11 +1,11 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { TerminalLookMixin, BackgroundMixin } from "../../styles/styledComponents";
+import React from "react"
+import styled, { keyframes } from "styled-components"
+import { TerminalLookMixin, BackgroundMixin } from "../../styles/styledComponents"
 
 export const scaling = keyframes`
   0%   {transform: scaleY(1);}
   100% {transform: scaleY(1.5);}
-`;
+`
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,12 +13,12 @@ const Wrapper = styled.div`
   background: black;
   width: 90%;
   ${BackgroundMixin};
-  @media (min-width: ${props => props.theme.desktop}) {
+  @media (min-width: ${(props) => props.theme.desktop}) {
     width: 100%;
   }
-`;
+`
 
-const Paragraph = styled.span``;
+const Paragraph = styled.span``
 
 const Letter = styled.div`
   display: inline-block;
@@ -54,9 +54,9 @@ const Letter = styled.div`
   &:nth-of-type(10) {
     animation: none;
   }
-`;
+`
 
-function Loader() {
+const Loader = () => {
   return (
     <Wrapper>
       <Paragraph>
@@ -72,7 +72,7 @@ function Loader() {
         <Letter>.</Letter>
       </Paragraph>
     </Wrapper>
-  );
+  )
 }
 
-export default Loader;
+export default Loader

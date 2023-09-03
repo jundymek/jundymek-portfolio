@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { LanguageContext } from "../../App";
-import { Button } from "../Button/Button";
-import { ProjectProps } from "./Portfolio";
+import React, { useContext } from "react"
+import styled from "styled-components"
+import { LanguageContext } from "../../App"
+import { Button } from "../Button/Button"
 
 const ImageContainer = styled.div`
   width: 100%;
@@ -10,7 +9,7 @@ const ImageContainer = styled.div`
   background: inherit;
   clip-path: polygon(0% 0%, 100% 0, 100% 51%, 100% 100%, 0 100%);
   transition: 0.5s;
-`;
+`
 
 const ProjectImage = styled.img`
   top: 0;
@@ -18,7 +17,7 @@ const ProjectImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-`;
+`
 
 const Content = styled.div`
   position: absolute;
@@ -31,13 +30,13 @@ const Content = styled.div`
   height: inherit;
   box-sizing: border-box;
   text-align: center;
-`;
+`
 
 const Title = styled.h2`
   opacity: 0;
   transform: translateY(-20px);
   margin-bottom: 30px;
-`;
+`
 
 const Paragraph = styled.p`
   opacity: 0;
@@ -48,7 +47,7 @@ const Paragraph = styled.p`
   text-align: justify;
   margin: 0 auto;
   margin-bottom: 10px;
-`;
+`
 
 const List = styled.ul`
   list-style-type: none;
@@ -59,7 +58,7 @@ const List = styled.ul`
   opacity: 0;
   text-align: left;
   font-size: 18px;
-`;
+`
 
 const ListItem = styled.li`
   margin: 0;
@@ -71,7 +70,7 @@ const ListItem = styled.li`
     left: -15px;
     top: 2px;
   }
-`;
+`
 
 const TechItem = styled.span`
   width: auto;
@@ -91,7 +90,7 @@ const TechItem = styled.span`
     width: 100%;
     max-width: 100%;
   }
-`;
+`
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -101,7 +100,7 @@ const ButtonWrapper = styled.div`
   opacity: 0;
   bottom: 0;
   transform: translateY(-20px);
-`;
+`
 
 const Box = styled.div`
   position: relative;
@@ -145,12 +144,26 @@ const Box = styled.div`
     transform: translateY(0);
     transition-delay: 0.8s;
   }
-`;
+`
 
-function Project({ project }: ProjectProps) {
+export type ProjectType = {
+  img: string
+  alt: string
+  title: string
+  text: string
+  tech?: string[]
+  githubUrl: string
+  liveUrl: string | null
+}
+
+type ProjectProps = {
+  project: ProjectType
+}
+
+const Project = ({ project }: ProjectProps) => {
   const {
     texts: { projects },
-  } = useContext(LanguageContext);
+  } = useContext(LanguageContext)
   return (
     <Box>
       <ImageContainer>
@@ -175,11 +188,11 @@ function Project({ project }: ProjectProps) {
         </List>
         <ButtonWrapper>
           <Button href={project.githubUrl}>Github</Button>
-          <Button href={project.liveUrl}>Live</Button>
+          {project.liveUrl && <Button href={project.liveUrl}>Live</Button>}
         </ButtonWrapper>
       </Content>
     </Box>
-  );
+  )
 }
 
-export default Project;
+export default Project

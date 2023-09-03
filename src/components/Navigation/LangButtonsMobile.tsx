@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import styled, { css } from "styled-components";
-import { LanguageContext } from "../../App";
-import { Props } from "./Navigation";
-import { TerminalLookMixin } from "../../styles/styledComponents";
+import React, { useContext } from "react"
+import styled, { css } from "styled-components"
+import { LanguageContext } from "../../App"
+import { NavigationProps } from "./Navigation"
+import { TerminalLookMixin } from "../../styles/styledComponents"
 
 const LangContainer = styled.div`
   display: none;
@@ -14,13 +14,13 @@ const LangContainer = styled.div`
   font-size: 24px;
   line-height: 2;
   font-weight: 800;
-  @media (max-width: ${props => props.theme.desktop}) {
+  @media (max-width: ${(props) => props.theme.desktop}) {
     display: block;
   }
-`;
+`
 
 interface Lang {
-  isActive?: boolean;
+  isActive?: boolean
 }
 
 const LangButton = styled.button<Lang>`
@@ -28,23 +28,23 @@ const LangButton = styled.button<Lang>`
   padding: 0;
   cursor: pointer;
   font-size: 24px;
-  color: ${props => props.isActive && "#f0fff8"};
+  color: ${(props) => props.isActive && "#f0fff8"};
   color: #f0fff8;
   text-decoration: none;
   background: none;
   border: none;
-  ${props =>
+  ${(props) =>
     props.isActive &&
     css`
       ${TerminalLookMixin}
     `}
-`;
+`
 
-function LangButtonsMobile({ setLanguage }: Props) {
-  const lang = useContext(LanguageContext);
+const LangButtonsMobile = ({ setLanguage }: NavigationProps) => {
+  const lang = useContext(LanguageContext)
   const handleLangChange = (value: "EN" | "PL") => {
-    setLanguage(value);
-  };
+    setLanguage(value)
+  }
   return (
     <LangContainer>
       <LangButton isActive={lang.language === "EN"} onClick={() => handleLangChange("EN")}>
@@ -55,7 +55,7 @@ function LangButtonsMobile({ setLanguage }: Props) {
         PL
       </LangButton>
     </LangContainer>
-  );
+  )
 }
 
-export default LangButtonsMobile;
+export default LangButtonsMobile

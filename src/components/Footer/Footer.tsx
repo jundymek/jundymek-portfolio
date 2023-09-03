@@ -1,23 +1,24 @@
-import React, { useContext } from "react";
-import { LanguageContext } from "../../App";
-import styled from "styled-components";
+import React, { useContext } from "react"
+import { LanguageContext } from "../../App"
+import styled from "styled-components"
 
 const FooterContainer = styled.footer`
   margin: 48px 0;
-`;
+`
 
 const Paragraph = styled.p`
   font-size: 18px;
   line-height: 18px;
   margin: 5px;
   text-align: center;
-  color: ${props => props.theme.primaryGray};
-`;
+  color: ${(props) => props.theme.primaryGray};
+`
 
-function Footer() {
+const Footer = () => {
   const {
-    texts: { footer }
-  } = useContext(LanguageContext);
+    texts: { footer },
+  } = useContext(LanguageContext)
+
   return (
     <FooterContainer>
       <Paragraph>
@@ -29,7 +30,7 @@ function Footer() {
       </Paragraph>
       <Paragraph>{footer.paragraph2}</Paragraph>
     </FooterContainer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
