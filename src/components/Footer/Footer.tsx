@@ -1,20 +1,8 @@
 import React, { useContext } from "react"
 import { LanguageContext } from "../../App"
-import styled from "styled-components"
+import { FooterContainer, Paragraph } from "./Footer.styles"
 
-const FooterContainer = styled.footer`
-  margin: 48px 0;
-`
-
-const Paragraph = styled.p`
-  font-size: 18px;
-  line-height: 18px;
-  margin: 5px;
-  text-align: center;
-  color: ${(props) => props.theme.primaryGray};
-`
-
-const Footer = () => {
+export const Footer = () => {
   const {
     texts: { footer },
   } = useContext(LanguageContext)
@@ -32,5 +20,3 @@ const Footer = () => {
     </FooterContainer>
   )
 }
-
-export default Footer

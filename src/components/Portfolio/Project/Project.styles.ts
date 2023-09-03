@@ -1,9 +1,6 @@
-import React, { useContext } from "react"
 import styled from "styled-components"
-import { LanguageContext } from "../../App"
-import { Button } from "../Button/Button"
 
-const ImageContainer = styled.div`
+export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   background: inherit;
@@ -11,7 +8,7 @@ const ImageContainer = styled.div`
   transition: 0.5s;
 `
 
-const ProjectImage = styled.img`
+export const ProjectImage = styled.img`
   top: 0;
   left: 0;
   width: 100%;
@@ -19,7 +16,7 @@ const ProjectImage = styled.img`
   object-fit: contain;
 `
 
-const Content = styled.div`
+export const Content = styled.div`
   position: absolute;
   right: 0;
   display: flex;
@@ -32,13 +29,13 @@ const Content = styled.div`
   text-align: center;
 `
 
-const Title = styled.h2`
+export const Title = styled.h2`
   opacity: 0;
   transform: translateY(-20px);
   margin-bottom: 30px;
 `
 
-const Paragraph = styled.p`
+export const Paragraph = styled.p`
   opacity: 0;
   transform: translateY(-20px);
   font-size: 18px;
@@ -49,7 +46,7 @@ const Paragraph = styled.p`
   margin-bottom: 10px;
 `
 
-const List = styled.ul`
+export const List = styled.ul`
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -60,7 +57,7 @@ const List = styled.ul`
   font-size: 18px;
 `
 
-const ListItem = styled.li`
+export const ListItem = styled.li`
   margin: 0;
   padding: 2px;
   position: relative;
@@ -72,7 +69,7 @@ const ListItem = styled.li`
   }
 `
 
-const TechItem = styled.span`
+export const TechItem = styled.span`
   width: auto;
   position: relative;
   &:after {
@@ -92,7 +89,7 @@ const TechItem = styled.span`
   }
 `
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   justify-self: flex-end;
@@ -102,7 +99,7 @@ const ButtonWrapper = styled.div`
   transform: translateY(-20px);
 `
 
-const Box = styled.div`
+export const Box = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -145,54 +142,3 @@ const Box = styled.div`
     transition-delay: 0.8s;
   }
 `
-
-export type ProjectType = {
-  img: string
-  alt: string
-  title: string
-  text: string
-  tech?: string[]
-  githubUrl: string
-  liveUrl: string | null
-}
-
-type ProjectProps = {
-  project: ProjectType
-}
-
-const Project = ({ project }: ProjectProps) => {
-  const {
-    texts: { projects },
-  } = useContext(LanguageContext)
-  return (
-    <Box>
-      <ImageContainer>
-        <ProjectImage src={project.img} alt={project.title} />
-      </ImageContainer>
-      <Content>
-        <Title>{project.title}</Title>
-        <Paragraph>{project.text}</Paragraph>
-        <Paragraph>
-          {projects.paragraph}{" "}
-          <span role="img" aria-label="technologie">
-            🚀
-          </span>
-        </Paragraph>
-        <List>
-          {project.tech &&
-            project.tech.map((technology, index) => (
-              <ListItem key={index}>
-                <TechItem>{technology}</TechItem>
-              </ListItem>
-            ))}
-        </List>
-        <ButtonWrapper>
-          <Button href={project.githubUrl}>Github</Button>
-          {project.liveUrl && <Button href={project.liveUrl}>Live</Button>}
-        </ButtonWrapper>
-      </Content>
-    </Box>
-  )
-}
-
-export default Project

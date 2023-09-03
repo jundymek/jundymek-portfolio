@@ -1,48 +1,23 @@
 import React, { useContext } from "react"
-import styled from "styled-components"
 import { SectionTitle, GreySection, SectionSubtitle } from "../../styles/styledComponents"
 import { LanguageContext } from "../../App"
 import { Scrambler } from "react-text-scrambler"
 import useWindowSize from "../../customHooks/useWindowSize"
-import ProjectMobile from "./ProjectMobile"
-import Repositories from "../Repositories/Repositories"
 import useOnScreen from "../../customHooks/useOnScreen"
-import Project from "./Project"
+import Project from "./Project/Project"
+import { Wrapper } from "./Portfolio.styles"
+import { ProjectMobile } from "./ProjectMobile/ProjectMobile"
+import { Repositories } from "../Repositories/Repositories"
 
-const Wrapper = styled.div`
-  /* max-width: 478px; */
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @media (min-width: ${(props) => props.theme.desktop}) {
-    max-width: 880px;
-  }
-`
-
-// export type ProjectType = {
-//   img: string
-//   alt: string
-//   title: string
-//   text: string
-//   githubUrl: string
-//   liveUrl: string | null
-//   tech?: string[]
-// }
-// export interface ProjectProps {
-//   project?: ProjectType
-// }
-
-const Portfolio = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
+export const Portfolio = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const windowWidth = useWindowSize().width
   const mobile = windowWidth && windowWidth < 900
-  // const ref = useRef(null);
+
   useOnScreen(ref, "0px")
   const {
     texts: { projects },
   } = useContext(LanguageContext)
+
   return (
     <GreySection ref={ref} id="portfolio">
       <Wrapper>
@@ -58,5 +33,3 @@ const Portfolio = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
     </GreySection>
   )
 })
-
-export default Portfolio

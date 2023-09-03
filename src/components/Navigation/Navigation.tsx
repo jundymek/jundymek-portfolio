@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react"
-import styled from "styled-components"
 import useWindowSize from "../../customHooks/useWindowSize"
-import { WhiteDiv } from "../../styles/styledComponents"
 import { useScrollYPosition } from "react-use-scroll-position"
-import NavigationDesktop from "./NavigationDesktop"
-import NavigationMobile from "./NavigationMobile"
+import { Container } from "./Navigation.styles"
+import { NavigationDesktop } from "./NavigationDesktop"
+import { NavigationMobile } from "./NavigationMobile"
 
-const Container = styled(WhiteDiv)<{
-  isVisible?: boolean
-  isFixed?: boolean
-}>`
-  padding: ${(props) => (props.isVisible || props.isFixed) && "0"};
-`
 export type NavigationProps = {
   setLanguage: React.Dispatch<React.SetStateAction<"PL" | "EN">>
   visibleSection?: string
