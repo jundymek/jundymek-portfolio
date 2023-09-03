@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import { forwardRef, useContext } from "react"
 import { SectionTitle } from "../../styles/styledComponents"
 import { LanguageContext } from "../../App"
 import { Scrambler } from "react-text-scrambler"
 import useOnScreen from "../../customHooks/useOnScreen"
 import { AboutSection, Wrapper, Paragraph, StrikedParagraph, Code } from "./AboutMe.styles"
 
-export const AboutMe = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
+export const AboutMe = forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const {
     texts: { aboutMe },
   } = useContext(LanguageContext)

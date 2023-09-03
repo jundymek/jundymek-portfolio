@@ -17,11 +17,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
-    "allowUmdGlobalAccess": true
   },
   "include": [
     "src"
-  ]
+  ],
+  "types": [
+    "node",
+    "jest",
+    "@testing-library/jest-dom"
+  ],
 }

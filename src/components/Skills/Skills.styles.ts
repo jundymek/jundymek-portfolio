@@ -1,5 +1,5 @@
 import { animated } from "react-spring"
-import ReactTooltip from "react-tooltip"
+import { Tooltip as ReactTooltip } from "react-tooltip"
 import styled from "styled-components"
 
 export const Section = styled.section`

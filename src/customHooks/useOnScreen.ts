@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
-function useOnScreen(ref:any, rootMargin = '0px') {
+function useOnScreen(ref: any, rootMargin = "0px") {
   // State and setter for storing whether element is visible
-  const [isIntersecting, setIntersecting] = useState(false);
+  const [isIntersecting, setIntersecting] = useState(false)
 
   useEffect(() => {
     const refCurrent = ref.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Update our state when observer callback fires
-        setIntersecting(entry.isIntersecting);
+        setIntersecting(entry.isIntersecting)
       },
       {
-        rootMargin
+        rootMargin,
       }
-    );
+    )
     if (ref.current) {
-      observer.observe(ref.current);
+      observer.observe(ref.current)
     }
     return () => {
-      observer.unobserve(refCurrent);
-    };
-  }, [rootMargin, ref]); // Empty array ensures that effect is only run on mount and unmount
+      observer.unobserve(refCurrent)
+    }
+  }, []) // Empty array ensures that effect is only run on mount and unmount
 
-  return isIntersecting;
+  return isIntersecting
 }
 
-export default useOnScreen;
+export default useOnScreen

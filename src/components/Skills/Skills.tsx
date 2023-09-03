@@ -25,7 +25,7 @@ export const Skills = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
   } = useContext(LanguageContext)
 
   const trail = useTrail(skills.skills.length, {
-    config: { duration: 800 },
+    config: { duration: 100 },
     reset: skillsOnScreen === "true" && prevSkillsOnScreen === "false" ? true : false,
     from: { marginLeft: -50, opacity: 0, transform: "translate3d(0px, -90px, -500px)" },
     to: { marginLeft: 0, opacity: 1, transform: "translate3d(0,0px,0)" },
@@ -39,15 +39,15 @@ export const Skills = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
       <SectionSubtitle>{skills.paragraph}</SectionSubtitle>
       <List>
         {trail.map((props, index) => (
-          <ListItem key={index} style={props}>
+          <ListItem key={index} style={props} data-tooltip-id={`${index}`}>
             <SkillBox>
               <StyledImage
                 src={skills.skills[index].img}
                 alt={skills.skills[index].alt}
-                data-tip
-                data-for={index}
-                data-place="top"
-                data-effect="solid"
+                // data-tip
+
+                // data-place="top"
+                // data-effect="solid"
               />
               <SkillSubtitle>{skills.skills[index].text}</SkillSubtitle>
               {skills.skills[index].tooltipText.length > 0 && (

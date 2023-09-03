@@ -39,13 +39,12 @@ export const translation = {
     },
     aboutMe: {
       title: "O mnie",
-      paragraph1part1Hello: "Cześć - jestem Łukasz. ",
-      paragraph1part1StrikeThrough: "Obecnie Policjant 👮🏻‍♂️, w przyszłości... programista.",
+      paragraph1part1Hello: "Cześć - mam na imię Łukasz - ",
+      paragraph1part1StrikeThrough: "obecnie Policjant 👮🏻‍♂️, w przyszłości... programista.",
       paragraph1part1End:
-        " Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Moja przygoda 'na poważnie' z programowaniem zaczęła się kiedy napisałem pierwsze",
+        " Jestem programistą. Od kilku lat wszystkie wolne chwile poświęcam kodowaniu. Moja przygoda 'na poważnie' z programowaniem zaczęła się kiedy napisałem pierwsze",
       paragraph1code: "print 'Hello World'",
-      paragraph1part2:
-        "w Pythonie (tak - w Pythonie 2). Aktualnie zgłębiam tajniki frontendu i próbuję opanować Reacta.",
+      paragraph1part2: "w Pythonie (tak - w Pythonie 2). Aktualnie pracuję na froncie w ekosystemie Reacta.",
       paragraph2:
         "Nie deklaruję się po którejkolwiek ze stron. Front i back podobają mi się jednakowo - najważniejsza jest frajda z pisania kodu. Marzyłem o pracy jako programista na pełen etat i jestem niesamowicie wdzięczny, że mogę robić to, co kocham. ❤️",
     },
@@ -188,10 +187,10 @@ export const translation = {
     },
     aboutMe: {
       title: "About me",
-      paragraph1part1Hello: "Hi - my name is Łukasz. ",
-      paragraph1part1StrikeThrough: "Currently a Cop👮🏻‍♂️, in the future… programmer.",
+      paragraph1part1Hello: "Hi - my name is Łukasz - ",
+      paragraph1part1StrikeThrough: "currently a Cop👮🏻‍♂️, in the future… programmer.",
       paragraph1part1End:
-        " For the last couple of years, I spend all of my free time coding. My programming adventure started when I first wrote",
+        " I am Software Developer. For the last couple of years, I spend all of my free time coding. My programming adventure started when I first wrote",
       paragraph1code: "print 'Hello World'",
       paragraph1part2:
         "in Python (yes - Python 2). Lately, I've delved into frontend development. Nowadays, I mostly spend my time writing React code.",

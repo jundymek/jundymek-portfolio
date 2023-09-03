@@ -35,7 +35,7 @@ export const RepositoriesCounter = ({ count }: RepositoriesCounterProps) => {
       <AllReposSubtitle>{repositoriesCounter.subtitle}</AllReposSubtitle>
       <AllReposLink href={contact.social[0].url} title={contact.social[0].title}>
         <CounterWrapper onMouseEnter={() => setcurrentNumber(0)}>
-          <Github src={github}></Github>
+          <Github src={github || ""}></Github>
           <StyledNumber count={currentNumber}>{currentNumber}</StyledNumber>
         </CounterWrapper>
       </AllReposLink>
