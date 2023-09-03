@@ -2,21 +2,20 @@ import styled, { css } from "styled-components"
 import { WhiteDiv, TerminalLookMixin } from "../../styles/styledComponents"
 
 export const Container = styled(WhiteDiv)<{
-  isVisible?: boolean
-  isFixed?: boolean
+  $isVisible?: boolean
+  $isFixed?: boolean
 }>`
-  padding: ${(props) => (props.isVisible || props.isFixed) && "0"};
+  padding: ${(props) => (props.$isVisible || props.$isFixed) && "0"};
   @media (min-width: ${(props) => props.theme.desktop}) {
     display: none;
   }
 `
 
 export const Nav = styled.nav<{
-  isFixed?: boolean
-  isVisible?: boolean
+  $isVisible?: boolean
 }>`
   display: flex;
-  transform: ${(props) => (props.isVisible ? "translateX(0)" : "translateX(-100%)")};
+  transform: ${(props) => (props.$isVisible ? "translateX(0)" : "translateX(-100%)")};
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -25,15 +24,13 @@ export const Nav = styled.nav<{
   top: 0;
   left: 0;
   max-width: 1440px;
-  transition: ${(props) => (props.isVisible ? "transform 0.4s ease-out" : "None")};
+  transition: ${(props) => (props.$isVisible ? "transform 0.4s ease-out" : "None")};
   position: fixed;
   background: rgba(0, 0, 0, 0.94);
   z-index: 1;
 `
 
-export const NavUl = styled.ul<{
-  isFixed?: boolean
-}>`
+export const NavUl = styled.ul`
   list-style-type: none;
   margin-left: 10%;
   padding: 0;
@@ -68,7 +65,7 @@ export const NavLi = styled.li`
 `
 
 export const NavLink = styled.a<{
-  isVisible?: boolean
+  $isVisible?: boolean
 }>`
   text-decoration: none;
   display: inline-flex;
@@ -77,7 +74,7 @@ export const NavLink = styled.a<{
   &:hover {
     color: ${(props) => props.theme.primaryDark};
     ${(props) =>
-      props.isVisible &&
+      props.$isVisible &&
       css`
         &:before {
           content: attr(data-text);
@@ -121,33 +118,33 @@ export const NavLink = styled.a<{
 `
 
 export const NavLinkSpecial = styled.a<{
-  isFixed?: boolean
-  isOpen?: boolean
+  $isFixed?: boolean
+  $isOpen?: boolean
 }>`
   text-decoration: underline;
-  display: ${(props) => (props.isFixed && !props.isOpen ? "inline-flex" : "none")};
+  display: ${(props) => (props.$isFixed && !props.$isOpen ? "inline-flex" : "none")};
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
   padding-bottom: 10px;
   ${TerminalLookMixin};
-  margin-left: ${(props) => props.isFixed && "30px"};
+  margin-left: ${(props) => props.$isFixed && "30px"};
 `
 
 export const HamburgerWrapper = styled.div<{
-  isFixed?: boolean
-  isOpen?: boolean
+  $isFixed?: boolean
+  $isOpen?: boolean
 }>`
   display: flex;
-  width: ${(props) => (props.isOpen ? "20%" : "100%")};
+  width: ${(props) => (props.$isOpen ? "20%" : "100%")};
   justify-content: space-between;
   align-items: center;
   z-index: 2;
-  height: ${(props) => props.isFixed && "70px"};
+  height: ${(props) => props.$isFixed && "70px"};
   margin: 0 auto;
-  position: ${(props) => props.isFixed && "fixed"};
+  position: ${(props) => props.$isFixed && "fixed"};
   top: 0;
   right: 0;
-  background: ${(props) => props.isFixed && !props.isOpen && props.theme.primaryDark};
-  opacity: ${(props) => (props.isFixed && !props.isOpen ? ".90" : "1")};
+  background: ${(props) => props.$isFixed && !props.$isOpen && props.theme.primaryDark};
+  opacity: ${(props) => (props.$isFixed && !props.$isOpen ? ".90" : "1")};
   transition: 1s ease;
 `

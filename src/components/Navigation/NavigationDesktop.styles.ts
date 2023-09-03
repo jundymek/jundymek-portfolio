@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { TerminalLookMixin } from "../../styles/styledComponents"
 
 export const Nav = styled.nav<{
-  isFixed?: boolean
+  $isFixed?: boolean
 }>`
   height: 100%;
   max-width: 1440px;
@@ -15,7 +15,7 @@ export const Nav = styled.nav<{
     display: none;
   }
   ${(props) =>
-    props.isFixed &&
+    props.$isFixed &&
     css`
       position: fixed;
       top: 0;
@@ -27,7 +27,7 @@ export const Nav = styled.nav<{
 `
 
 export const NavUl = styled.ul<{
-  isFixed?: boolean
+  $isFixed?: boolean
 }>`
   list-style-type: none;
   padding: 0;
@@ -36,7 +36,7 @@ export const NavUl = styled.ul<{
   max-width: 1440px;
   width: 100%;
   line-height: 20px;
-  justify-content: ${(props) => (props.isFixed ? "space-around" : "space-between")};
+  justify-content: ${(props) => (props.$isFixed ? "space-around" : "space-between")};
   padding-bottom: 22px;
   border-bottom: 1px solid ${(props) => props.theme.primaryGray};
   margin-top: 38px;
@@ -58,10 +58,10 @@ export const NavLi = styled.li`
 `
 
 export const NavLink = styled.a<{
-  active?: boolean
-  isFixed?: boolean
+  $active?: boolean
+  $isFixed?: boolean
 }>`
-  text-decoration: ${(props) => (props.active && props.isFixed ? "underline" : "none")};
+  text-decoration: ${(props) => (props.$active && props.$isFixed ? "underline" : "none")};
   display: inline-flex;
   height: 100%;
   color: ${(props) => props.theme.primaryGray};
@@ -72,14 +72,14 @@ export const NavLink = styled.a<{
 `
 
 export const NavLinkSpecial = styled.a<{
-  isFixed?: boolean
+  $isFixed?: boolean
 }>`
   text-decoration: underline;
   font-family: "Over the Rainbow", cursive;
   font-size: 22px;
   padding-bottom: 10px;
   ${TerminalLookMixin};
-  margin-left: ${(props) => props.isFixed && "30px"};
+  margin-left: ${(props) => props.$isFixed && "30px"};
   display: inline-flex;
   color: ${(props) => props.theme.primaryDark};
 `

@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { LanguageContext } from "../../../App"
-import github from "../../../images/github-icon.svg"
 import {
   AllReposLink,
   AllReposSubtitle,
@@ -35,8 +34,8 @@ export const RepositoriesCounter = ({ count }: RepositoriesCounterProps) => {
       <AllReposSubtitle>{repositoriesCounter.subtitle}</AllReposSubtitle>
       <AllReposLink href={contact.social[0].url} title={contact.social[0].title}>
         <CounterWrapper onMouseEnter={() => setcurrentNumber(0)}>
-          <Github src={github || ""}></Github>
-          <StyledNumber count={currentNumber}>{currentNumber}</StyledNumber>
+          <Github />
+          <StyledNumber $count={currentNumber}>{currentNumber}</StyledNumber>
         </CounterWrapper>
       </AllReposLink>
     </Container>

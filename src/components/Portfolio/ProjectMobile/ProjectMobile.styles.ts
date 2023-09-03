@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Button } from "../../Button/Button"
+import FlipIcon from "../../../images/flip-icon.svg"
 
 export const Front = styled.div<{
   image?: string
@@ -201,7 +202,7 @@ export const BackButtonFlip = styled(FrontButton)`
   top: 20px;
 `
 
-export const FlipImg = styled.img`
+export const FlipImg = styled(FlipIcon)`
   width: 30px;
   height: 30px;
 `

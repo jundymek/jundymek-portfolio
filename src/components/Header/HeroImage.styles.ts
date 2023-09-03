@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
 export const ImageWrapper = styled.div<{
-  image: string
+  $image: string
 }>`
   position: relative;
-  background: url(${(props) => props.image});
+  background: url(${(props) => props.$image});
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0 auto;
@@ -19,7 +19,7 @@ export const ImageWrapper = styled.div<{
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(${(props) => props.image});
+    background: url(${(props) => props.$image});
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.5;

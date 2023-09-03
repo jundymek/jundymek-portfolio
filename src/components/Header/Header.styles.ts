@@ -78,7 +78,7 @@ export const LangContainer = styled.div`
 `
 
 export const LangButton = styled.button<{
-  isActive: boolean
+  $isActive: boolean
 }>`
   margin: 0;
   padding: 0;
@@ -86,9 +86,9 @@ export const LangButton = styled.button<{
   font-style: italic;
   font-size: 18px;
   font-family: "VT323", monospace;
-  color: ${(props) => !props.isActive && props.theme.primaryGray};
+  color: ${(props) => !props.$isActive && props.theme.primaryGray};
   font-weight: 500;
-  text-decoration: ${(props) => (props.isActive ? "underline" : "none")};
+  text-decoration: ${(props) => (props.$isActive ? "underline" : "none")};
   background: none;
   border: none;
 `

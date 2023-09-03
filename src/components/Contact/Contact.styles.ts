@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
 `
 
 export const Paragraph = styled.p<{
-  length: number
+  $length: number
 }>`
   text-align: center;
   font-size: 18px;
@@ -30,7 +30,7 @@ export const Paragraph = styled.p<{
   line-height: 22px;
   overflow: hidden;
   white-space: nowrap;
-  animation: ${typing} 8.5s steps(${(props) => props.length}, end) infinite;
+  animation: ${typing} 8.5s steps(${(props) => props.$length}, end) infinite;
 `
 
 export const List = styled.ul`

@@ -14,8 +14,8 @@ export const NavigationDesktop = ({ isFixed, visibleSection }: NavigationDesktop
   } = useContext(LanguageContext)
 
   return (
-    <Nav isFixed={isFixed}>
-      <NavUl isFixed={isFixed}>
+    <Nav $isFixed={isFixed}>
+      <NavUl $isFixed={isFixed}>
         <NavLi>
           {isFixed ? (
             <NavLinkSpecial href="#">jundymek</NavLinkSpecial>
@@ -27,7 +27,12 @@ export const NavigationDesktop = ({ isFixed, visibleSection }: NavigationDesktop
         </NavLi>
         {navigation.links.map((link, index) => (
           <NavLi key={index}>
-            <NavLink data-text={link.title} href={link.url} active={visibleSection === link.section} isFixed={isFixed}>
+            <NavLink
+              data-text={link.title}
+              href={link.url}
+              $active={visibleSection === link.section}
+              $isFixed={isFixed}
+            >
               {link.title}
             </NavLink>
           </NavLi>

@@ -19,22 +19,20 @@ const LangContainer = styled.div`
   }
 `
 
-interface Lang {
-  isActive?: boolean
-}
-
-const LangButton = styled.button<Lang>`
+const LangButton = styled.button<{
+  $isActive: boolean
+}>`
   margin: 0;
   padding: 0;
   cursor: pointer;
   font-size: 24px;
-  color: ${(props) => props.isActive && "#f0fff8"};
+  color: ${(props) => props.$isActive && "#f0fff8"};
   color: #f0fff8;
   text-decoration: none;
   background: none;
   border: none;
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       ${TerminalLookMixin}
     `}
@@ -47,11 +45,11 @@ const LangButtonsMobile = ({ setLanguage }: NavigationProps) => {
   }
   return (
     <LangContainer>
-      <LangButton isActive={lang.language === "EN"} onClick={() => handleLangChange("EN")}>
+      <LangButton $isActive={lang.language === "EN"} onClick={() => handleLangChange("EN")}>
         ENG
       </LangButton>{" "}
       |{" "}
-      <LangButton isActive={lang.language === "PL"} onClick={() => handleLangChange("PL")}>
+      <LangButton $isActive={lang.language === "PL"} onClick={() => handleLangChange("PL")}>
         PL
       </LangButton>
     </LangContainer>

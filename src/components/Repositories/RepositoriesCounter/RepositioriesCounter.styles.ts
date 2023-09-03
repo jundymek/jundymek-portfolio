@@ -1,5 +1,7 @@
 import styled, { keyframes, css } from "styled-components"
 
+import { ReactComponent as GithubIcon } from "../../../images/github-icon.svg"
+
 export const bounce = keyframes`
   0% { transform: scale(1)};
   50% { transform: scale(1.5)};
@@ -34,7 +36,7 @@ export const CounterWrapper = styled.div`
   align-items: center;
 `
 
-export const Github = styled.img`
+export const Github = styled(GithubIcon)`
   position: relative;
   width: 100px;
   height: 100px;
@@ -42,12 +44,12 @@ export const Github = styled.img`
 `
 
 export const StyledNumber = styled.span<{
-  count: number
+  $count: number
 }>`
   position: absolute;
-  font-size: ${(props) => `${20 + props.count}px`};
+  font-size: ${(props) => `${20 + props.$count}px`};
   animation: ${(props) =>
-    props.count === 26
+    props.$count === 26
       ? css`
           ${bounce} 1s
         `

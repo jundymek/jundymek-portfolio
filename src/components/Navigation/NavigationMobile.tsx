@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react"
-
 import { LanguageContext } from "../../App"
 import LangButtonsMobile from "./LangButtonsMobile"
 import { Container, HamburgerWrapper, Nav, NavLi, NavLink, NavLinkSpecial, NavUl } from "./NavigationMobile.styles"
@@ -29,27 +28,27 @@ export const NavigationMobile = ({ isFixed = false, setLanguage }: NavigationMob
     setisHamburgerOpen(false)
   }
   return (
-    <Container isVisible={isHamburgerOpen}>
-      <HamburgerWrapper isFixed={isFixed} isOpen={isHamburgerOpen}>
-        <NavLinkSpecial isFixed={isFixed} isOpen={isHamburgerOpen} href="#">
+    <Container $isVisible={isHamburgerOpen}>
+      <HamburgerWrapper $isFixed={isFixed} $isOpen={isHamburgerOpen}>
+        <NavLinkSpecial $isFixed={isFixed} $isOpen={isHamburgerOpen} href="#">
           jundymek
         </NavLinkSpecial>
         <Hamburger isOpen={isHamburgerOpen} setIsOpen={setisHamburgerOpen} isFixed={isFixed} />
       </HamburgerWrapper>
-      <Nav isVisible={isHamburgerOpen} isFixed={isFixed}>
-        <NavUl isFixed={isFixed}>
+      <Nav $isVisible={isHamburgerOpen}>
+        <NavUl>
           <NavLi>
             {isFixed && !isHamburgerOpen ? (
               <NavLinkSpecial href="#">jundymek</NavLinkSpecial>
             ) : (
-              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text="Home" href="#">
+              <NavLink onClick={handleClick} $isVisible={isHamburgerOpen} data-text="Home" href="#">
                 Home
               </NavLink>
             )}
           </NavLi>
           {navigation.links.map((link, index) => (
             <NavLi key={index}>
-              <NavLink onClick={handleClick} isVisible={isHamburgerOpen} data-text={link.title} href={link.url}>
+              <NavLink onClick={handleClick} $isVisible={isHamburgerOpen} data-text={link.title} href={link.url}>
                 {link.title}
               </NavLink>
             </NavLi>

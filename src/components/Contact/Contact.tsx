@@ -19,7 +19,7 @@ export const Contact = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
         <SectionTitle>
           <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" renderIn={1000} />
         </SectionTitle>
-        <Paragraph length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
+        <Paragraph $length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
         <Button href={`mailto:lukasz@gdzietylkochce.com`}>{contact.buttonLabel}</Button>
         <List>
           {contact.social.map((icon, index) => (

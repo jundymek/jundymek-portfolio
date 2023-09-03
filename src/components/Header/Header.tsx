@@ -50,11 +50,11 @@ export const Header = ({ setLanguage }: HeaderProps) => {
             ))}
           </ParagraphWrapper>
           <LangContainer>
-            <LangButton isActive={lang.language === "EN"} onClick={() => handleClick("EN")}>
+            <LangButton $isActive={lang.language === "EN"} onClick={() => handleClick("EN")}>
               EN
             </LangButton>{" "}
             |{" "}
-            <LangButton isActive={lang.language === "PL"} onClick={() => handleClick("PL")}>
+            <LangButton $isActive={lang.language === "PL"} onClick={() => handleClick("PL")}>
               PL
             </LangButton>
           </LangContainer>

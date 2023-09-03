@@ -7,7 +7,7 @@ import { ImageWrapper, StyledImage } from "./HeroImage.styles"
 export const HeroImage = () => {
   const windowWidth = useWindowSize().width
   return (
-    <ImageWrapper image={windowWidth && windowWidth > 600 ? heroBig : heroSmall}>
+    <ImageWrapper $image={windowWidth && windowWidth > 600 ? heroBig : heroSmall}>
       {windowWidth && windowWidth > 600 ? (
         <StyledImage src={heroBig} alt="Łukasz Dymek" />
       ) : (

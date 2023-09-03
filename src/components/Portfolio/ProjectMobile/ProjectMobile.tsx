@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import flipIcon from "../../../images/flip-icon.svg"
+import { useState } from "react"
 import { ProjectType } from "../Project/Project"
 import {
   Container,
@@ -35,7 +34,7 @@ export const ProjectMobile = ({ project }: ProjectMobileProps) => {
         <FrontWrapper>
           <TitleFront>{project.title}</TitleFront>
           <FrontButton onClick={handleFlip}>
-            <FlipImg src={flipIcon} alt="flip"></FlipImg>
+            <FlipImg />
           </FrontButton>
         </FrontWrapper>
       </Front>
@@ -48,7 +47,7 @@ export const ProjectMobile = ({ project }: ProjectMobileProps) => {
             {project.liveUrl && <BackButton href={project.liveUrl}>Live</BackButton>}
           </ButtonWrapper>
           <BackButtonFlip onClick={() => handleFlip()}>
-            <FlipImg src={flipIcon} alt="flip"></FlipImg>
+            <FlipImg />
           </BackButtonFlip>
         </Content>
       </Back>

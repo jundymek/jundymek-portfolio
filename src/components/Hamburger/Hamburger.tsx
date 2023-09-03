@@ -13,8 +13,8 @@ export const Hamburger = ({ isOpen, setIsOpen, isFixed }: HamburgerProps) => {
   }
 
   return (
-    <HamburgerBtn isOpen={isOpen} type="button" onClick={handleClick} isFixed={isFixed}>
-      <HamburgerBars isOpen={isOpen} isFixed={isFixed}></HamburgerBars>
+    <HamburgerBtn $isOpen={isOpen} type="button" onClick={handleClick} $isFixed={isFixed}>
+      <HamburgerBars $isOpen={isOpen} $isFixed={isFixed}></HamburgerBars>
     </HamburgerBtn>
   )
 }
