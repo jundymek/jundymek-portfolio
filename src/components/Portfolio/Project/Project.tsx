@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { LanguageContext } from "../../../App"
 import { Button } from "../../Button/Button"
 import {
@@ -19,16 +19,16 @@ export type ProjectType = {
   alt: string
   title: string
   text: string
-  tech?: string[]
   githubUrl: string
   liveUrl: string | null
+  tech?: string[]
 }
 
 type ProjectProps = {
   project: ProjectType
 }
 
-const Project = ({ project }: ProjectProps) => {
+export const Project = ({ project }: ProjectProps) => {
   const {
     texts: { projects },
   } = useContext(LanguageContext)
@@ -62,5 +62,3 @@ const Project = ({ project }: ProjectProps) => {
     </Box>
   )
 }
-
-export default Project

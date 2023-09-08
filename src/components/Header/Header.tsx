@@ -2,7 +2,6 @@ import React, { useContext, useRef } from "react"
 import { LanguageContext } from "../../App"
 import useOnScreen from "../../customHooks/useOnScreen"
 import { WhiteDiv } from "../../styles/styledComponents"
-import { Scrambler, Cycler } from "react-text-scrambler"
 import {
   StyledHeader,
   Wrapper,
@@ -16,6 +15,7 @@ import {
   CyclerWrapper,
 } from "./Header.styles"
 import { HeroImage } from "./HeroImage"
+import { TextScrambler } from "../TextScrambler/TextScrambler"
 
 type HeaderProps = {
   setLanguage?: React.Dispatch<React.SetStateAction<"PL" | "EN">>
@@ -40,7 +40,7 @@ export const Header = ({ setLanguage }: HeaderProps) => {
         <Wrapper>
           <TitleWrapper>
             <Title data-testid="scrambler">
-              <Scrambler text={`< ${header.title} />`} renderIn={1000} characters="!@#$%^&*()" />
+              <TextScrambler text={[`< ${header.title} />`]} />
             </Title>
             <Subtitle>jundymek</Subtitle>
           </TitleWrapper>
@@ -62,7 +62,7 @@ export const Header = ({ setLanguage }: HeaderProps) => {
         <HeroImage />
         {onScreen && (
           <CyclerWrapper>
-            <Cycler typewriter={true} strings={strings} />
+            <TextScrambler text={strings} />
           </CyclerWrapper>
         )}
       </StyledHeader>

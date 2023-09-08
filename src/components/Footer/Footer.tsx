@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { LanguageContext } from "../../App"
 import { FooterContainer, Paragraph } from "./Footer.styles"
 

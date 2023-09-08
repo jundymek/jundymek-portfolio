@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Button } from "../../Button/Button"
-import FlipIcon from "../../../images/flip-icon.svg"
+import { ReactComponent as FlipIcon } from "../../../images/flip-icon.svg"
 
 export const Front = styled.div<{
   image?: string

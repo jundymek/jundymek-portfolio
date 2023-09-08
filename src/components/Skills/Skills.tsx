@@ -3,7 +3,6 @@ import { SectionTitle, SectionSubtitle } from "../../styles/styledComponents"
 import { useTrail } from "react-spring"
 import useOnScreen from "../../customHooks/useOnScreen"
 import { LanguageContext } from "../../App"
-import { Scrambler } from "react-text-scrambler"
 import usePrevious from "../../customHooks/usePrevious"
 import {
   List,
@@ -16,6 +15,7 @@ import {
   TooltipList,
   StyledImage,
 } from "./Skills.styles"
+import { TextScrambler } from "../TextScrambler/TextScrambler"
 
 export const Skills = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const skillsOnScreen = useOnScreen(ref, "0%").toString()
@@ -34,21 +34,14 @@ export const Skills = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
   return (
     <Section ref={ref} id="skills">
       <SectionTitle>
-        <Scrambler text={`{ ${skills.title} }`} characters="!@#$%^&*()" renderIn={1000} />
+        <TextScrambler text={[skills.title]} />
       </SectionTitle>
       <SectionSubtitle>{skills.paragraph}</SectionSubtitle>
       <List>
         {trail.map((props, index) => (
           <ListItem key={index} style={props} data-tooltip-id={`${index}`}>
             <SkillBox>
-              <StyledImage
-                src={skills.skills[index].img}
-                alt={skills.skills[index].alt}
-                // data-tip
-
-                // data-place="top"
-                // data-effect="solid"
-              />
+              <StyledImage src={skills.skills[index].img} alt={skills.skills[index].alt} />
               <SkillSubtitle>{skills.skills[index].text}</SkillSubtitle>
               {skills.skills[index].tooltipText.length > 0 && (
                 <MyTooltip id={`${index}`}>

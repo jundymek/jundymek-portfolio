@@ -35,7 +35,7 @@ export const translation = {
     },
     header: {
       title: "Łukasz Dymek",
-      paragraphs: ["Python/Django/React", "Po prostu programista"],
+      paragraphs: ["Od Pythona do Vue, z Vue do Reacta,", "Łączę technologie z wizją."],
     },
     aboutMe: {
       title: "O mnie",
@@ -183,7 +183,7 @@ export const translation = {
     },
     header: {
       title: "Łukasz Dymek",
-      paragraphs: ["Python/Django/React", "Simply a programmer"],
+      paragraphs: ["From Python to Vue, from Vue to React,", "Connecting Technologies with Vision."],
     },
     aboutMe: {
       title: "About me",

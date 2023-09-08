@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 import { LanguageContext } from "../../App"
 import LangButtonsMobile from "./LangButtonsMobile"
 import { Container, HamburgerWrapper, Nav, NavLi, NavLink, NavLinkSpecial, NavUl } from "./NavigationMobile.styles"
@@ -27,6 +27,7 @@ export const NavigationMobile = ({ isFixed = false, setLanguage }: NavigationMob
   const handleClick = () => {
     setisHamburgerOpen(false)
   }
+
   return (
     <Container $isVisible={isHamburgerOpen}>
       <HamburgerWrapper $isFixed={isFixed} $isOpen={isHamburgerOpen}>

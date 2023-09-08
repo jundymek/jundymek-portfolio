@@ -1,28 +1,26 @@
-import React, { useContext } from "react"
+import { forwardRef, useContext } from "react"
 import { SectionTitle, GreySection, SectionSubtitle } from "../../styles/styledComponents"
 import { LanguageContext } from "../../App"
-import { Scrambler } from "react-text-scrambler"
 import useWindowSize from "../../customHooks/useWindowSize"
-import useOnScreen from "../../customHooks/useOnScreen"
-import Project from "./Project/Project"
+import { Project } from "./Project/Project"
 import { Wrapper } from "./Portfolio.styles"
 import { ProjectMobile } from "./ProjectMobile/ProjectMobile"
 import { Repositories } from "../Repositories/Repositories"
+import { TextScrambler } from "../TextScrambler/TextScrambler"
 
-export const Portfolio = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
+export const Portfolio = forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const windowWidth = useWindowSize().width
   const mobile = windowWidth && windowWidth < 900
 
-  useOnScreen(ref, "0px")
   const {
     texts: { projects },
   } = useContext(LanguageContext)
 
   return (
-    <GreySection ref={ref} id="portfolio">
+    <GreySection id="portfolio" ref={ref}>
       <Wrapper>
         <SectionTitle>
-          <Scrambler text={`{ ${projects.title} }`} characters="!@#$%^&*()" renderIn={1000} />
+          <TextScrambler text={[projects.title]} characters="!@#$%^&*()" duration={1000} />
         </SectionTitle>
         <SectionSubtitle>{projects.subtitle}</SectionSubtitle>
         {!mobile

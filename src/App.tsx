@@ -6,7 +6,6 @@ import { ThemeProvider } from "styled-components"
 import { theme } from "./styles/theme"
 import { useSpring, animated } from "react-spring"
 import usePrevious from "./customHooks/usePrevious"
-import useActiveSection from "./customHooks/useActiveSection"
 import { translation } from "./helpers/translation"
 import { Header } from "./components/Header/Header"
 import { AboutMe } from "./components/AboutMe/AboutMe"
@@ -14,6 +13,7 @@ import { Contact } from "./components/Contact/Contact"
 import { Footer } from "./components/Footer/Footer"
 import { Skills } from "./components/Skills/Skills"
 import { Portfolio } from "./components/Portfolio/Portfolio"
+import { useActiveSection } from "./customHooks/useActiveSection"
 
 const GlobalStyles = createGlobalStyle`
 
@@ -52,10 +52,10 @@ function App() {
   })
 
   const appRef = useRef(document.createElement("div"))
-  const aboutSectionRef = React.createRef<HTMLElement>()
-  const skillsSectionRef = React.createRef<HTMLElement>()
-  const portfolioSectionRef = React.createRef<HTMLElement>()
-  const contactSectionRef = React.createRef<HTMLElement>()
+  const aboutSectionRef = useRef<HTMLElement | null>(null)
+  const skillsSectionRef = useRef<HTMLElement | null>(null)
+  const portfolioSectionRef = useRef<HTMLElement | null>(null)
+  const contactSectionRef = useRef<HTMLElement | null>(null)
 
   const sectionRefs = [
     { section: "About", ref: aboutSectionRef },

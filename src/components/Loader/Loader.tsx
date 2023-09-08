@@ -1,4 +1,3 @@
-import React from "react"
 import { Wrapper, Paragraph, Letter } from "./Loader.styles"
 
 export const Loader = () => {

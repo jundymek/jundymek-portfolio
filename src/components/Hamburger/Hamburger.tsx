@@ -1,4 +1,3 @@
-import React from "react"
 import { HamburgerBtn, HamburgerBars } from "./Hamburger.styles"
 
 type HamburgerProps = {

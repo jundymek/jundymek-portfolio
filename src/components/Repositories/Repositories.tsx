@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import { useState, useEffect, useRef, useContext } from "react"
 import { getNumberOfReposInEachTechnology } from "./utils/getNumberOfReposInEachTechnology"
 import fetchRepositiories from "./utils/fetchRepositiories"
 import { TechnologyObject } from "../../helpers/types"
@@ -51,11 +51,11 @@ export const Repositories = () => {
       })
   }, [])
 
-  interface Images {
+  type ImagesType = {
     [key: string]: string
   }
 
-  const techImages: Images = {
+  const techImages: ImagesType = {
     javascript: `${javascriptImage}`,
     python: `${pythonImage}`,
     css: `${cssImage}`,
@@ -66,6 +66,7 @@ export const Repositories = () => {
   }
 
   const maxLength = reposByTechnology && Object.entries(reposByTechnology[0])[0][1]
+
   return (
     <Wrapper ref={ref}>
       <Title>{repositories.title}</Title>
@@ -74,9 +75,9 @@ export const Repositories = () => {
         <>
           <List>
             {reposByTechnology &&
-              reposByTechnology.map((item, index) => {
+              reposByTechnology.map((item: TechnologyObject) => {
                 return Object.keys(item).map((key, index) => (
-                  <ListItem key={index}>
+                  <ListItem key={`${key}-${index}`}>
                     <Technology width={maxLength && (item[key] * 100) / maxLength}>
                       <BarWrapper>
                         <RepoName>{key}</RepoName>

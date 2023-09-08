@@ -1,22 +1,19 @@
 import { forwardRef, useContext } from "react"
 import { SectionTitle } from "../../styles/styledComponents"
 import { LanguageContext } from "../../App"
-import { Scrambler } from "react-text-scrambler"
-import useOnScreen from "../../customHooks/useOnScreen"
 import { AboutSection, Wrapper, Paragraph, StrikedParagraph, Code } from "./AboutMe.styles"
+import { TextScrambler } from "../TextScrambler/TextScrambler"
 
 export const AboutMe = forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const {
     texts: { aboutMe },
   } = useContext(LanguageContext)
 
-  useOnScreen(ref, "0%")
-
   return (
     <AboutSection id="about" ref={ref}>
       <Wrapper>
         <SectionTitle>
-          <Scrambler text={`{ ${aboutMe.title} }`} characters="!@#$%^&*()" renderIn={1000} />
+          <TextScrambler text={[aboutMe.title]} />
         </SectionTitle>
         <Paragraph>
           {aboutMe.paragraph1part1Hello}

@@ -47,6 +47,7 @@ export const StyledNumber = styled.span<{
   $count: number
 }>`
   position: absolute;
+  top: 44px;
   font-size: ${(props) => `${20 + props.$count}px`};
   animation: ${(props) =>
     props.$count === 26

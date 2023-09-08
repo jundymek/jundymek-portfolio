@@ -1,23 +1,20 @@
-import React, { useContext } from "react"
+import { forwardRef, useContext } from "react"
 import { LanguageContext } from "../../App"
 import { SectionTitle } from "../../styles/styledComponents"
-import useOnScreen from "../../customHooks/useOnScreen"
 import { Button } from "../Button/Button"
-import { Scrambler } from "react-text-scrambler"
 import { Section, Wrapper, Paragraph, List, Icon, HandWrite } from "./Contact.styles"
+import { TextScrambler } from "../TextScrambler/TextScrambler"
 
-export const Contact = React.forwardRef((_, ref: React.Ref<HTMLElement>) => {
+export const Contact = forwardRef((_, ref: React.Ref<HTMLElement>) => {
   const {
     texts: { contact },
   } = useContext(LanguageContext)
-
-  useOnScreen(ref, "0%")
 
   return (
     <Section id="contact" ref={ref}>
       <Wrapper>
         <SectionTitle>
-          <Scrambler text={`{ ${contact.title} }`} characters="!@#$%^&*()" renderIn={1000} />
+          <TextScrambler text={[contact.title]} />
         </SectionTitle>
         <Paragraph $length={contact.paragraph.length}>{contact.paragraph}</Paragraph>
         <Button href={`mailto:lukasz@gdzietylkochce.com`}>{contact.buttonLabel}</Button>
