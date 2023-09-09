@@ -1,7 +1,7 @@
 {
   "name": "jundymek-portfolio",
-  "homepage": "https://jundymek.github.io/",
-  "version": "1.0.0-alpha",
+  "homepage": "https://jundymek.com",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/user-event": "^14.4.3",
